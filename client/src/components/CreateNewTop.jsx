@@ -6,17 +6,17 @@ import GarmentContext from './../context.js';
 
 const data = {
   base: [
-    {
+    { //simple top
     outlineUrl: "/simpleTop-Outline.png",
     gradientUrl: "/simpleTop-GradientA.png",
     shadingUrl: "/simpleTop-ShadingA.png",
   },
-    {
+    { //floral top
       outlineUrl: "/simpleTop-Outline.png",
       gradientUrl: "/simpleTop-GradientA.png",
       shadingUrl: "/simpleTopFlower-ShadingA.png",
     },
-    {
+    { //stretched top
       outlineUrl: "/simpleTop-Outline.png",
       gradientUrl: "/simpleTop-GradientA.png",
       shadingUrl: "/stretched-top.png",
@@ -24,7 +24,9 @@ const data = {
   ],
   seams: ["./princessline.png", "./curved-seam.png"],
   decoration:  [
-    {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: true},
+    //bow
+    {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
+    //button down
     {outlineUrl: "./buttonOut.png", gradientUrl: './buttonGrad.png', shadingUrl: "./buttonShad.png", hasBoundaries: true}
   ]
 }
@@ -37,6 +39,7 @@ function CreateNewTop(props) {
 
   var handleOnClickEvent = (type, info) => {
     var copy = Object.assign({}, top);
+    console.log(info);
     // console.log(JSON.stringify(copy[type]) === JSON.stringify(info), )
     if (JSON.stringify(copy[type]) === JSON.stringify(info) && type !== 'base') {
       copy[type] = null;
