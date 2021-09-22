@@ -10,44 +10,48 @@ const makeFilterStyle = (hue, sat, brit, con, op) => {
 }
 function Item(props) {
   let {base, seamUrls, decoration, upperBoundary, neckline, lowerBoundary, zCounter, baseFilter, decorationFilter, displayClass, onClickEvent} = props;
-  // console.log(onClickEvent);
+
+  //seams
   var seamsArr = seamUrls ? seamUrls.map((url, index )=> <img src={url} className={displayClass} style={{zIndex: zCounter - 4}} key={index + "item"}/>) : [];
 
+  //decorations
+  var decorationsArr = null;
   if (decoration) {
     let formattedDecorationFilter = decorationFilter ? makeFilterStyle(decorationFilter.hue, decorationFilter.sat, decorationFilter.brit, decorationFilter.con, decorationFilter.op) : makeFilterStyle();
-  var decorationsArr = [
+    decorationsArr = [
     <img src={decoration.outlineUrl} className={displayClass} style={{zIndex: zCounter}}/>,
     <img src={decoration.gradientUrl} className={displayClass} style={{zIndex: zCounter -1, filter: formattedDecorationFilter}}/>,
     <img src={decoration.shadingUrl} className={displayClass} style={{zIndex: zCounter -2, filter: formattedDecorationFilter}}/>
   ];
+  } else {
+    decoration = {hasBoundaries: false};
   }
+  // const Decoration = (bool) => {
+  //   if (decoration) {
+  //     if (decoration.hasBoundaries === bool) {
+  //       return decorationsArr;
+  //     }
+  //   }
+  // }
+  //base
   var baseImgs = null;
   if (base) {
       let formattedFilter = baseFilter  ?  makeFilterStyle(baseFilter.hue, baseFilter.sat, baseFilter.brit, baseFilter.con, baseFilter.op) : makeFilterStyle();
-    baseImgs = (
-      <React.Fragment>
-        <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}}/>
-        <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}}/>
-        <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}}/>
-      </React.Fragment>
-    )
-  }
-  const Decoration = (bool) => {
-    if (decoration) {
-      if (decoration.hasBoundaries === bool) {
-        return decorationsArr;
-      }
-    }
+    baseImgs = [
+      <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}}/>,
+      <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}}/>,
+      <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}}/>
+    ];
   }
   return (
     <React.Fragment>
-      {Decoration(false)}
+      {!decoration.hasBoundaries && decorationsArr}
       <div className={`${upperBoundary || 'upperBoundaryClass'} portrait-img`}  onClick={onClickEvent}>
        {/* neckline */}
         <div className={`${neckline || 'neckineClass'} portrait-img`}>
           {/* lower boundary */}
           <div className={`${lowerBoundary || 'lowerBoundaryClass'} portrait-img`}>
-          {Decoration(true)}
+          {decoration.hasBoundaries && decorationsArr}
           {seamUrls && seamsArr}
           { base && baseImgs}
           </div>

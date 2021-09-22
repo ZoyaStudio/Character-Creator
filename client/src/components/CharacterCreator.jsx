@@ -26,8 +26,7 @@ function CharacterCreator() {
     <div className="character-creator">
       <h1 >Character Creator</h1>
       <GarmentContext.Provider
-      value={{top, setTop}
-        }>
+        value={{top, setTop}}>
         <Portrait/>
         <CategoryMenus/>
         <GarmentCreator top={top} setTop={setTop}/>
