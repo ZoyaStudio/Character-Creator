@@ -3,25 +3,12 @@ import Portrait from './Portrait.jsx';
 import GarmentCreator from './GarmentCreator.jsx';
 import CategoryMenus from './CategoryMenus.jsx';
 import GarmentContext from './../context.js';
+import defaults from './../defaults-samples/defaults.js';
 
-var defaultTop = {
-  upperBoundary: null,
-  neckline: null,
-  lowerBoundary: null,
-  base: {
-    outlineUrl: "/simpleTop-Outline.png",
-    gradientUrl: "/simpleTop-GradientA.png",
-    shadingUrl: "/stretched-top.png",
-  },
-  baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
-  seams: ["./curved-seam.png"],
-  decoration:  {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
-  decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
-}
-
+//CharacterCreator Component: top level component that contains Portrait, CategoryMenues and Garment Creator
+//provides context to child components
 function CharacterCreator() {
-  const [top, setTop] = useState(defaultTop);
-
+  const [top, setTop] = useState(defaults.defaultTop);
   return (
     <div className="character-creator">
       <h1 >Character Creator</h1>

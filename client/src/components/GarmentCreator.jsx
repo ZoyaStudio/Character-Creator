@@ -3,38 +3,14 @@ import React, {useState, useContext} from 'react';
 import CreateNewTop from './CreateNewTop.jsx';
 import DetailsBar from './DetailsBar.jsx';
 import ExistingTop from './ExistingTop.jsx';
+import defaults from './../defaults-samples/defaults.js';
 
-var defaultTop = {
-  upperBoundary: '',
-  neckline: '',
-  lowerBoundary: '',
-  base: {
-    outlineUrl: "/simpleTop-Outline.png",
-    gradientUrl: "/simpleTop-GradientA.png",
-    shadingUrl: "/stretched-top.png",
-  },
-  baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
-  seams: ["./curved-seam.png"],
-  decoration:  {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
-  decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
-}
-var defaultTop2 = {
-  upperBoundary: null,
-  neckline: null,
-  lowerBoundary: null,
-  base: {
-    outlineUrl: "/simpleTop-Outline.png",
-    gradientUrl: "/simpleTop-GradientA.png",
-    shadingUrl: "/simpleTopFlower-ShadingA.png",
-  },
-  baseFilter: {hue: 90, sat: 25, brit: 1, con: 100, op: 100},
-  seams: ["./curved-seam.png"],
-  decoration:  {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
-  decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
-}
+//Garment Creator: container element for ExistingTop, DetailsBar and CreateNewTop panels as well as buttons to toggle which panel is visible
+//provides saved tops array to ExistingTop component.
 function GarmentCreator(props) {
+  var {defaultTop, defaultTop2, defaultTop3} = defaults;
   const [isSavedTop, setIsSavedTops] = useState(false);
-  const [savedTops, setSavedTops] = useState([defaultTop2])
+  const [savedTops, setSavedTops] = useState([defaultTop, defaultTop2, defaultTop3])
   var createNewTopClass = "selected";
   var savedTopsClass = "";
   if (isSavedTop) {

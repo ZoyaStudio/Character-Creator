@@ -4,10 +4,12 @@ import Gallary from './Gallary.jsx';
 import Item from './Item.jsx';
 import GarmentContext from './../context.js';
 
+//Saved tops: Takes an array of saved tops and suppllies a Gallary component with Item components generated from array items
 function ExistingTop(props) {
   const {savedTops, setSavedTops} = props;
   const {top, setTop} = useContext(GarmentContext);
 
+  //sets current top to top previewed in item card
   var handleOnClickEvent = (info) => {
     console.log('savedtop click')
     var top = Object.assign({}, info);

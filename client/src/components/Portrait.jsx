@@ -3,7 +3,9 @@ import React, {useState, useContext} from 'react';
 import Item from './Item.jsx';
 import GarmentContext from './../context.js';
 
-
+//Portrait: image of character user has customized
+//props: none
+//context: garment object with key for 'top' object
 function Portrait(props) {
   const garment = useContext(GarmentContext).top;
   return (

@@ -1,5 +1,13 @@
 
 import React, {useState, useContext} from 'react';
+
+//Filter: creates a set of range inputs to alter the hue, saturation, opacity, britness and constrast values of the current top
+//inputs:
+  //filter: object with hue/sat/brit/con/op properties; the values at these properties should be the current filter values of the top
+  //label: type: string. label for each set of sliders
+  //handleFilterChange, event handler to update state with values from input
+  //part: type: string. Key corresponding to filter object on garment
+    //ex filter key and value: "baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100}"
 function Filter(props) {
   const {filter, label, handleFilterChange, part} = props;
   return (

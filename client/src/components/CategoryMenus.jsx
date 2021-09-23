@@ -1,4 +1,8 @@
 import React, {useState, useContext} from 'react';
+
+//menu selection - allows user to select what part of the character they want to modify
+//TO DO: replace current sections with "hair, body, top, head, hands, bottom, feet, back, one piece"
+//TO DO: Add functionality to buttons
 function CategoryMenus() {
   return (
     <div className="category-menus">
