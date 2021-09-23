@@ -3,35 +3,13 @@ import React, {useState, useContext} from 'react';
 import Gallary from './Gallary.jsx';
 import Item from './Item.jsx';
 import GarmentContext from './../context.js';
+import data from './../defaults-samples/sample-data.js';
 
-const data = {
-  base: [
-    { //simple top
-    outlineUrl: "/simpleTop-Outline.png",
-    gradientUrl: "/simpleTop-GradientA.png",
-    shadingUrl: "/simpleTop-ShadingA.png",
-  },
-    { //floral top
-      outlineUrl: "/simpleTop-Outline.png",
-      gradientUrl: "/simpleTop-GradientA.png",
-      shadingUrl: "/simpleTopFlower-ShadingA.png",
-    },
-    { //stretched top
-      outlineUrl: "/simpleTop-Outline.png",
-      gradientUrl: "/simpleTop-GradientA.png",
-      shadingUrl: "/stretched-top.png",
-    },
-  ],
-  seams: ["./princessline.png", "./curved-seam.png"],
-  decoration:  [
-    //bow
-    {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
-    //button down
-    {outlineUrl: "./buttonOut.png", gradientUrl: './buttonGrad.png', shadingUrl: "./buttonShad.png", hasBoundaries: true}
-  ]
-}
-
-/* <Item base={bases[2]} upperBoundary={ub} neckline={nl} lowerBoundary={lb} zCounter={500} decoration={buttondecoration} className="portrait-img" seamUrls={seamUrls} displayClass="portrait-img"/> */
+//Top Creation Panel:
+  //Set of three Gallaries from which user selects pieces for top
+  //Provides child components with Item components for base, seams and details
+  //Provides on-click handler to top preview cards
+//TO DO: Refactor to allow mutiple seams and details on the same top
 
 function CreateNewTop(props) {
   const {savedTops, setSavedTops} = props;
