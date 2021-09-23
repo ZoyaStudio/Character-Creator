@@ -14,16 +14,16 @@ function Item(props) {
   let {base, seamUrls, decoration, upperBoundary, neckline, lowerBoundary, zCounter, baseFilter, decorationFilter, displayClass, onClickEvent} = props;
 
   //seams
-  var seamsArr = seamUrls ? seamUrls.map((url, index )=> <img src={url} className={displayClass} style={{zIndex: zCounter - 4}} key={index + "item"}/>) : [];
+  var seamsArr = seamUrls ? seamUrls.map((url, index )=> <img src={url} className={displayClass} style={{zIndex: zCounter - 4}} key={index + "item seam"}/>) : [];
 
   //decorations
   var decorationsArr = null;
   if (decoration) {
     let formattedDecorationFilter = decorationFilter ? makeFilterStyle(decorationFilter.hue, decorationFilter.sat, decorationFilter.brit, decorationFilter.con, decorationFilter.op) : makeFilterStyle();
     decorationsArr = [
-    <img src={decoration.outlineUrl} className={displayClass} style={{zIndex: zCounter}}/>,
-    <img src={decoration.gradientUrl} className={displayClass} style={{zIndex: zCounter -1, filter: formattedDecorationFilter}}/>,
-    <img src={decoration.shadingUrl} className={displayClass} style={{zIndex: zCounter -2, filter: formattedDecorationFilter}}/>
+    <img src={decoration.outlineUrl} className={displayClass} style={{zIndex: zCounter}} key={"decOut"}/>,
+    <img src={decoration.gradientUrl} className={displayClass} style={{zIndex: zCounter -1, filter: formattedDecorationFilter}}  key={"decGrad"}/>,
+    <img src={decoration.shadingUrl} className={displayClass} style={{zIndex: zCounter -2, filter: formattedDecorationFilter}}  key={"decShad"}/>
   ];
   } else {
     decoration = {hasBoundaries: false};
@@ -34,9 +34,9 @@ function Item(props) {
   if (base) {
       let formattedFilter = baseFilter  ?  makeFilterStyle(baseFilter.hue, baseFilter.sat, baseFilter.brit, baseFilter.con, baseFilter.op) : makeFilterStyle();
     baseImgs = [
-      <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}}/>,
-      <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}}/>,
-      <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}}/>
+      <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>,
+      <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}} key={"baseGrad"}/>,
+      <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}} key={"baseShad"}/>
     ];
   }
   return (
