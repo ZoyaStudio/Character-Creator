@@ -17,7 +17,7 @@ function DetailsBar(props) {
   //adds current top to savedTops array
   const saveCurrentTop = () => {
     var topsCopy = savedTops.slice();
-    topsCopy.push(top);
+    topsCopy.push(JSON.parse(JSON.stringify(top)));
     setSavedTops(topsCopy)
   }
   //updates top's filter (for the base and decoration so far)
@@ -26,7 +26,7 @@ function DetailsBar(props) {
     //type: 'hue', 'con', 'sat', 'op', 'sat'
     //part: any key of the 'top' object that has the listed properties above
   var handleFilterChange = (e, type, part) => {
-    var copy = Object.assign({}, top);
+    var copy = JSON.parse(JSON.stringify(top));//Object.assign({}, top);
     copy[part][type] = e.target.value;
     setTop(copy);
   }

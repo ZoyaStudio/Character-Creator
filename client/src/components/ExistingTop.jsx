@@ -12,7 +12,8 @@ function ExistingTop(props) {
   //sets current top to top previewed in item card
   var handleOnClickEvent = (info) => {
     console.log('savedtop click')
-    var top = Object.assign({}, info);
+   // var top = Object.assign({}, info);
+   var top = JSON.parse(JSON.stringify(info));
     setTop(top);
   }
 

@@ -40,9 +40,9 @@ function Item(props) {
     ];
   }
   return (
-    <React.Fragment>
+    <div className="portrait-img" onClick={onClickEvent}>
       {!decoration.hasBoundaries && decorationsArr}
-      <div className={`${upperBoundary || 'upperBoundaryClass'} portrait-img`}  onClick={onClickEvent}>
+      <div className={`${upperBoundary || 'upperBoundaryClass'} portrait-img`}>
        {/* neckline */}
         <div className={`${neckline || 'neckineClass'} portrait-img`}>
           {/* lower boundary */}
@@ -53,7 +53,7 @@ function Item(props) {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 export default Item;

@@ -4,6 +4,7 @@ import Gallary from './Gallary.jsx';
 import Item from './Item.jsx';
 import GarmentContext from './../context.js';
 import data from './../defaults-samples/sample-data.js';
+import cloneDeep from 'lodash.clonedeep';
 
 //Top Creation Panel:
   //Set of three Gallaries from which user selects pieces for top
@@ -17,12 +18,14 @@ function CreateNewTop(props) {
 
   var handleOnClickEvent = (type, info) => {
     var copy = Object.assign({}, top);
-    console.log(info);
+
+  // console.log('which piece:', info);
     // console.log(JSON.stringify(copy[type]) === JSON.stringify(info), )
     if (JSON.stringify(copy[type]) === JSON.stringify(info) && type !== 'base') {
       copy[type] = null;
+      console.log('same', type, info.outlineUrl)
     } else {
-      copy[type] = info;
+        copy[type] = JSON.parse(JSON.stringify(info));
     }
     setTop(copy);
   }
