@@ -26,6 +26,7 @@ function DetailsBar(props) {
     //type: 'hue', 'con', 'sat', 'op', 'sat'
     //part: any key of the 'top' object that has the listed properties above
   var handleFilterChange = (e, type, part) => {
+    console.log(top.baseFilter);
     var copy = JSON.parse(JSON.stringify(top));//Object.assign({}, top);
     copy[part][type] = e.target.value;
     setTop(copy);
@@ -36,6 +37,7 @@ function DetailsBar(props) {
     //e: event from onChange
     //type: string, name of type of boundary
   var handleBoundaryChange = (e, type) => {
+    console.log('filter change', e, type);
     var index = e.target.value;
     var copy = Object.assign({}, top);
     copy[type] = boundries[type][index];

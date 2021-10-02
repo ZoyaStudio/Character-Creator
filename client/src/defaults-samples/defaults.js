@@ -1,4 +1,4 @@
-
+import colors from './colors.js';
 //defalt top object
 var defaults = {
   defaultTop: {
@@ -42,6 +42,20 @@ var defaults = {
     seams: ["./curved-seam.png"],
     decoration:  {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
     decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
+  },
+  previewTop : {
+    upperBoundary: '',
+    neckline: '',
+    lowerBoundary: '',
+    base: {
+      outlineUrl: "/simpleTop-Outline.png",
+      gradientUrl: "/simpleTop-GradientA.png",
+      shadingUrl:  "/simpleTop-ShadingA.png",
+    },
+    baseFilter: colors.white,
+    seams: null,
+    decoration:  null,
+    decorationFilter: null
   }
 }
 export default defaults;

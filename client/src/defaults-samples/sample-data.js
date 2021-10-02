@@ -2,7 +2,7 @@
 //placeholder data for garment pieces
 //TO DO: move data to database, fetch with API call
 const data = {
-  base: [
+  bases: [
     { //simple top
     outlineUrl: "/simpleTop-Outline.png",
     gradientUrl: "/simpleTop-GradientA.png",
@@ -20,11 +20,12 @@ const data = {
     },
   ],
   seams: ["./princessline.png", "./curved-seam.png"],
-  decoration:  [
+  decorations:  [
     //bow
     {outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
     //button down
     {outlineUrl: "./buttonOut.png", gradientUrl: './buttonGrad.png', shadingUrl: "./buttonShad.png", hasBoundaries: true}
-  ]
+  ],
+
 }
 export default data;
