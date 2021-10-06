@@ -56,6 +56,48 @@ var defaults = {
     seams: null,
     decoration:  null,
     decorationFilter: null
+  },
+  defaultBody: {
+    filterSet: {
+      blush: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
+      lightShade: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
+      darkShade: {hue: 0, sat: 100, brit: 1, con: 100, op: 100}
+    },
+    head: {
+      outline:'./Body-Layers/OutlineB.svg',
+      gradient: './Body-Layers/GradientB.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingBDark.svg',
+      lightShade: './Body-Layers/ShadingBLight.svg',
+    },
+    ear: {
+      outline:'./Body-Layers/OutlineA.svg',
+      gradient: './Body-Layers/GradientA.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingADark.svg',
+      lightShade: './Body-Layers/ShadingALight.svg',
+    },
+    torsoLegs: {
+      outline:'./Body-Layers/OutlineA.svg',
+      gradient: './Body-Layers/GradientA.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingADark.svg',
+      lightShade: './Body-Layers/ShadingALight.svg',
+    },
+    backArm: {
+      outline:'./Body-Layers/OutlineB.svg',
+      gradient: './Body-Layers/GradientB.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingBDark.svg',
+      lightShade: './Body-Layers/ShadingBLight.svg',
+    },
+    frontArm: {
+      outline:'./Body-Layers/OutlineB.svg',
+      gradient: './Body-Layers/GradientB.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingBDark.svg',
+      lightShade: './Body-Layers/ShadingBLight.svg',
+    },
   }
 }
 export default defaults;

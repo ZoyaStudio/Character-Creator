@@ -9,11 +9,12 @@ import defaults from './../defaults-samples/defaults.js';
 //provides context to child components
 function CharacterCreator() {
   const [top, setTop] = useState(JSON.parse(JSON.stringify(defaults.defaultTop)));
+  const [body, setBody] = useState(JSON.parse(JSON.stringify(defaults.defaultBody)));
   return (
     <div className="character-creator">
       <h1 >Character Creator</h1>
       <GarmentContext.Provider
-        value={{top, setTop}}>
+        value={{top, setTop, body, setBody}}>
         <Portrait/>
         <CategoryMenus/>
         <TopPanels top={top} setTop={setTop}/>
