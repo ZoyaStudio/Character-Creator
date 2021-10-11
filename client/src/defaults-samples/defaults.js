@@ -1,4 +1,5 @@
 import colors from './colors.js';
+import data from './sample-data.js';
 //defalt top object
 var defaults = {
   defaultTop: {
@@ -63,41 +64,11 @@ var defaults = {
       lightShade: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
       darkShade: {hue: 0, sat: 100, brit: 1, con: 100, op: 100}
     },
-    head: {
-      outline:'./Body-Layers/OutlineB.svg',
-      gradient: './Body-Layers/GradientB.svg',
-      blush: './Body-Layers/Blush.svg',
-      darkShade: './Body-Layers/ShadingBDark.svg',
-      lightShade: './Body-Layers/ShadingBLight.svg',
-    },
-    ear: {
-      outline:'./Body-Layers/OutlineA.svg',
-      gradient: './Body-Layers/GradientA.svg',
-      blush: './Body-Layers/Blush.svg',
-      darkShade: './Body-Layers/ShadingADark.svg',
-      lightShade: './Body-Layers/ShadingALight.svg',
-    },
-    torsoLegs: {
-      outline:'./Body-Layers/OutlineA.svg',
-      gradient: './Body-Layers/GradientA.svg',
-      blush: './Body-Layers/Blush.svg',
-      darkShade: './Body-Layers/ShadingADark.svg',
-      lightShade: './Body-Layers/ShadingALight.svg',
-    },
-    backArm: {
-      outline:'./Body-Layers/OutlineB.svg',
-      gradient: './Body-Layers/GradientB.svg',
-      blush: './Body-Layers/Blush.svg',
-      darkShade: './Body-Layers/ShadingBDark.svg',
-      lightShade: './Body-Layers/ShadingBLight.svg',
-    },
-    frontArm: {
-      outline:'./Body-Layers/OutlineB.svg',
-      gradient: './Body-Layers/GradientB.svg',
-      blush: './Body-Layers/Blush.svg',
-      darkShade: './Body-Layers/ShadingBDark.svg',
-      lightShade: './Body-Layers/ShadingBLight.svg',
-    },
+    head: data.bodies.heads['Average Girl'],
+    ear: data.bodies.ears['Normal Ear'],
+    torsoLegs: data.bodies.torsoLegs['Busty Not Muscular'],
+    backArm: data.bodies.backArms['Skinny'],
+    frontArm: data.bodies.frontArms['Skinny'],
   }
 }
 export default defaults;

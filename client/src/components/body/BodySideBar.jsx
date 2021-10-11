@@ -1,39 +1,39 @@
+
 import React, {useState, useContext} from 'react';
-import Gallary from './Gallary.jsx';
-import Item from './Item.jsx';
-import GarmentContext from './../context.js';
 
-function EditBody(props) {
-  // const {savedTops, setSavedTops} = props;
-  // const {top, setTop} = useContext(GarmentContext);
+function BodySideBar({body, setBody, setSavedBodies}) {
 
-  // var handleOnClickEvent = (type, info) => {
-  //   var copy = Object.assign({}, top);
 
-  // // console.log('which piece:', info);
-  //   // console.log(JSON.stringify(copy[type]) === JSON.stringify(info), )
-  //   if (JSON.stringify(copy[type]) === JSON.stringify(info) && type !== 'base') {
-  //     copy[type] = null;
-  //     console.log('same', type, info.outlineUrl)
-  //   } else {
-  //       copy[type] = JSON.parse(JSON.stringify(info));
-  //   }
-  //   setTop(copy);
-  // }
-
-  // const {base, seams, decoration} = data;
-  // var basePreviews = base.map(baseValue => <Item base={baseValue} zCounter={500} displayClass="preview-top" onClickEvent={() => {handleOnClickEvent('base', baseValue)}}/>);
-  // var seamPreviews = seams.map(seam => <Item base={base[0]} seamUrls={[seam]} zCounter={500}  displayClass="preview-top" onClickEvent={() => {handleOnClickEvent('seams', [seam])}}/>)
-  // var decorationPreviews = decoration.map(decorationValue => <Item base={base[0]} decoration={decorationValue} zCounter={500} displayClass="preview-top" onClickEvent={() => {handleOnClickEvent('decoration', decorationValue)}}/>)
   return (
-    <div className="creation-panel minor-panel">
-      <Gallary label="Eyebrows" children={[]}/>
-      <Gallary label="Eyes" children={[]}/>
-      <Gallary label="Nose" children={[]}/>
-      <Gallary label="Mouth" children={[]}/>
-      <Gallary label="Face Detail" children={[]}/>
-      <Gallary label="Ear" children={[]}/>
+    <div className="details-bar">
+      <h4>Skin</h4>
+      <label className="color-picker-label" htmlFor="light">Skin Color - Light Shade</label>
+      color picker goes here
+      <label className="color-picker-label" htmlFor="dark">Skin Color - Dark Shade</label>
+      color picker goes here
+      <label className="color-picker-label" htmlFor="blush">Skin Color - Blush</label>
+      color picker goes here
+      <label className="color-picker-label" htmlFor="skin-detail">Skin Color - Detail</label>
+      color picker goes here
+      <h4>Eyes</h4>
+      <label className="color-picker-label" htmlFor="iris">Eye Color - Iris</label>
+      color picker goes here
+      <label className="color-picker-label" htmlFor="pupil">Eye Color - Pupin</label>
+      color picker goes here
+      <label className="color-picker-label" htmlFor="sclera">Eye Color - Sclera</label>
+      color picker goes here
+      <br></br>
+      <label className="color-picker-label" className="checkbox-label" htmlFor="eye-style-normal">Eye Style - Normal </label>
+      <input type="radio" className="checkbox-input" name="eye-style-normal"></input>
+      <br></br>
+      <label className="color-picker-label" className="checkbox-label" htmlFor="eye-style-glazed">Eye Style - Glazed </label>
+      <input type="radio" className="checkbox-input" name="eye-style-glazed"></input>
+      <br></br>
+      <label className="color-picker-label" className="checkbox-label" htmlFor="eye-style-intense">Eye Style - Intense </label>
+      <input type="radio" className="checkbox-input" name="eye-style-intense"></input>
+      <br></br>
+      <button className="save-button" onClick={null}>Save Body</button>
     </div>
   )
 }
-export default EditBody;
+export default BodySideBar;

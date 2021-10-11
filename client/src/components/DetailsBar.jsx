@@ -47,12 +47,12 @@ function DetailsBar(props) {
   return (
     <div className="details-bar">
       <h4>Details</h4>
-      <label htmlFor="neckline">Neckline</label>
-      <input type="range" name="neckline" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'neckline')}}/>
-      <label htmlFor="upper" >Upper Boundary</label>
-      <input type="range" name="upper" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'upperBoundary')}}/>
-      <label htmlFor="lower">Lower Boundary</label>
-      <input type="range" name="lower" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
+      <label className="range-label" htmlFor="neckline">Neckline</label>
+      <input className="range-input" type="range" name="neckline" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'neckline')}}/>
+      <label className="range-label" htmlFor="upper" >Upper Boundary</label>
+      <input className="range-input" type="range" name="upper" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'upperBoundary')}}/>
+      <label className="range-label" htmlFor="lower">Lower Boundary</label>
+      <input className="range-input" type="range" name="lower" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
       <hr/>
       <Filters filter={top.baseFilter} label="Base" handleFilterChange={handleFilterChange} part="baseFilter"/>
       <hr/>
