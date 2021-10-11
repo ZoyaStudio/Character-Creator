@@ -16,8 +16,8 @@ import React, {useState, useContext} from 'react';
 //input:
   //children: array of Items
   //label: display label for gallery
-function Gallery(props) {
-  var previews = props.children.map((child, index )=>
+function Gallery({children, label}) {
+  var previews = children.map((child, index )=>
     (
     <div className="preview-container" key={index + 'gallary'}>
      {child}
@@ -25,7 +25,7 @@ function Gallery(props) {
     ));
   return (
     <div className="gallary">
-    <h3>{props.label}</h3>
+    <h3>{label}</h3>
     <div className="gallary-box">
        {previews}
     </div>

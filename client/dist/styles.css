@@ -13,7 +13,7 @@ h4 {
 }
 .menu {
   display: flex;
-
+  height: 3em;
 }
 button {
   flex-grow: 1;
@@ -23,11 +23,22 @@ button {
 body {
   background-color: rgb(241, 231, 218);
 }
-label {
+.range-label {
   display: block;
 }
-input {
+.range-input {
   height: .5%;
+}
+.checkbox-label {
+  display: inline;
+}
+.checkbox-input {
+  height: 1em;
+  padding: 1em;
+  display: inline;
+}
+.color-picker-label {
+  display: block;
 }
 .major-panel {
   padding: .7em;
@@ -37,32 +48,27 @@ input {
     border-width: .1em;
     background-color: rgba(255, 255, 255, 0.466);
 }
-.minor-panel {
-
-}
-
-
 #root {
   height: 70em;
 }
 .character-creator {
   display: grid;
-  height: 60em;
+  height: 65em;
   grid-template-columns: 33% 66%;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 20% 80%;
   padding: 3em;
 }
 .portrait {
   position: relative;
-  top: 7em;
+  /* top: 4em; */
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
   background-color: rgba(255, 255, 255, 0.466);
   box-shadow: 10px 5px 7px rgb(0 0 0 / 39%);
-  width: 320.33px;
-  height: 407.33px;
+  width: 400px;
+  height: 900px;
   display: grid;
 }
 hr {
@@ -93,17 +99,33 @@ hr {
 .natural-waist {
   clip-path: polygon(16.6% 51.5%, 85.2% 49.5%, 85.6% 88%, 77.7% 95.3%, 67.4% 96.3%, 58.6% 97%, 49.4% 97%, 40.9% 96.8%, 27.9% 95.5%);
 }
-
+/* body paths */
+.front-arm {
+  clip-path: polygon(38.68% 48.33%, 21.18% 30.11%, 43.68% 26.89%, 50.93% 42.89%);
+}
+.ear {
+  clip-path: polygon(48.18% 23.33%, 42.43% 24.89%, 40.93% 20.78%, 47.18% 20.33%, 50.18% 22.11%);
+}
+.head {
+  clip-path: polygon(56.68% 26.78%, 42.43% 24.89%, 36.18% 15.33%, 57.68% 12.56%, 69.43% 21.11%);
+}
+.back-arm {
+  clip-path: polygon(72.18% 58.56%, 53.43% 29%, 62.68% 26.89%, 73.68% 28.67%, 86.18% 42.44%);
+}
+.torso-legs {
+  clip-path: polygon(31.68% 95%, 17.68% 64%, 41.43% 24%, 65.43% 22.89%, 73.68% 28.67%, 85.18% 91.56%);
+}
 .portrait-img {
   display: grid;
   position: relative;
   grid-row-start: 1;
   grid-column-start: 1;
-  width: 320.33px;
-  height: 407.33px;
+  width: 400px;
+  height: 900px;
 }
 .category-menus {
   position: relative;
+  top: 8em;
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -114,6 +136,7 @@ hr {
 }
 .garment-creator {
   position: relative;
+  top: 3em;
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 2;
@@ -128,7 +151,7 @@ hr {
 .gallary-box {
   border-style: solid;
   /* margin: .4em; */
-  height: 12em;
+  height: 14em;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -137,10 +160,12 @@ hr {
 .preview-container {
   display: grid;
   margin: .5em;
-  width: 100px;
-  height: 110px;
+  width: 200px;
+  height: 200px;
   background-color: rgb(241, 231, 218);
   box-shadow: 10px 5px 7px rgb(0 0 0 / 39%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
 }
 .preview-top {
   position: relative;
@@ -151,6 +176,22 @@ hr {
     width: 160.15px;
     height: 203.5px;
   object-fit: cover;
+}
+.preview-head-container {
+  bottom: 17.6em;
+  right: 19em;
+  display: grid;
+  position: relative;
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+.preview-head {
+  display: grid;
+  position: relative;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  width: 800px;
+  height: 1800px;
 }
 .details-bar {
   position: relative;
