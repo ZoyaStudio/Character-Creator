@@ -6,14 +6,10 @@ var defaults = {
     upperBoundary: null,
     neckline: null,
     lowerBoundary: null,
-    base: {
-      outlineUrl: "/SkinTightBodySuit/TightBodySuitOutline.svg",
-      gradientUrl: "/SkinTightBodySuit/TightBodySuitGradient.svg",
-      shadingUrl: "/SkinTightBodySuit/TightBodySuitShading.svg",
-    },
+    base: data.tops.skinTight.bases.plain,
     baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
-    seams: [],//"./curved-seam.png"],
-    decoration:  null,//{outlineUrl: "./bowoutline.png", gradientUrl: './bowgrad.png', shadingUrl: "./bowshading.png", hasBoundaries: false},
+    seams: [],
+    decoration:  null,
     decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
   },
   defaultBody: {

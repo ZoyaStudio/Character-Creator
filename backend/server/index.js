@@ -3,13 +3,10 @@ const path = require('path');
 const app = express();
 const port = 3002;
 
-const createPiece = (shadingArr, outlineArr, gradientArr, maskArr, borderArr) => {
-  return {
-    shadingArr, outlineArr, gradientArr, maskArr, borderArr
-  }
-}
-
 app.use(express.static('./../../client/dist/'))
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// });
 app.listen(port, ()=> {
   console.log('Listening on port ', port);
 })

@@ -11,7 +11,7 @@ import defaults from './../defaults-samples/defaults.js';
 function CharacterCreator() {
   const [top, setTop] = useState(JSON.parse(JSON.stringify(defaults.defaultTop)));
   const [body, setBody] = useState(JSON.parse(JSON.stringify(defaults.defaultBody)));
-  const [currentType, setCurrentType] = useState('body');
+  const [currentType, setCurrentType] = useState('top');
   return (
     <div className="character-creator">
       <h1 >Character Creator</h1>

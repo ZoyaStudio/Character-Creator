@@ -2,10 +2,24 @@ import React from 'react';
 import Item from './../components/Item.jsx';
 import BodyPart from './../components/body/BodyPart.jsx';
 import defaults from './defaults.js';
+import colors from './colors.js';
+const {white} = colors;
 var baseShirt = defaults.defaultTop;
 var body = defaults.defaultBody;
 var previewFunctions = {
   topPreviews: {
+    topDataPreview: (handleOnClickEvent) => {
+      //console.log(handleOnClickEvent);
+      return (top) => (
+        <Item
+        base={Object.values(top.bases)[0]}
+        baseFilter={white}
+        zCounter={500}
+        displayClass="preview-top"
+        onClickEvent={() => {handleOnClickEvent(top)}}
+        />
+      )
+    },
     savedTopPreview: (handleOnClickEvent) => {
       return (top) =>
       (  <Item
@@ -27,7 +41,7 @@ var previewFunctions = {
         return (baseValue) => (
           <Item
           base={baseValue}
-          baseFilter={baseShirt.baseFilter || {hue: 0, sat: 100, brit: 1, con: 100, op: 100}}
+          baseFilter={white}
           zCounter={500}
           displayClass="preview-top"
           onClickEvent={() => {handleOnClickEvent(baseValue)}}
