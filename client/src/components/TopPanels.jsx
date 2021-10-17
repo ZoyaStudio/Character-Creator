@@ -6,11 +6,11 @@ import GallaryPanel from './GallaryPanel.jsx';
 import previewFunctions from './../defaults-samples/preview-functions.jsx';
 import data from './../defaults-samples/sample-data.js';
 function TopPanels({setTop, top}) {
-  var {defaultTop, defaultTop2, defaultTop3} = defaults;
+  var {defaultTop} = defaults;
   const {bases, seams, decorations} = data;
   var {savedTopPreview, basePreview, seamPreview, decorationPreview} = previewFunctions.topPreviews;
   const [isSavedTop, setIsSavedTops] = useState(false);
-  const [savedTops, setSavedTops] = useState([defaultTop, defaultTop2, defaultTop3]);
+  const [savedTops, setSavedTops] = useState([defaultTop]);
 
   var createNewTopClass = "selected";
   var savedTopsClass = "";

@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './../components/Item.jsx';
 import BodyPart from './../components/body/BodyPart.jsx';
 import defaults from './defaults.js';
-var baseShirt = defaults.previewTop;
+var baseShirt = defaults.defaultTop;
 var body = defaults.defaultBody;
 var previewFunctions = {
   topPreviews: {
@@ -66,7 +66,7 @@ var previewFunctions = {
     facePreviewAtType: (type, filterSet) => {
      return (handleOnClickEvent) => {
       return (facePart) => (
-        <div className="preview-head-container">
+        <div className="preview-head-container" >
         <BodyPart filterSet={filterSet} part={body.backArm} zCounter={120} displayClass="preview-head back-arm"/>
         <BodyPart filterSet={filterSet} part={body.torsoLegs} zCounter={140} displayClass="preview-head torso-legs"/>
         <BodyPart filterSet={filterSet} part={body.frontArm} zCounter={180} displayClass="preview-head front-arm"/>
