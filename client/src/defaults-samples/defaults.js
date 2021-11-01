@@ -3,9 +3,9 @@ import data from './sample-data.js';
 //defalt top object
 var defaults = {
   defaultTop: {
-    upperBoundary: null,
+    upperBoundary: null,//data.tops.skinTight.upperBoundaries['Up Chevron'][0],
+    lowerBoundary: data.tops.skinTight.lowerBoundaries['Up Chevron'][0],
     neckline: null,
-    lowerBoundary: null,
     base: data.tops.skinTight.bases.plain,
     baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
     seams: [],

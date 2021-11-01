@@ -11,10 +11,23 @@ const data = {
           shadingUrl: "/SkinTightBodySuit/TightBodySuitShading.svg",
         }
       },
-      upperBoundaries: [
-        {}
-      ],
-      lowerBoundaries: [],
+      upperBoundaries: {},
+      lowerBoundaries: {
+        "Up Chevron": [
+          {url: "./upChevron/upChevron1.svg",
+          class: "lb-chevron-1"
+          },
+          {url: "./upChevron/upChevron2.svg",
+          class: "lb-chevron-2"
+          },
+          {url: "./upChevron/upChevron3.svg",
+          class: "lb-chevron-3"
+          },
+          // {url: "./upChevron/upChevron4.svg",
+          // class: "lb-chevron-4"
+          // }
+        ]
+      },
       necklines: [],
       seams: [],
       decorations: []

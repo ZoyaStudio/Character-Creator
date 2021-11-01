@@ -7,13 +7,13 @@ import GarmentContext from './../context.js';
   //Allows user to set boundries, neckline and filters for top base and detail
   //Allows user to save tops
 function DetailsBar(props) {
-  const {savedTops, setSavedTops} = props;
+  const {savedTops, setSavedTops, topData} = props;
+  const {lowerBoundaries} = topData;
   const {top, setTop} = useContext(GarmentContext);
-  const boundries = {
-    upperBoundary: ['', 'a-cut-ub', 'swoop-tube-top-ub', 'shallow-v-ub' ],
-    neckline: ['', 'diamond-neck', 'deep-thin-neck'],
-    lowerBoundary: ['', 'crop-top ', 'natural-waist']
-  }
+  const lowerBoundaryNames = Object.keys(lowerBoundaries);
+  const [lowerBoundaryType, setlowerBoundaryType] = useState(lowerBoundaryNames[0]);
+  const [lbIndex, setLbIndex] = useState(0);
+
   //adds current top to savedTops array
   const saveCurrentTop = () => {
     var topsCopy = savedTops.slice();
@@ -21,38 +21,52 @@ function DetailsBar(props) {
     setSavedTops(topsCopy)
   }
   //updates top's filter (for the base and decoration so far)
-    //inputs:
-    //e: event from onChange
-    //type: 'hue', 'con', 'sat', 'op', 'sat'
-    //part: any key of the 'top' object that has the listed properties above
+  //inputs:
+  //e: event from onChange
+  //type: 'hue', 'con', 'sat', 'op', 'sat'
+  //part: any key of the 'top' object that has the listed properties above
   var handleFilterChange = (e, type, part) => {
     console.log(top.baseFilter);
     var copy = JSON.parse(JSON.stringify(top));//Object.assign({}, top);
     copy[part][type] = e.target.value;
     setTop(copy);
   }
-
+  const boundries = {
+    lowerBoundary: lowerBoundaries[lowerBoundaryType]
+  }
   //updates top's boundaries
   //inputs:
-    //e: event from onChange
-    //type: string, name of type of boundary
+  //e: event from onChange
+  //type: string, name of type of boundary
   var handleBoundaryChange = (e, type) => {
-    console.log('filter change', e, type);
     var index = e.target.value;
+    console.log('filter change', type, lowerBoundaries[lowerBoundaryType][index], index);
+    if (type === 'lowerBoundary') {
+      setLbIndex(index)
+    }
     var copy = Object.assign({}, top);
-    copy[type] = boundries[type][index];
+    copy[type] = lowerBoundaries[lowerBoundaryType][index];
     setTop(copy);
   }
-  const {upperBoundary, neckline, lowerBoundary} = boundries;
+
+  const lowerBoundaryTypeInputs = lowerBoundaryNames.map((name, index) =>
+    <div key={"ub" + index}>
+      <label className="" htmlFor={"ub-radio" + index} >{name}</label>
+      <input
+      type="radio"
+      name={"ub-radio" + index}
+      step="1"
+      onChange={(e) => {setlowerBoundaryType(name)}}
+      checked={name === lowerBoundaryType}
+      />
+    </div>)
+  // console.log(lowerBoundaries, lowerBoundaries[lowerBoundaryType], 'type:', lowerBoundaryType, lowerBoundaryNames[0] )
   return (
     <div className="details-bar">
       <h4>Details</h4>
-      <label className="range-label" htmlFor="neckline">Neckline</label>
-      <input className="range-input" type="range" name="neckline" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'neckline')}}/>
-      <label className="range-label" htmlFor="upper" >Upper Boundary</label>
-      <input className="range-input" type="range" name="upper" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'upperBoundary')}}/>
-      <label className="range-label" htmlFor="lower">Lower Boundary</label>
-      <input className="range-input" type="range" name="lower" min="0" max={neckline.length -1} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
+      {lowerBoundaryTypeInputs}
+      <label className="range-label" htmlFor="lb-range">Lower Boundary</label>
+     <input className="range-input" type="range" name="lb-range" value={lbIndex} min="0" max={lowerBoundaries[lowerBoundaryType].length - 1} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
       <hr/>
       <Filters filter={top.baseFilter} label="Base" handleFilterChange={handleFilterChange} part="baseFilter"/>
       <hr/>

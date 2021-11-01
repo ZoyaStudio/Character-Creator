@@ -12,7 +12,8 @@ const makeFilterStyle = (hue, sat, brit, con, op) => {
 //Item: accepts data about garment/garment pieces and generates array of <img> elements
 function Item(props) {
   let {base, seamUrls, decoration, upperBoundary, neckline, lowerBoundary, zCounter, baseFilter, decorationFilter, displayClass, onClickEvent} = props;
-
+  upperBoundary = upperBoundary || {};
+  lowerBoundary = lowerBoundary || {};
   //seams
   var seamsArr = seamUrls ? seamUrls.map((url, index )=> <img src={url} className={displayClass} style={{zIndex: zCounter - 4}} key={index + "item seam"}/>) : [];
 
@@ -29,29 +30,38 @@ function Item(props) {
     decoration = {hasBoundaries: false};
   }
 
+  var lbClass = `${upperBoundary.class|| 'upperBoundaryClass'} portrait-img`;
   //base
   var baseImgs = null;
   if (base) {
       let formattedFilter = baseFilter  ?  makeFilterStyle(baseFilter.hue, baseFilter.sat, baseFilter.brit, baseFilter.con, baseFilter.op) : makeFilterStyle();
-    baseImgs = [
-      <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>,
-      <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}} key={"baseGrad"}/>,
+
+    baseImgs = (
+      <React.Fragment>
+            <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>
+      <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}} key={"baseGrad"}/>
       <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}} key={"baseShad"}/>
-    ];
+      </React.Fragment>
+    )
   }
   return (
     <div className="portrait-img" onClick={onClickEvent}>
       {!decoration.hasBoundaries && decorationsArr}
-      <div className={`${upperBoundary || 'upperBoundaryClass'} portrait-img`}>
+      <img src={upperBoundary.url} className={displayClass + ' portrait-img'} style={{zIndex: zCounter -4 }} key={"ub-img"}/>
+      <div
+      className={`${ upperBoundary.class || 'upperBoundaryClass'} portrait-img`}
+      style={{zIndex: zCounter -10}}
+      >
        {/* neckline */}
         <div className={`${neckline || 'neckineClass'} portrait-img`}>
           {/* lower boundary */}
-          <div className={`${lowerBoundary || 'lowerBoundaryClass'} portrait-img`}>
+          <img src={lowerBoundary.url} className={displayClass + ' portrait-img'} style={{zIndex: zCounter -3 }} key={"lb-img"}/>
+          <div className={`${lowerBoundary.class || 'lowerBoundaryClass'} portrait-img`}>
           {decoration.hasBoundaries && decorationsArr}
           {seamUrls && seamsArr}
           { base && baseImgs}
           </div>
-        </div>
+      </div>
       </div>
     </div>
   )
