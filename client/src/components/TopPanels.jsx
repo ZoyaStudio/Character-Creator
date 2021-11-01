@@ -6,11 +6,11 @@ import GallaryPanel from './GallaryPanel.jsx';
 import previewFunctions from './../defaults-samples/preview-functions.jsx';
 import data from './../defaults-samples/sample-data.js';
 function TopPanels({setTop, top}) {
-  var {defaultTop, defaultTop2, defaultTop3} = defaults;
-  const {bases, seams, decorations} = data;
-  var {savedTopPreview, basePreview, seamPreview, decorationPreview} = previewFunctions.topPreviews;
+  var {defaultTop} = defaults;
+  var {savedTopPreview, basePreview, seamPreview, decorationPreview, topDataPreview} = previewFunctions.topPreviews;
+  const [currentTopData, setCurrentTopData] = useState(data.tops.skinTight);
   const [isSavedTop, setIsSavedTops] = useState(false);
-  const [savedTops, setSavedTops] = useState([defaultTop, defaultTop2, defaultTop3]);
+  const [savedTops, setSavedTops] = useState([defaultTop]);
 
   var createNewTopClass = "selected";
   var savedTopsClass = "";
@@ -28,7 +28,9 @@ function TopPanels({setTop, top}) {
    var newTop = JSON.parse(JSON.stringify(info));
     setTop(newTop);
   }
-
+  var handleCurrentTopData = (data) => {
+    setCurrentTopData(data);
+  }
   var handleOnClickFunctionCreator = (type) => {
     return (info) => {
       var currentTopCopy = JSON.parse(JSON.stringify(top));
@@ -41,16 +43,19 @@ function TopPanels({setTop, top}) {
       setTop(currentTopCopy);
     }
   };
+
+  var {bases, seams, decorations} = currentTopData;
   return (
     <div className="major-panel garment-creator">
        <div className="menu">
         <button className={createNewTopClass} onClick={toggleIsSavedTops}>Create New Top</button>
         <button className={savedTopsClass} onClick={toggleIsSavedTops}>Saved Tops</button>
       </div>
-      <DetailsBar savedTops={savedTops} setSavedTops={setSavedTops}/>
+      <DetailsBar savedTops={savedTops} setSavedTops={setSavedTops} topData={currentTopData}/>
       {isSavedTop && <GallaryPanel list={[{label: 'Saved Tops', items: savedTops, onClickHandler: handleOnClickSavedTop, previewFunction: savedTopPreview}]}/>}
       {!isSavedTop &&  <GallaryPanel list={[
-        {label: 'Base', items: bases, onClickHandler: handleOnClickFunctionCreator('base'), previewFunction: basePreview},
+         {label: 'Type', items: Object.values(data.tops), onClickHandler: handleCurrentTopData, previewFunction: topDataPreview},
+        {label: 'Base', items: Object.values(bases), onClickHandler: handleOnClickFunctionCreator('base'), previewFunction: basePreview},
         {label: 'Seams', items: seams, onClickHandler: handleOnClickFunctionCreator('seams'), previewFunction: seamPreview},
         {label: 'Decorations', items: decorations, onClickHandler: handleOnClickFunctionCreator('decoration'), previewFunction: decorationPreview}
         ]}/>}

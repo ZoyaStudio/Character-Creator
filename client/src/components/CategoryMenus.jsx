@@ -9,6 +9,7 @@ function CategoryMenus({currentType, setCurrentType}) {
       <div className="menu">
       {['body', 'top', 'bottom', 'one piece', 'accessories'].map(type => (
         <button
+        key={`${type}-menu-button`}
         className={currentType === type ? 'selected': ''}
         onClick={
           () => setCurrentType(type)

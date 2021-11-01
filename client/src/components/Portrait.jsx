@@ -9,31 +9,34 @@ import BodyPart from './body/BodyPart.jsx';
 //context: garment object with key for 'top' object
 function Portrait(props) {
   const {top, body} = useContext(GarmentContext);
-  var Top = (<Item base={top.base}
+  var zCounterMax = 500;
+  var Ear = (<BodyPart key="ear" filterSet={body.filterSet} part={body.ear} zCounter={zCounterMax} displayClass="portrait-img ear"/>);
+  var FrontArm = (<BodyPart key="front-arm" filterSet={body.filterSet} part={body.frontArm} zCounter={zCounterMax - 20} displayClass="portrait-img front-arm"/>);
+  var Head = (<BodyPart key="head" filterSet={body.filterSet} part={body.head} zCounter={zCounterMax - 40} displayClass="portrait-img head"/>);
+  var Top = (<Item
+    key="top"
+    base={top.base}
     baseFilter={top.baseFilter}
     decorationFilter={top.decorationFilter}
-    zCounter={100}
+    zCounter={zCounterMax - 60}
     decoration={top.decoration}
     seamUrls={top.seams}
     displayClass="portrait-img"
     upperBoundary={top.upperBoundary}
     neckline={top.neckline}
     lowerBoundary={top.lowerBoundary}/>);
-  var Ear = (<BodyPart filterSet={body.filterSet} part={body.ear} zCounter={200} displayClass="portrait-img ear"/>);
-  var FrontArm = (<BodyPart filterSet={body.filterSet} part={body.frontArm} zCounter={180} displayClass="portrait-img front-arm"/>);
-  var Head = (<BodyPart filterSet={body.filterSet} part={body.head} zCounter={160} displayClass="portrait-img head"/>);
-  var BodyLegs = (<BodyPart filterSet={body.filterSet} part={body.torsoLegs} zCounter={140} displayClass="portrait-img torso-legs"/>)
-  var BackArm = (<BodyPart filterSet={body.filterSet} part={body.backArm} zCounter={120} displayClass="portrait-img back-arm"/>);
+  var BodyLegs = (<BodyPart key="body-legs" filterSet={body.filterSet} part={body.torsoLegs} zCounter={zCounterMax - 80} displayClass="portrait-img torso-legs"/>)
+  var BackArm = (<BodyPart key="back-arm" filterSet={body.filterSet} part={body.backArm} zCounter={zCounterMax - 100} displayClass="portrait-img back-arm"/>);
     // function BodyPart ({filterSet, part, className, onClickHandler, zCounter}) {
   return (
     <div className="portrait">
       {[
-        // Top,
-        BackArm,
-        BodyLegs,
-        FrontArm,
-        Head,
         Ear,
+        Head,
+        FrontArm,
+        Top,
+        BodyLegs,
+        BackArm,
         ]}
       {/* <img src="./base-flattened.png" className="portrait-img"/> */}
       {/* <img src="./collarOut.png" className="portrait-img" style={{zIndex: 400 }}/>
