@@ -31,6 +31,11 @@ function DetailsBar(props) {
     copy[part][type] = e.target.value;
     setTop(copy);
   }
+  var handleFilterPresetClick = (preset, part, name) => {
+    var copy = JSON.parse(JSON.stringify(top));
+    copy[part] = preset;
+    setTop(copy);
+  }
   const boundries = {
     lowerBoundary: lowerBoundaries[lowerBoundaryType]
   }
@@ -68,9 +73,9 @@ function DetailsBar(props) {
       <label className="range-label" htmlFor="lb-range">Lower Boundary</label>
      <input className="range-input" type="range" name="lb-range" value={lbIndex} min="0" max={lowerBoundaries[lowerBoundaryType].length - 1} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
       <hr/>
-      <ColorPicker filter={top.baseFilter} label="Base" handleFilterChange={handleFilterChange} part="baseFilter"/>
+      <ColorPicker filter={top.baseFilter} label="Base" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="baseFilter"/>
       <hr/>
-      <ColorPicker filter={top.decorationFilter} label="Decoration" handleFilterChange={handleFilterChange} part="decorationFilter"/>
+      <ColorPicker filter={top.decorationFilter} label="Decoration" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="decorationFilter"/>
       <button className="save-button" onClick={saveCurrentTop}>Save Top</button>
     </div>
   )

@@ -1,19 +1,29 @@
 
 import React, {useState, useContext} from 'react';
-
+import colors from './../defaults-samples/colors.js';
 const makeFilterStyle = ({hue, sat, brit, con, op}) => {
   if (hue === undefined || sat === undefined || brit === undefined || con === undefined ||op === undefined) {
     return "brightness(" + 3.5 + ") hue-rotate(" + 0 + 'deg) saturate(' + 1 + '%) contrast(' + 144.5 + '%) opacity(' + 100 + '%)';
   }
   return "brightness(" + brit + ") hue-rotate(" + hue + 'deg) saturate(' + sat + '%) contrast(' + con + '%) opacity(' + op + '%)';
-}
+};
 function ColorPicker(props) {
-  const {filter, label, handleFilterChange, part} = props;
+  const {filter, label, handleFilterChange, part, handleFilterPresetClick} = props;
+
   return (
       <div className="color-picker">
         <h4 className="color-picker-label">Colors - {label}</h4>
         <img src="./color-sample.svg" className="color-preview" style={{filter: makeFilterStyle(filter)}}/>
-
+        <div className="color-section">
+          {Object.keys(colors).map((color) => <img
+            src="./color-sample.svg"
+            className="color-selection-preview"
+            alt={color + ' color preview'}
+            key={color + 'color preview'}
+            style={{filter: makeFilterStyle(colors[color])}}
+            onClick={() => {handleFilterPresetClick(colors[color], part, color)}}
+          />)}
+        </div>
         <label className="range-label" htmlFor="hue" >Hue</label>
         <input className="range-input" type="range" name="hue" min={0} max={360} step=".1" value={filter.hue} onChange={(e) => {handleFilterChange(e, 'hue', part)}}/>
 

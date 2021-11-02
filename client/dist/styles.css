@@ -23,6 +23,34 @@ button {
 body {
   background-color: rgb(241, 231, 218);
 }
+/* color picker */
+.color-picker {
+  height: 1.2em;
+  overflow: hidden;
+  transition: .5s;
+}
+.color-picker:hover {
+  height: 13em;
+}
+.color-preview {
+  position: relative;
+  top: .2em;
+  width: 1em;
+  height: 1em;
+  display: inline;
+}
+/* .color-section {
+
+} */
+.color-selection-preview {
+  width: 1.5em;
+  height: 1.5em;
+  display: inline;
+}
+.color-picker-label {
+  display: inline;
+  padding: 0;
+}
 .range-label {
   display: block;
 }
@@ -37,9 +65,7 @@ body {
   padding: 1em;
   display: inline;
 }
-.color-picker-label {
-  display: block;
-}
+
 .major-panel {
   padding: .7em;
   margin: .5em;
