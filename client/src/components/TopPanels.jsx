@@ -51,7 +51,7 @@ function TopPanels({setTop, top}) {
         <button className={createNewTopClass} onClick={toggleIsSavedTops}>Create New Top</button>
         <button className={savedTopsClass} onClick={toggleIsSavedTops}>Saved Tops</button>
       </div>
-      <DetailsBar savedTops={savedTops} setSavedTops={setSavedTops} topData={currentTopData}/>
+      <DetailsBar savedItems={savedTops} setSavedItems={setSavedTops} itemData={currentTopData} item={top} setItem={setTop} label={'Top'}/>
       {isSavedTop && <GallaryPanel list={[{label: 'Saved Tops', items: savedTops, onClickHandler: handleOnClickSavedTop, previewFunction: savedTopPreview}]}/>}
       {!isSavedTop &&  <GallaryPanel list={[
          {label: 'Type', items: Object.values(data.tops), onClickHandler: handleCurrentTopData, previewFunction: topDataPreview},
