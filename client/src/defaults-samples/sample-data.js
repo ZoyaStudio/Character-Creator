@@ -14,25 +14,25 @@ const data = {
       upperBoundaries: {
         "Gentle Curve": [
           {url: "./gentleCurve/gentleCurve0.svg",
-          class: ""
+          class: "ub-gentle-curve-0"
           },
           {url: "./gentleCurve/gentleCurve1.svg",
-          class: ""
+          class: "ub-gentle-curve-1"
           },
           {url: "./gentleCurve/gentleCurve2.svg",
-          class: ""
+          class: "ub-gentle-curve-2"
           },
           {url: "./gentleCurve/gentleCurve3.svg",
-          class: ""
+          class: "ub-gentle-curve-3"
           },
           {url: "./gentleCurve/gentleCurve4.svg",
-          class: ""
+          class: "ub-gentle-curve-4"
           },
           {url: "./gentleCurve/gentleCurve5.svg",
-          class: ""
+          class: "ub-gentle-curve-5"
           },
           {url: "./gentleCurve/gentleCurve6.svg",
-          class: ""
+          class: "ub-gentle-curve-6"
           },
         ]
       },
@@ -53,25 +53,22 @@ const data = {
         ],
         "Gentle Curve": [
           {url: "./gentleCurve/gentleCurve7.svg",
-          class: ""
+          class: "lb-gentle-curve-7"
           },
           {url: "./gentleCurve/gentleCurve8.svg",
-          class: ""
+          class: "lb-gentle-curve-8"
           },
           {url: "./gentleCurve/gentleCurve9.svg",
-          class: ""
+          class: "lb-gentle-curve-9"
           },
           {url: "./gentleCurve/gentleCurve10.svg",
-          class: ""
+          class: "lb-gentle-curve-10"
           },
           {url: "./gentleCurve/gentleCurve11.svg",
-          class: ""
+          class: "lb-gentle-curve-11"
           },
           {url: "./gentleCurve/gentleCurve12.svg",
-          class: ""
-          },
-          {url: "./gentleCurve/gentleCurve13.svg",
-          class: ""
+          class: "lb-gentle-curve-12"
           },
         ]
       },
