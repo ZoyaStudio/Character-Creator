@@ -11,7 +11,31 @@ const data = {
           shadingUrl: "/SkinTightBodySuit/TightBodySuitShading.svg",
         }
       },
-      upperBoundaries: {},
+      upperBoundaries: {
+        "Gentle Curve": [
+          {url: "./gentleCurve/gentleCurve0.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve1.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve2.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve3.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve4.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve5.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve6.svg",
+          class: ""
+          },
+        ]
+      },
       lowerBoundaries: {
         "Up Chevron": [
           {url: "./upChevron/upChevron1.svg",
@@ -26,10 +50,38 @@ const data = {
           // {url: "./upChevron/upChevron4.svg",
           // class: "lb-chevron-4"
           // }
+        ],
+        "Gentle Curve": [
+          {url: "./gentleCurve/gentleCurve7.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve8.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve9.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve10.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve11.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve12.svg",
+          class: ""
+          },
+          {url: "./gentleCurve/gentleCurve13.svg",
+          class: ""
+          },
         ]
       },
       necklines: [],
-      seams: [],
+      seams: [
+        './SeamLines/CenterFront.svg',
+        './SeamLines/NaturalWaistSeam.svg',
+        './SeamLines/QuarterSeamCurveAtBust.svg',
+        './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
+      ],
       decorations: []
     },
   },
