@@ -8,40 +8,50 @@ import BodyPart from './body/BodyPart.jsx';
 //props: none
 //context: garment object with key for 'top' object
 function Portrait(props) {
-  const {top, body} = useContext(GarmentContext);
+  const {top, body, sleeves} = useContext(GarmentContext);
   var zCounterMax = 500;
-  var Ear = (<BodyPart key="ear" filterSet={body.filterSet} part={body.ear} zCounter={zCounterMax} displayClass="portrait-img ear"/>);
-  var FrontArm = (<BodyPart key="front-arm" filterSet={body.filterSet} part={body.frontArm} zCounter={zCounterMax - 20} displayClass="portrait-img front-arm"/>);
-  var Head = (<BodyPart key="head" filterSet={body.filterSet} part={body.head} zCounter={zCounterMax - 40} displayClass="portrait-img head"/>);
-  var Top = (<Item
-    key="top"
-    base={top.base}
-    baseFilter={top.baseFilter}
-    decorationFilter={top.decorationFilter}
-    zCounter={zCounterMax - 60}
-    decoration={top.decoration}
-    seamUrls={top.seams}
-    displayClass="portrait-img"
-    upperBoundary={top.upperBoundary}
-    neckline={top.neckline}
-    lowerBoundary={top.lowerBoundary}/>);
-  var BodyLegs = (<BodyPart key="body-legs" filterSet={body.filterSet} part={body.torsoLegs} zCounter={zCounterMax - 80} displayClass="portrait-img torso-legs"/>)
-  var BackArm = (<BodyPart key="back-arm" filterSet={body.filterSet} part={body.backArm} zCounter={zCounterMax - 100} displayClass="portrait-img back-arm"/>);
+  var pieces = [
+    (zIndex) => (<BodyPart key="ear" filterSet={body.filterSet} part={body.ear} zCounter={zIndex} displayClass="portrait-img ear"/>),
+    (zIndex) => (<BodyPart key="head" filterSet={body.filterSet} part={body.head} zCounter={zIndex} displayClass="portrait-img head"/>),
+    (zIndex) => (<Item
+      key="sleeve-caps-front"
+      base={sleeves.base}
+      baseFilter={sleeves.baseFilter}
+      decorationFilter={sleeves.decorationFilter}
+      zCounter={zIndex}
+      displayClass="portrait-img"
+      sectionClass={'left-section'}
+      />),
+      (zIndex) => (<BodyPart key="front-arm" filterSet={body.filterSet} part={body.frontArm} zCounter={zIndex} displayClass="portrait-img front-arm"/>),
+    (zIndex) => (<Item
+      key="top"
+      base={top.base}
+      baseFilter={top.baseFilter}
+      decorationFilter={top.decorationFilter}
+      zCounter={zIndex}
+      decoration={top.decoration}
+      seamUrls={top.seams}
+      displayClass="portrait-img"
+      upperBoundary={top.upperBoundary}
+      neckline={top.neckline}
+      lowerBoundary={top.lowerBoundary}/>),
+    (zIndex) => (<BodyPart key="body-legs" filterSet={body.filterSet} part={body.torsoLegs} zCounter= {zIndex} displayClass="portrait-img torso-legs"/>),
+    (zIndex) => (<Item
+      key="sleeve-caps-back"
+      base={sleeves.base}
+      baseFilter={sleeves.baseFilter}
+      decorationFilter={sleeves.decorationFilter}
+      zCounter={zIndex}
+      displayClass="portrait-img"
+      sectionClass={'right-section'}
+      />),
+    (zIndex) => (<BodyPart key="back-arm" filterSet={body.filterSet} part={body.backArm} zCounter={zIndex} displayClass="portrait-img back-arm"/>)
+  ]
+
     // function BodyPart ({filterSet, part, className, onClickHandler, zCounter}) {
   return (
     <div className="portrait">
-      {[
-        Ear,
-        Head,
-        FrontArm,
-        Top,
-        BodyLegs,
-        BackArm,
-        ]}
-      {/* <img src="./base-flattened.png" className="portrait-img"/> */}
-      {/* <img src="./collarOut.png" className="portrait-img" style={{zIndex: 400 }}/>
-      <img src="./collarGrad.png" className="portrait-img" style={{zIndex: 400 }}/>
-      <img src="./collarShad.png" className="portrait-img" style={{zIndex: 400 }}/> */}
+      {pieces.map((piece) => piece(zCounterMax -= 20))}
     </div>
   )
 }

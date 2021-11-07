@@ -4,9 +4,19 @@ import data from './sample-data.js';
 var defaults = {
   defaultTop: {
     upperBoundary: null,//data.tops.skinTight.upperBoundaries['Up Chevron'][0],
-    lowerBoundary: data.tops.skinTight.lowerBoundaries['Up Chevron'][0],
+    lowerBoundary: data.tops.skinTight.lowerBoundaries['Gentle Curve'][4],
     neckline: null,
     base: data.tops.skinTight.bases.plain,
+    baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
+    seams: [],
+    decoration:  null,
+    decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
+  },
+  defaultSleeves: {
+    upperBoundary: null,
+    lowerBoundary: null,
+    neckline: null,
+    base: data.sleeves['Puff Sleeves'].bases.plain,
     baseFilter: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
     seams: [],
     decoration:  null,

@@ -11,7 +11,31 @@ const data = {
           shadingUrl: "/SkinTightBodySuit/TightBodySuitShading.svg",
         }
       },
-      upperBoundaries: {},
+      upperBoundaries: {
+        "Gentle Curve": [
+          {url: "./gentleCurve/gentleCurve0.svg",
+          class: "ub-gentle-curve-0"
+          },
+          {url: "./gentleCurve/gentleCurve1.svg",
+          class: "ub-gentle-curve-1"
+          },
+          {url: "./gentleCurve/gentleCurve2.svg",
+          class: "ub-gentle-curve-2"
+          },
+          {url: "./gentleCurve/gentleCurve3.svg",
+          class: "ub-gentle-curve-3"
+          },
+          {url: "./gentleCurve/gentleCurve4.svg",
+          class: "ub-gentle-curve-4"
+          },
+          {url: "./gentleCurve/gentleCurve5.svg",
+          class: "ub-gentle-curve-5"
+          },
+          {url: "./gentleCurve/gentleCurve6.svg",
+          class: "ub-gentle-curve-6"
+          },
+        ]
+      },
       lowerBoundaries: {
         "Up Chevron": [
           {url: "./upChevron/upChevron1.svg",
@@ -26,12 +50,54 @@ const data = {
           // {url: "./upChevron/upChevron4.svg",
           // class: "lb-chevron-4"
           // }
+        ],
+        "Gentle Curve": [
+          {url: "./gentleCurve/gentleCurve7.svg",
+          class: "lb-gentle-curve-7"
+          },
+          {url: "./gentleCurve/gentleCurve8.svg",
+          class: "lb-gentle-curve-8"
+          },
+          {url: "./gentleCurve/gentleCurve9.svg",
+          class: "lb-gentle-curve-9"
+          },
+          {url: "./gentleCurve/gentleCurve10.svg",
+          class: "lb-gentle-curve-10"
+          },
+          {url: "./gentleCurve/gentleCurve11.svg",
+          class: "lb-gentle-curve-11"
+          },
+          {url: "./gentleCurve/gentleCurve12.svg",
+          class: "lb-gentle-curve-12"
+          },
         ]
       },
       necklines: [],
-      seams: [],
+      seams: [
+        './SeamLines/CenterFront.svg',
+        './SeamLines/NaturalWaistSeam.svg',
+        './SeamLines/QuarterSeamCurveAtBust.svg',
+        './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
+      ],
       decorations: []
     },
+  },
+  sleeves: {
+    'Puff Sleeves': {
+      bases: {
+          plain: {
+            outlineUrl: './PuffSleeves/PuffSleeves-Outline.svg',
+            shadingUrl: './PuffSleeves/PuffSleeves-Shading.svg',
+            gradientUrl: './PuffSleeves/PuffSleeves-Gradient.svg',
+          }
+        },
+        upperBoundaries: null,
+        lowerBoundaries: null,
+        necklines: [],
+        seams: [
+        ],
+        decorations: []
+      },
   },
   bottoms: {
     // skinTight:

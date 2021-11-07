@@ -10,8 +10,20 @@ const makeFilterStyle = (hue, sat, brit, con, op) => {
   return "brightness(" + brit + ") hue-rotate(" + hue + 'deg) saturate(' + sat + '%) contrast(' + con + '%) opacity(' + op + '%)';
 }
 //Item: accepts data about garment/garment pieces and generates array of <img> elements
-function Item(props) {
-  let {base, seamUrls, decoration, upperBoundary, neckline, lowerBoundary, zCounter, baseFilter, decorationFilter, displayClass, onClickEvent} = props;
+function Item({
+  base,
+  seamUrls,
+  decoration,
+  upperBoundary,
+  neckline,
+  lowerBoundary,
+  zCounter,
+  baseFilter,
+  decorationFilter,
+  displayClass,
+  onClickEvent,
+  sectionClass
+}) {
   upperBoundary = upperBoundary || {};
   lowerBoundary = lowerBoundary || {};
   //seams
@@ -38,14 +50,14 @@ function Item(props) {
 
     baseImgs = (
       <React.Fragment>
-            <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>
+      <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>
       <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}} key={"baseGrad"}/>
       <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}} key={"baseShad"}/>
       </React.Fragment>
     )
   }
   return (
-    <div className="portrait-img" onClick={onClickEvent}>
+    <div className={`portrait-img ${sectionClass}`} onClick={onClickEvent} style={{zIndex: zCounter -10}}>
       {!decoration.hasBoundaries && decorationsArr}
       <img src={upperBoundary.url} className={displayClass + ' portrait-img'} style={{zIndex: zCounter -4 }} key={"ub-img"}/>
       <div

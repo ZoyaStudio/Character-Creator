@@ -11,15 +11,16 @@ import defaults from './../defaults-samples/defaults.js';
 function CharacterCreator() {
   const [top, setTop] = useState(JSON.parse(JSON.stringify(defaults.defaultTop)));
   const [body, setBody] = useState(JSON.parse(JSON.stringify(defaults.defaultBody)));
+  const [sleeves, setSleeves] = useState(JSON.parse(JSON.stringify(defaults.defaultSleeves)));
   const [currentType, setCurrentType] = useState('top');
   return (
     <div className="character-creator">
       <h1 >Character Creator</h1>
       <GarmentContext.Provider
-        value={{top, setTop, body, setBody}}>
+        value={{top, setTop, body, setBody, sleeves, setSleeves}}>
         <Portrait/>
         <CategoryMenus currentType={currentType} setCurrentType={setCurrentType}/>
-        {currentType === 'top' && <TopPanels top={top} setTop={setTop}/>}
+        {currentType === 'top' && <TopPanels/>}
         {currentType === 'body' && <CreateBody body={body} setBody={setBody}/>}
       </GarmentContext.Provider>
     </div>
