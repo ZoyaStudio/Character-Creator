@@ -15,9 +15,9 @@ function Portrait(props) {
     (zIndex) => (<BodyPart key="head" filterSet={body.filterSet} part={body.head} zCounter={zIndex} displayClass="portrait-img head"/>),
     (zIndex) => (<Item
       key="sleeve-caps-front"
-      base={sleeves}
-      baseFilter={top.baseFilter}
-      decorationFilter={top.decorationFilter}
+      base={sleeves.base}
+      baseFilter={sleeves.baseFilter}
+      decorationFilter={sleeves.decorationFilter}
       zCounter={zIndex}
       displayClass="portrait-img"
       sectionClass={'left-section'}
@@ -35,16 +35,16 @@ function Portrait(props) {
       upperBoundary={top.upperBoundary}
       neckline={top.neckline}
       lowerBoundary={top.lowerBoundary}/>),
+    (zIndex) => (<BodyPart key="body-legs" filterSet={body.filterSet} part={body.torsoLegs} zCounter= {zIndex} displayClass="portrait-img torso-legs"/>),
     (zIndex) => (<Item
       key="sleeve-caps-back"
-      base={sleeves}
-      baseFilter={top.baseFilter}
-      decorationFilter={top.decorationFilter}
+      base={sleeves.base}
+      baseFilter={sleeves.baseFilter}
+      decorationFilter={sleeves.decorationFilter}
       zCounter={zIndex}
       displayClass="portrait-img"
       sectionClass={'right-section'}
       />),
-    (zIndex) => (<BodyPart key="body-legs" filterSet={body.filterSet} part={body.torsoLegs} zCounter={zIndex} displayClass="portrait-img torso-legs"/>),
     (zIndex) => (<BodyPart key="back-arm" filterSet={body.filterSet} part={body.backArm} zCounter={zIndex} displayClass="portrait-img back-arm"/>)
   ]
 

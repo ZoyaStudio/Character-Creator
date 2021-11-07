@@ -83,15 +83,21 @@ const data = {
     },
   },
   sleeves: {
-    caps: {
-      'Puff Sleeve': {
-        outlineUrl: './PuffSleeves/PuffSleeves-Outline.svg',
-        shadingUrl: './PuffSleeves/PuffSleeves-Shading.svg',
-        gradientUrl: './PuffSleeves/PuffSleeves-Gradient.svg',
+    'Puff Sleeves': {
+      bases: {
+          plain: {
+            outlineUrl: './PuffSleeves/PuffSleeves-Outline.svg',
+            shadingUrl: './PuffSleeves/PuffSleeves-Shading.svg',
+            gradientUrl: './PuffSleeves/PuffSleeves-Gradient.svg',
+          }
+        },
+        upperBoundaries: null,
+        lowerBoundaries: null,
+        necklines: [],
+        seams: [
+        ],
+        decorations: []
       },
-      bases: {},
-      details: {}
-    }
   },
   bottoms: {
     // skinTight:

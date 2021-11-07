@@ -50,7 +50,7 @@ function Item({
 
     baseImgs = (
       <React.Fragment>
-            <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>
+      <img src={base.outlineUrl} className={displayClass} style={{zIndex: zCounter -10}} key={"baseOut"}/>
       <img src={base.gradientUrl} className={displayClass} style={{zIndex: zCounter - 11, filter: formattedFilter}} key={"baseGrad"}/>
       <img src={base.shadingUrl} className={displayClass} style={{zIndex: zCounter - 12, filter: formattedFilter}} key={"baseShad"}/>
       </React.Fragment>

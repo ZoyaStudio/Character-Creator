@@ -7,12 +7,13 @@ import GarmentContext from './../context.js';
   //Allows user to set boundries, neckline and filters for item base and detail
   //Allows user to save items
 function DetailsBar({savedIems, setSavedItems, itemData, item, setItem, label}) {
-  const {lowerBoundaries, upperBoundaries} = itemData;
+  let {lowerBoundaries, upperBoundaries} = itemData;
+  lowerBoundaries = lowerBoundaries || {};
+  upperBoundaries = upperBoundaries || {};
   const lowerBoundaryNames = Object.keys(lowerBoundaries);
   const upperBoundaryNames = Object.keys(upperBoundaries);
   const [lowerBoundaryType, setlowerBoundaryType] = useState(lowerBoundaryNames[0]);
   const [upperBoundaryType, setUpperBoundaryType] = useState(upperBoundaryNames[0]);
-  console.log('ub', upperBoundaries[upperBoundaryType].length)
   const [ubIndex, setUbIndex] = useState(0);
   const [lbIndex, setLbIndex] = useState(0);
 
@@ -28,7 +29,6 @@ function DetailsBar({savedIems, setSavedItems, itemData, item, setItem, label}) 
   //type: 'hue', 'con', 'sat', 'op', 'sat'
   //part: any key of the 'item' object that has the listed properties above
   var handleFilterChange = (e, type, part) => {
-    console.log(item.baseFilter);
     var copy = JSON.parse(JSON.stringify(item));//Object.assign({}, item);
     copy[part][type] = e.target.value;
     setItem(copy);
@@ -50,7 +50,7 @@ function DetailsBar({savedIems, setSavedItems, itemData, item, setItem, label}) 
       copy[type] = lowerBoundaries[lowerBoundaryType][index];
     } else if (type === 'upperBoundary') {
       setUbIndex(index)
-      console.log( copy[type] = upperBoundaries[upperBoundaryType][index])
+      // console.log( copy[type] = upperBoundaries[upperBoundaryType][index])
       copy[type] = upperBoundaries[upperBoundaryType][index];
     }
     setItem(copy);
@@ -78,16 +78,17 @@ function DetailsBar({savedIems, setSavedItems, itemData, item, setItem, label}) 
     checked={name === upperBoundaryType}
     />
   </div>);
-  // console.log(lowerBoundaries, lowerBoundaries[lowerBoundaryType], 'type:', lowerBoundaryType, lowerBoundaryNames[0] )
+  var hasLowerBoundaries = Boolean(Object.keys(lowerBoundaries).length);
+  var hasUpperBoundaries = Boolean(Object.keys(upperBoundaries).length);
   return (
     <div className="details-bar">
       <h4>Details</h4>
      {upperBoundaryTypeInputs}
-      <label className="range-label" htmlFor="ub-range">Upper Boundary</label>
-     <input className="range-input" type="range" name="ub-range" value={ubIndex} min="0" max={upperBoundaries[upperBoundaryType].length - 1} step="1" onChange={(e) => {handleBoundaryChange(e, 'upperBoundary')}}/>
+        <label className="range-label" htmlFor="ub-range" >Upper Boundary</label>
+        <input disabled={hasUpperBoundaries ? '' : 'disabled'} className="range-input" type="range" name="ub-range" value={ubIndex} min="0" max={hasLowerBoundaries ? upperBoundaries[upperBoundaryType].length - 1 : 0} step="1" onChange={(e) => {handleBoundaryChange(e, 'upperBoundary')}}/>
       {lowerBoundaryTypeInputs}
-      <label className="range-label" htmlFor="lb-range">Lower Boundary</label>
-     <input className="range-input" type="range" name="lb-range" value={lbIndex} min="0" max={lowerBoundaries[lowerBoundaryType].length - 1} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
+        <label className="range-label" htmlFor="lb-range">Lower Boundary</label>
+        <input disabled={hasLowerBoundaries ? '' : 'disabled'} className="range-input" type="range" name="lb-range" value={lbIndex} min="0" max={hasLowerBoundaries ? lowerBoundaries[lowerBoundaryType].length - 1: 0} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
 
       <hr/>
       <ColorPicker filter={item.baseFilter} label="Base" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="baseFilter"/>

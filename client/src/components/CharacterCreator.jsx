@@ -13,7 +13,6 @@ function CharacterCreator() {
   const [body, setBody] = useState(JSON.parse(JSON.stringify(defaults.defaultBody)));
   const [sleeves, setSleeves] = useState(JSON.parse(JSON.stringify(defaults.defaultSleeves)));
   const [currentType, setCurrentType] = useState('top');
-  console.log('sleeves', sleeves)
   return (
     <div className="character-creator">
       <h1 >Character Creator</h1>
@@ -21,7 +20,7 @@ function CharacterCreator() {
         value={{top, setTop, body, setBody, sleeves, setSleeves}}>
         <Portrait/>
         <CategoryMenus currentType={currentType} setCurrentType={setCurrentType}/>
-        {currentType === 'top' && <TopPanels top={top} setTop={setTop}/>}
+        {currentType === 'top' && <TopPanels/>}
         {currentType === 'body' && <CreateBody body={body} setBody={setBody}/>}
       </GarmentContext.Provider>
     </div>
