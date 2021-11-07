@@ -13,7 +13,6 @@ var {facePreviewAtType} = previewFunctions.bodyPreviews;
 
 
 function Creator ({tabProfiles}) {
-
   var [currentTab, setCurrentTab] = useState(Object.keys(tabProfiles)[0]);
   var buttons = Object.keys(tabProfiles).map((tabName) => (
     <button className={currentTab === tabName ? 'selected': ''}

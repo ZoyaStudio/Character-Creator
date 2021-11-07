@@ -82,6 +82,17 @@ const data = {
       decorations: []
     },
   },
+  sleeves: {
+    caps: {
+      'Puff Sleeve': {
+        outlineUrl: './PuffSleeves/PuffSleeves-Outline.svg',
+        shadingUrl: './PuffSleeves/PuffSleeves-Shading.svg',
+        gradientUrl: './PuffSleeves/PuffSleeves-Gradient.svg',
+      },
+      bases: {},
+      details: {}
+    }
+  },
   bottoms: {
     // skinTight:
   },

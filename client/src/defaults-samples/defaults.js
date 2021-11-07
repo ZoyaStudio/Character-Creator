@@ -12,6 +12,7 @@ var defaults = {
     decoration:  null,
     decorationFilter: {hue: 180, sat: 100, brit: 1.2, con: 100, op: 100}
   },
+  defaultSleeves: data.sleeves.caps['Puff Sleeve'],
   defaultBody: {
     filterSet: {
       blush: {hue: 0, sat: 100, brit: 1, con: 100, op: 100},
