@@ -1,7 +1,7 @@
 
 import React, {useState, useContext} from 'react';
-function BodyPart ({filterSet, part, displayClass, onClickHandler, zCounter}) {
-  const {blush, lightShade, darkShade} = filterSet;
+function BodyPart ({filterSet, part, displayClass, onClickHandler, zCounter, type}) {
+  const {blush, lightShade, darkShade, FaceShade} = filterSet;
   const makeFilterStyle = (filterSet) => {
     var {hue, sat, brit, con, op} = filterSet;
     if (hue === undefined || sat === undefined || brit === undefined || con === undefined ||op === undefined) {
@@ -9,6 +9,7 @@ function BodyPart ({filterSet, part, displayClass, onClickHandler, zCounter}) {
     }
     return "brightness(" + brit + ") hue-rotate(" + hue + 'deg) saturate(' + sat + '%) contrast(' + con + '%) opacity(' + op + '%)';
   }
+
   return (
     <div className={displayClass} onClick={onClickHandler} style={{zIndex: zCounter - 1}}>
        <img src={part.outline} style={{zIndex: zCounter - 1}} className={displayClass}/>
@@ -16,6 +17,7 @@ function BodyPart ({filterSet, part, displayClass, onClickHandler, zCounter}) {
        <img src={part.blush} style={{zIndex: zCounter - 3, filter: makeFilterStyle(blush)}} className={displayClass}/>
        <img src={part.darkShade} style={{zIndex: zCounter - 4, filter: makeFilterStyle(darkShade)}} className={displayClass}/>
        <img src={part.lightShade} style={{zIndex: zCounter - 5, filter: makeFilterStyle(darkShade)}} className={displayClass}/>
+       <img src={part.faceShade} style={{zIndex: zCounter - 5, filter: makeFilterStyle(darkShade)}} className={displayClass}/>
     </div>
   )
 }
