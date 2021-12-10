@@ -6,7 +6,7 @@ Character Creator 2.0 uses CSS clip-paths to erase portions of the underlying im
 
 This application of clip-paths requires complex and precise sets of coordinates. I created my own clip path editer to reduce the amount of time I spent drawing the paths.
 
-Checkout the editer here: https://floating-dusk-75152.herokuapp.com/
+Checkout the editer [here](https://floating-dusk-75152.herokuapp.com/).
 
 ## Technologies Used
 - React
@@ -42,8 +42,8 @@ I'm transitioning the app to use SVGs instead of PNGs to save space.
 
 It uses React Hooks and React Context to manage state.
 
-## When will this app be deployed?
-This has been taking a while because I'm a perfectionist and there are limitless features I would like to add. I'm aiming to deploy a working version before the end of November 2021 after I finish my current refactor.
+## Try it out!
+It's right [here!](https://sleepy-temple-77139.herokuapp.com/)
 
 Current Features:
 - Full figure for portrait
