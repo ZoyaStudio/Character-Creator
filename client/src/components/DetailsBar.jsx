@@ -6,16 +6,12 @@ import GarmentContext from './../context.js';
 //Details Bar:
   //Allows user to set boundries, neckline and filters for item base and detail
   //Allows user to save items
-function DetailsBar({savedIems, setSavedItems, itemData, item, setItem, label}) {
-  let {lowerBoundaries, upperBoundaries} = itemData;
-  lowerBoundaries = lowerBoundaries || {};
-  upperBoundaries = upperBoundaries || {};
-  const lowerBoundaryNames = Object.keys(lowerBoundaries);
-  const upperBoundaryNames = Object.keys(upperBoundaries);
-  const [lowerBoundaryType, setlowerBoundaryType] = useState(lowerBoundaryNames[0]);
-  const [upperBoundaryType, setUpperBoundaryType] = useState(upperBoundaryNames[0]);
-  const [ubIndex, setUbIndex] = useState(0);
-  const [lbIndex, setLbIndex] = useState(0);
+function DetailsBar({savedIems, setSavedItems, item, setItem, label, data}) {
+  const {lowerBoundaryKey, upperBoundaryKey, lowerBoundaryIndex, upperBoundaryIndex, typeKey} = item;
+  const upperBoundaries = data[typeKey].upperBoundaries || {};
+  const lowerBoundaries = data[typeKey].lowerBoundaries || {};
+
+  const makeCopy = (obj) => JSON.parse(JSON.stringify(obj))
 
   //adds current item to savedItems array
   const saveCurrentItem = () => {
@@ -43,58 +39,62 @@ function DetailsBar({savedIems, setSavedItems, itemData, item, setItem, label}) 
   //e: event from onChange
   //type: string, name of type of boundary
   var handleBoundaryChange = (e, type) => {
-    var index = e.target.value;
-    var copy = Object.assign({}, item);
-    if (type === 'lowerBoundary') {
-      setLbIndex(index)
-      copy[type] = lowerBoundaries[lowerBoundaryType][index];
-    } else if (type === 'upperBoundary') {
-      setUbIndex(index)
-      // console.log( copy[type] = upperBoundaries[upperBoundaryType][index])
-      copy[type] = upperBoundaries[upperBoundaryType][index];
-    }
-    setItem(copy);
+    var index = Number(e.target.value);
+
+    var itemCopy = makeCopy(item);
+    itemCopy[type] = index;
+    // console.log('index', type, index)
+    // console.log('lower boundry url', data[typeKey].lowerBoundaries[lowerBoundaryKey]);
+    // console.log('upper boundry url', data[typeKey].upperBoundaries[upperBoundaryKey]);
+    setItem(itemCopy);
   }
 
-  const lowerBoundaryTypeInputs = lowerBoundaryNames.map((name, index) =>
-    <div key={"lb" + index}>
-      <label className="" htmlFor={"lb-radio" + index} >{name}</label>
+
+  const radioList = (keys, label, itemKey, itemIndexProperty) => {
+    return keys.map((name, index) =>
+    <div key={label + name}>
+      <label className="" htmlFor={label + name} >{name}</label>
       <input
       type="radio"
-      name={"lb-radio" + index}
-      step="1"
-      onChange={(e) => {setlowerBoundaryType(name)}}
-      checked={name === lowerBoundaryType}
+      name={label + name}
+      onChange={(e) => {
+        const itemCopy = makeCopy(item);
+        itemCopy[itemKey] = name;
+        itemCopy[itemIndexProperty] = 0;
+        setItem(itemCopy);
+      }
+      }
+      checked={name === item[itemKey]}
       />
     </div>);
-  const upperBoundaryTypeInputs = upperBoundaryNames.map((name, index) =>
-  <div key={"ub" + index}>
-    <label className="" htmlFor={"ub-radio" + index} >{name}</label>
-    <input
-    type="radio"
-    name={"ub-radio" + index}
-    step="1"
-    onChange={(e) => {setUpperBoundaryType(name)}}
-    checked={name === upperBoundaryType}
-    />
-  </div>);
-  var hasLowerBoundaries = Boolean(Object.keys(lowerBoundaries).length);
-  var hasUpperBoundaries = Boolean(Object.keys(upperBoundaries).length);
+  }
+  const boundarySlider = (currentIndex, boundryKey, boundryList, boundryIndexType, label) => {
+    return (
+      <>
+        <label className="range-label" htmlFor={`${label}-range`} >{label}</label>
+        <input disabled={boundryKey ? '' : 'disabled'}
+        className="range-input"
+        type="range"
+        name={`${label}-range`}
+        value={currentIndex}
+        min="0"
+        max={boundryKey ? boundryList.length -1: 0}
+        step="1" onChange={(e) => {handleBoundaryChange(e, boundryIndexType)}}/>
+      </>
+    )
+  }
   return (
     <div className="details-bar">
       <h4>Details</h4>
-     {upperBoundaryTypeInputs}
-        <label className="range-label" htmlFor="ub-range" >Upper Boundary</label>
-        <input disabled={hasUpperBoundaries ? '' : 'disabled'} className="range-input" type="range" name="ub-range" value={ubIndex} min="0" max={hasLowerBoundaries ? upperBoundaries[upperBoundaryType].length - 1 : 0} step="1" onChange={(e) => {handleBoundaryChange(e, 'upperBoundary')}}/>
-      {lowerBoundaryTypeInputs}
-        <label className="range-label" htmlFor="lb-range">Lower Boundary</label>
-        <input disabled={hasLowerBoundaries ? '' : 'disabled'} className="range-input" type="range" name="lb-range" value={lbIndex} min="0" max={hasLowerBoundaries ? lowerBoundaries[lowerBoundaryType].length - 1: 0} step="1" onChange={(e) => {handleBoundaryChange(e, 'lowerBoundary')}}/>
-
+       {radioList(Object.keys(upperBoundaries), 'Upper boundry', 'upperBoundaryKey', 'upperBoundryIndex')}
+       {boundarySlider(upperBoundaryIndex, upperBoundaryKey, upperBoundaries[upperBoundaryKey], 'upperBoundaryIndex', 'Upper Boundry Height')}
+       {radioList(Object.keys(lowerBoundaries), 'Lower Boundry', 'lowerBoundaryKey', 'lowerBoundryIndex')}
+       {boundarySlider(lowerBoundaryIndex, lowerBoundaryKey, lowerBoundaries[lowerBoundaryKey], 'lowerBoundaryIndex', 'Lower Boundry Height')}
       <hr/>
       <ColorPicker filter={item.baseFilter} label="Base" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="baseFilter"/>
       <hr/>
-      <ColorPicker filter={item.decorationFilter} label="Decoration" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="decorationFilter"/>
-      <button className="save-button" onClick={saveCurrentItem}>Save {label}</button>
+      {/* <ColorPicker filter={item.decorationFilter} label="Decoration" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="decorationFilter"/>
+      <button className="save-button" onClick={saveCurrentItem}>Save {label}</button> */}
     </div>
   )
 }

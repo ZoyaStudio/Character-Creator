@@ -5,9 +5,9 @@ import React, {useState, useContext} from 'react';
 //TO DO: Add functionality to buttons
 function CategoryMenus({currentType, setCurrentType}) {
   return (
-    <div className="category-menus">
+    <div className="category-menu">
       <div className="menu">
-      {['body', 'top', 'bottom', 'one piece', 'accessories'].map(type => (
+      {[/*'body',*/ 'top', 'bottom', /*'one piece', 'accessories'*/].map(type => (
         <button
         key={`${type}-menu-button`}
         className={currentType === type ? 'selected': ''}

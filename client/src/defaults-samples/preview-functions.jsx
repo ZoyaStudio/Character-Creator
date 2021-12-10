@@ -4,77 +4,20 @@ import BodyPart from './../components/body/BodyPart.jsx';
 import defaults from './defaults.js';
 import colors from './colors.js';
 const {white} = colors;
-var baseShirt = defaults.defaultTop;
 var body = defaults.defaultBody;
 var previewFunctions = {
-  topPreviews: {
-    topDataPreview: (handleOnClickEvent) => {
+  clothingPreviews: {
+    itemPreview: (handleOnClickEvent, displayClass) => {
       //console.log(handleOnClickEvent);
-      return (top) => (
+      return (items) => (
         <Item
-        base={Object.values(top.bases)[0]}
-        baseFilter={white}
+        itemProfile={item}
         zCounter={500}
-        displayClass="preview-top"
-        onClickEvent={() => {handleOnClickEvent(top)}}
+        displayClass={displayClass}
+        onClickEvent={() => {handleOnClickEvent(item)}}
         />
       )
     },
-    savedTopPreview: (handleOnClickEvent) => {
-      return (top) =>
-      (  <Item
-        base={top.base}
-        baseFilter={top.baseFilter}
-        decorationFilter={top.decorationFilter}
-        zCounter={500}
-        decoration={top.decoration}
-        seamUrls={top.seams}
-        displayClass="preview-top"
-        upperBoundary={top.upperBoundary}
-        neckline={top.neckline}
-        lowerBoundary={top.lowerBoundary}
-        onClickEvent={()=>{handleOnClickEvent(top)}}
-        />);
-    },
-      basePreview: (handleOnClickEvent) => {
-        //console.log(handleOnClickEvent);
-        return (baseValue) => (
-          <Item
-          base={baseValue}
-          baseFilter={white}
-          zCounter={500}
-          displayClass="preview-top"
-          onClickEvent={() => {handleOnClickEvent(baseValue)}}
-          />
-        )
-      },
-      seamPreview: (handleOnClickEvent) => {
-        return (seam) => (
-          <Item
-          base={baseShirt.base}
-          baseFilter={baseShirt.baseFilter || {hue: 0, sat: 100, brit: 1, con: 100, op: 100}}
-          seamUrls={[seam]}
-          zCounter={500}
-          displayClass="preview-top"
-          onClickEvent={() => {handleOnClickEvent([seam])}}
-          />
-        )
-      },
-      decorationPreview: (handleOnClickEvent) => {
-        return (decorationValue) => (
-          <Item
-          base={baseShirt.base}
-          baseFilter={baseShirt.baseFilter || {hue: 0, sat: 100, brit: 1, con: 100, op: 100}}
-          decorationFilter={decorationValue.decorationFilter || {hue: 0, sat: 100, brit: 1, con: 100, op: 100}}
-          decoration={decorationValue}
-          seamUrls={[]}
-          zCounter={500}
-          displayClass="preview-top"
-          onClickEvent={() => {handleOnClickEvent(decorationValue)}}
-          />
-        )
-      },
-
   },
   bodyPreviews: {
     facePreviewAtType: (type, filterSet) => {

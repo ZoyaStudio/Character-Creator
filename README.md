@@ -43,7 +43,7 @@ I'm transitioning the app to use SVGs instead of PNGs to save space.
 It uses React Hooks and React Context to manage state.
 
 ## When will this app be deployed?
-This has been taking a while because I'm a perfectionist and there are limitless features I would like to add. I'm aiming to deploy it before the end of November 2021 after I finish my current refactor.
+This has been taking a while because I'm a perfectionist and there are limitless features I would like to add. I'm aiming to deploy a working version before the end of November 2021 after I finish my current refactor.
 
 Current Features:
 - Full figure for portrait

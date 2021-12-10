@@ -1,6 +1,7 @@
 
 const colors = {
   white: {hue: 0, sat: 0, brit: 3, con: 199.2, op: 100},
+  black: {hue: 0, sat: 0, brit: 1, con: 199.2, op: 100},
   'canary yellow': {brit: "2.55", con: 199.2, hue: "59.1", op: 100, sat: "90.2"},
   'pastel pink': {brit: "2.75", con: "170.9", hue: "349.3", op: 100, sat: "78.7"},
   red: {brit: 1, con: 100, hue: 360, op: 100, sat: 134.5},

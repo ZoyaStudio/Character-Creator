@@ -1,21 +1,6 @@
 
 import React, {useState, useContext} from 'react';
 
-// function Sample() {
-//   return (
-//     <div className="preview-container">
-//   {/* <img src="./base-flattened.png" className="preview-top"/> */}
-//   <img src="/simpleTop-ShadingA.png" className="preview-top"/>
-//   <img src="/simpleTop-GradientA.png" className="preview-top"/>
-//   <img src="/simpleTop-Outline.png" className="preview-top"/>
-//   </div>
-//   )
-// }
-
-//Gallery: container for garment piece previews
-//input:
-  //children: array of Items
-  //label: display label for gallery
 function Gallery({children, label}) {
   var previews = children.map((child, index )=>
     (
@@ -25,9 +10,12 @@ function Gallery({children, label}) {
     ));
   return (
     <div className="gallary">
+    <div className="banner">
     <h3>{label}</h3>
+    </div>
     <div className="gallary-box">
-       {previews}
+       {/* {previews} */}
+       {children}
     </div>
     </div>
   )
