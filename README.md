@@ -33,7 +33,7 @@ Features:
 ## The New Version
 
 <p align="center" style="width:50%;">
-  <img src="./EditTopView.png" ><br>
+  <img src="./ScreenshotDec9.png" ><br>
 </p>
 
 Character Creator 2.0 uses far fewer assets but can support more complex character designs by being more modular. Each base for the top can use any of the seam lines and decorations. CSS clip-paths are used to cut out necklines, and boundaries for the top.
@@ -47,10 +47,10 @@ This has been taking a while because I'm a perfectionist and there are limitless
 
 Current Features:
 - Full figure for portrait
-- Editable Colors for Top, Bottoms and Sleeves
-- Seam lines for Tops and Bottoms
+- Editable Colors for Top, Bottoms, Feet and Sleeves
 
 Features that were lost after transition from PNGs to SVGs but will return
+- Seam lines for Tops and Bottoms
 - Collars
 - Top Decorations
 - Multiple bases for top
@@ -86,6 +86,3 @@ npm install
 npm run-script watch
 ```
 Then just open your browser at http://localhost:3002/
-
-WARNING
-I try to commit changes frequently and if I am half-way through a refactor there are probably breaking changes to some of the features.
