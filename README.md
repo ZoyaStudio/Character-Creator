@@ -1,5 +1,7 @@
 # Character Creator 2.0
+
 ## Introduction
+
 This is the second iteration of my Character Creator browser game. The user can compose a character portrait by selecting different pieces of clothing and hair styles. The character portrait is displayed by layering either PNGs or SVGs using the CSS grid property. I discontinued the first Character Creator because the way I was mangaging assets was slowing the app down and the way I was creating the assets themselves was extremly time comsuming.
 
 Character Creator 2.0 uses CSS clip-paths to erase portions of the underlying images. This work was previous done in the raster image editing program Inkscape.
@@ -9,6 +11,7 @@ This application of clip-paths requires complex and precise sets of coordinates.
 Checkout the editer here: https://floating-dusk-75152.herokuapp.com/
 
 ## Technologies Used
+
 - React
 - React Hooks
 - React Context
@@ -24,6 +27,7 @@ Checkout the editer here: https://floating-dusk-75152.herokuapp.com/
 Character Creator 1.0 was powerful and fun to use but the interface became increasingly difficult to navigate as more features were added. I wrote most of the code when I was still learning React so I amassed a lot of tech debt. Character Creator 1.0 was written with class components.
 
 Features:
+
 - Customizable hair, face, bodice, sleeves, collars
 - All colors can be edited for hue, saturation, brightness, contrast and opacity
 - Some pieces can contain multiple colors
@@ -43,19 +47,23 @@ I'm transitioning the app to use SVGs instead of PNGs to save space.
 It uses React Hooks and React Context to manage state.
 
 ## When will this app be deployed?
+
 This has been taking a while because I'm a perfectionist and there are limitless features I would like to add. I'm aiming to deploy a working version before the end of November 2021 after I finish my current refactor.
 
 Current Features:
+
 - Full figure for portrait
 - Editable Colors for Top, Bottoms, Feet and Sleeves
 
 Features that were lost after transition from PNGs to SVGs but will return
+
 - Seam lines for Tops and Bottoms
 - Collars
 - Top Decorations
 - Multiple bases for top
 
 Future Features
+
 - Hats
 - Face Coverings
 - Gloves
@@ -73,16 +81,20 @@ Future Features
 ## How can I start this app
 
 Clone this repo, navigate to the backend folder, install the dependencies and start the server
+
 ```console
 cd backend
 npm install
 cd server
 node index.js
 ```
+
 In a new terminal, navigate to the client folder, install the packages for the frontend and run webpack
+
 ```console
 cd client
 npm install
 npm run-script watch
 ```
+
 Then just open your browser at http://localhost:3002/
