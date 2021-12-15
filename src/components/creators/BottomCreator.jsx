@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
-import GenericCreator from "../generic-creator-components/GenericCreator";
-import GarmentContext from "../../context";
-import data from "../../defaults-samples/sample-data";
+import React, { useState, useContext } from 'react';
+import GenericCreator from '../generic-creator-components/GenericCreator';
+import GarmentContext from '../../context';
+import data from '../../defaults-samples/sample-data';
 
-const BottomCreator = function bottomCreator() {
-  const { bottom, setBottom, feet, setFeet } = useContext(GarmentContext);
+const BottomCreator = function BottomCreator() {
+  const {
+    bottom, setBottom, feet, setFeet,
+  } = useContext(GarmentContext);
   const [savedBottoms, setSavedBottoms] = useState([]);
   return (
     <GenericCreator
       tabItems={[
         {
-          label: "Pants",
+          label: 'Pants',
           item: bottom,
           itemSetter: setBottom,
           savedItems: savedBottoms,
@@ -18,10 +20,10 @@ const BottomCreator = function bottomCreator() {
           data: data.bottoms,
           dataDefaultBase: data.bottoms.skinTight,
           required: true,
-          previewClass: "preview-bottom",
+          previewClass: 'preview-bottom',
         },
         {
-          label: "Footware",
+          label: 'Footware',
           item: feet,
           itemSetter: setFeet,
           savedItems: savedBottoms,
@@ -29,7 +31,7 @@ const BottomCreator = function bottomCreator() {
           data: data.feets,
           dataDefaultBase: data.feets.skinTight,
           required: false, // true,
-          previewClass: "preview-feet",
+          previewClass: 'preview-feet',
         },
       ]}
     />

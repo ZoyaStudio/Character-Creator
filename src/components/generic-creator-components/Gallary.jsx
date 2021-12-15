@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Gallery = function gallary({ items, label }) {
+const Gallery = function Gallary({ items, label }) {
   return (
     <div className="gallary">
       <div className="banner">

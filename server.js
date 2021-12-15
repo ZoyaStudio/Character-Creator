@@ -3,7 +3,7 @@ const express = require("express");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "build")));
 app.get("/stuff", (req, res) => {
   res.send("hello world");
 });

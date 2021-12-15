@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import Gallary from "./Gallary";
+import React, { useState } from 'react';
+import Gallary from './Gallary';
 
-const GenericPanels = function genericPanels({ tabProfiles }) {
+const GenericPanels = function GenericPanels({ tabProfiles }) {
   const [currentTab, setCurrentTab] = useState(Object.keys(tabProfiles)[0]);
   const buttons = Object.keys(tabProfiles).map((tabName) => (
     <button
       type="button"
       key={tabName}
       className={
-        currentTab === tabName ? "selected menu-button" : "menu-button"
+        currentTab === tabName ? 'selected menu-button' : 'menu-button'
       }
       onClick={() => {
         setCurrentTab(tabName);

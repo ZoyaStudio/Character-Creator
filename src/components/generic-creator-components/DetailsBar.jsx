@@ -1,10 +1,10 @@
-import React from "react";
-import ColorPicker from "./ColorPicker";
+import React from 'react';
+import ColorPicker from './ColorPicker';
 
 // Details Bar:
 // Allows user to set boundries, neckline and filters for item base and detail
 // Allows user to save items
-const DetailsBar = function detailsBar({
+const DetailsBar = function DetailsBar({
   // setSavedItems,
   item,
   setItem,
@@ -59,82 +59,78 @@ const DetailsBar = function detailsBar({
     setItem(itemCopy);
   };
 
-  const radioList = (keys, radioLabel, itemKey, itemIndexProperty) => {
-    return keys.map((name) => (
-      <div key={label + name}>
-        <label className="" htmlFor={label + name}>
-          {name}
-        </label>
-        <input
-          type="radio"
-          name={radioLabel + name}
-          onChange={() => {
-            const itemCopy = makeCopy(item);
-            itemCopy[itemKey] = name;
-            itemCopy[itemIndexProperty] = 0;
-            setItem(itemCopy);
-          }}
-          checked={name === item[itemKey]}
-        />
-      </div>
-    ));
-  };
+  const radioList = (keys, radioLabel, itemKey, itemIndexProperty) => keys.map((name) => (
+    <div key={label + name}>
+      <label className="" htmlFor={label + name}>
+        {name}
+      </label>
+      <input
+        type="radio"
+        name={radioLabel + name}
+        onChange={() => {
+          const itemCopy = makeCopy(item);
+          itemCopy[itemKey] = name;
+          itemCopy[itemIndexProperty] = 0;
+          setItem(itemCopy);
+        }}
+        checked={name === item[itemKey]}
+      />
+    </div>
+  ));
   const boundarySlider = (
     currentIndex,
     boundryKey,
     boundryList,
     boundryIndexType,
-    sliderLabel
-  ) => {
-    return (
-      <>
-        <label className="range-label" htmlFor={`${label}-range`}>
-          {sliderLabel}
-        </label>
-        <input
-          disabled={boundryKey ? "" : "disabled"}
-          className="range-input"
-          type="range"
-          name={`${label}-range`}
-          value={currentIndex}
-          min="0"
-          max={boundryKey ? boundryList.length - 1 : 0}
-          step="1"
-          onChange={(e) => {
-            handleBoundaryChange(e, boundryIndexType);
-          }}
-        />
-      </>
-    );
-  };
+    sliderLabel,
+  ) => (
+    <>
+      <label className="range-label" htmlFor={`${label}-range`}>
+        {sliderLabel}
+      </label>
+      <input
+        disabled={boundryKey ? '' : 'disabled'}
+        className="range-input"
+        type="range"
+        name={`${label}-range`}
+        value={currentIndex}
+        min="0"
+        max={boundryKey ? boundryList.length - 1 : 0}
+        step="1"
+        onChange={(e) => {
+          handleBoundaryChange(e, boundryIndexType);
+        }}
+      />
+    </>
+  );
   return (
     <div className="details-bar">
       <h4>Details</h4>
       {radioList(
         Object.keys(upperBoundaries),
-        "Upper boundry",
-        "upperBoundaryKey",
-        "upperBoundryIndex"
+        'Upper boundry',
+        'upperBoundaryKey',
+        'upperBoundryIndex',
       )}
       {boundarySlider(
         upperBoundaryIndex,
         upperBoundaryKey,
         upperBoundaries[upperBoundaryKey],
-        "upperBoundaryIndex",
-        "Upper Boundry Height"
+        'upperBoundaryIndex',
+        'Upper Boundry Height',
       )}
       {radioList(
         Object.keys(lowerBoundaries),
-        "Lower Boundry",
-        "lowerBoundaryKey",
-        "lowerBoundryIndex"
+        'Lower Boundry',
+        'lowerBoundaryKey',
+        'lowerBoundryIndex',
       )}
       {boundarySlider(
         lowerBoundaryIndex,
         lowerBoundaryKey,
         lowerBoundaries[lowerBoundaryKey],
-        "lowerBoundaryIndex",
-        "Lower Boundry Height"
+        'lowerBoundaryIndex',
+        'Lower Boundry Height',
       )}
       <hr />
       <ColorPicker
@@ -145,7 +141,9 @@ const DetailsBar = function detailsBar({
         part="baseFilter"
       />
       <hr />
-      {/* <ColorPicker filter={item.decorationFilter} label="Decoration" handleFilterChange={handleFilterChange} handleFilterPresetClick={handleFilterPresetClick} part="decorationFilter"/>
+      {/* <ColorPicker filter={item.decorationFilter}
+       label="Decoration" handleFilterChange={handleFilterChange}
+       handleFilterPresetClick={handleFilterPresetClick} part="decorationFilter"/>
       <button className="save-button" onClick={saveCurrentItem}>Save {label}</button> */}
     </div>
   );

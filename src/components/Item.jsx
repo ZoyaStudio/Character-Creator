@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 
 //   white: {brightness: 3.5, saturation: 1, hue: 0, opacity: 100, contrast: 144.5},
 // creates string for filter css style from inputs
 // inputs: numbers for value of hue/saturation/briteness/contrast/opacity
-const makeFilterStyle = ({ hue, sat, brit, con, op }) => {
+const makeFilterStyle = ({
+  hue, sat, brit, con, op,
+}) => {
   if (
-    hue === undefined ||
-    sat === undefined ||
-    brit === undefined ||
-    con === undefined ||
-    op === undefined
+    hue === undefined
+    || sat === undefined
+    || brit === undefined
+    || con === undefined
+    || op === undefined
   ) {
     // console.log('no color')
     return `brightness(${3.5}) hue-rotate(${0}deg) saturate(${1}%) contrast(${144.5}%) opacity(${100}%)`;
@@ -17,7 +19,7 @@ const makeFilterStyle = ({ hue, sat, brit, con, op }) => {
   return `brightness(${brit}) hue-rotate(${hue}deg) saturate(${sat}%) contrast(${con}%) opacity(${op}%)`;
 };
 // Item: accepts data about garment/garment pieces and generates array of <img> elements
-const Item = function item({
+const Item = function Item({
   itemProfile,
   zCounter,
   displayClass,
@@ -38,7 +40,7 @@ const Item = function item({
     decoration = {},
     decorationFilter,
   } = itemProfile;
-  if (displayClass !== "portrait-img") {
+  if (displayClass !== 'portrait-img') {
     // console.log('item', itemProfile);
   }
   const base = typeData[typeKey].bases[baseKey];
@@ -132,12 +134,12 @@ const Item = function item({
       />
       <div
         className={`${
-          upperBoundary.class || "upperBoundaryClass"
+          upperBoundary.class || 'upperBoundaryClass'
         } ${displayClass}`}
         style={{ zIndex: zCounter - 5 }}
       >
         {/* neckline */}
-        <div className={`${neckline || "neckineClass"} ${displayClass}`}>
+        <div className={`${neckline || 'neckineClass'} ${displayClass}`}>
           {/* lower boundary */}
           <img
             alt="to be replaced"
@@ -148,7 +150,7 @@ const Item = function item({
           />
           <div
             className={`${
-              lowerBoundary.class || "lowerBoundaryClass"
+              lowerBoundary.class || 'lowerBoundaryClass'
             } ${displayClass}`}
           >
             {/* decoration */}

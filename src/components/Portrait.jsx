@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
-import Item from "./Item";
-import GarmentContext from "../context";
-import BodyPart from "./body/BodyPart";
-import HairPart from "./body/HairPart";
-import EyePart from "./body/EyePart";
+import React, { useContext } from 'react';
+import Item from './Item';
+import GarmentContext from '../context';
+import BodyPart from './body/BodyPart';
+import HairPart from './body/HairPart';
+import EyePart from './body/EyePart';
 
 // Portrait: image of character user has customized
 // props: none
 // context: garment object with key for 'top' object
-const Portrait = function portrait() {
-  const { top, body, sleeves, hair, bottom, feet, collar, data } =
-    useContext(GarmentContext);
+const Portrait = function Portrait() {
+  const {
+    top, body, sleeves, hair, bottom, feet, collar, data,
+  } = useContext(GarmentContext);
   const { base, hairFilter } = hair;
 
   let zCounterMax = 500;

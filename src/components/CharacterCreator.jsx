@@ -1,17 +1,18 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useState /* useMemo */ } from "react";
-import Portrait from "./Portrait";
-import BottomCreator from "./creators/BottomCreator";
-import TopCreator from "./creators/TopCreator";
-import CategoryMenus from "./CategoryMenus";
-import GarmentContext from "../context";
-import defaults from "../defaults-samples/defaults";
-import data from "../defaults-samples/sample-data";
+import React, { useState /* useMemo */ } from 'react';
+import Portrait from './Portrait';
+import BottomCreator from './creators/BottomCreator';
+import TopCreator from './creators/TopCreator';
+import CategoryMenus from './CategoryMenus';
+import GarmentContext from '../context';
+import defaults from '../defaults-samples/defaults';
+import data from '../defaults-samples/sample-data';
 
-// CharacterCreator Component: top level component that contains Portrait, CategoryMenues and Garment Creator
+// CharacterCreator Component: top level component that contains Portrait,
+// CategoryMenues and Garment Creator
 // provides context to child components
 const convert = (target) => target; // JSON.parse(JSON.stringify(target));
-const CharacterCreator = function characterCreator() {
+const CharacterCreator = function CharacterCreator() {
   const [top, setTop] = useState(convert(defaults.defaultTop));
   const [collar, setCollar] = useState(convert(defaults.defaultCollar));
   const [body, setBody] = useState(convert(defaults.defaultBody));
@@ -19,7 +20,7 @@ const CharacterCreator = function characterCreator() {
   const [feet, setFeet] = useState(convert(defaults.defaultFeet));
   const [hair, setHair] = useState(convert(defaults.defaultHair));
   const [sleeves, setSleeves] = useState(convert(defaults.defaultSleeves));
-  const [currentType, setCurrentType] = useState("top");
+  const [currentType, setCurrentType] = useState('top');
   // console.log('testing connection', bottom);
   return (
     <div className="character-creator">
@@ -59,8 +60,8 @@ const CharacterCreator = function characterCreator() {
           currentType={currentType}
           setCurrentType={setCurrentType}
         />
-        {currentType === "top" && <TopCreator />}
-        {currentType === "bottom" && <BottomCreator />}
+        {currentType === 'top' && <TopCreator />}
+        {currentType === 'bottom' && <BottomCreator />}
         {/* {currentType === 'body' && <CreateBody body={body} setBody={setBody} />} */}
       </GarmentContext.Provider>
     </div>

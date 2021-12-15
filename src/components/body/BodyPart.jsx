@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const BodyPart = function BodyPart({
   filterSet,
@@ -9,13 +9,15 @@ const BodyPart = function BodyPart({
 }) {
   const { blush, lightShade, darkShade } = filterSet;
   const makeFilterStyle = (filterSetObj) => {
-    const { hue, sat, brit, con, op } = filterSetObj;
+    const {
+      hue, sat, brit, con, op,
+    } = filterSetObj;
     if (
-      hue === undefined ||
-      sat === undefined ||
-      brit === undefined ||
-      con === undefined ||
-      op === undefined
+      hue === undefined
+      || sat === undefined
+      || brit === undefined
+      || con === undefined
+      || op === undefined
     ) {
       return `brightness(${3.5}) hue-rotate(${0}deg) saturate(${1}%) contrast(${144.5}%) opacity(${100}%)`;
     }

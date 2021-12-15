@@ -1,25 +1,32 @@
-import React from "react";
-import colors from "../../defaults-samples/colors";
+import React from 'react';
+import colors from '../../defaults-samples/colors';
 
-const makeFilterStyle = ({ hue, sat, brit, con, op }) => {
+const makeFilterStyle = ({
+  hue, sat, brit, con, op,
+}) => {
   if (
-    hue === undefined ||
-    sat === undefined ||
-    brit === undefined ||
-    con === undefined ||
-    op === undefined
+    hue === undefined
+    || sat === undefined
+    || brit === undefined
+    || con === undefined
+    || op === undefined
   ) {
-    return "brightness(3.5) hue-rotate(0 deg) saturate(1%) contrast(144.5%) opacity(100%)";
+    return 'brightness(3.5) hue-rotate(0 deg) saturate(1%) contrast(144.5%) opacity(100%)';
   }
   return `brightness(${brit}) hue-rotate(${hue}deg) saturate(${sat}%) contrast(${con}%) opacity(${op}%)`;
 };
 const ColorPicker = function ColorPicker(props) {
-  const { filter, label, handleFilterChange, part, handleFilterPresetClick } =
-    props;
+  const {
+    filter, label, handleFilterChange, part, handleFilterPresetClick,
+  } = props;
 
   return (
     <div className="color-picker">
-      <h4 className="color-picker-label">Colors - {label}</h4>
+      <h4 className="color-picker-label">
+        Colors -
+        {' '}
+        {label}
+      </h4>
       <img
         alt="current color"
         src="./color-sample.svg"
@@ -56,7 +63,7 @@ const ColorPicker = function ColorPicker(props) {
           step=".1"
           value={filter.hue}
           onChange={(e) => {
-            handleFilterChange(e, "hue", part);
+            handleFilterChange(e, 'hue', part);
           }}
         />
       </label>
@@ -72,7 +79,7 @@ const ColorPicker = function ColorPicker(props) {
           step=".1"
           value={filter.sat}
           onChange={(e) => {
-            handleFilterChange(e, "sat", part);
+            handleFilterChange(e, 'sat', part);
           }}
         />
       </label>
@@ -88,7 +95,7 @@ const ColorPicker = function ColorPicker(props) {
           step=".05"
           value={filter.brit}
           onChange={(e) => {
-            handleFilterChange(e, "brit", part);
+            handleFilterChange(e, 'brit', part);
           }}
         />
       </label>
@@ -104,7 +111,7 @@ const ColorPicker = function ColorPicker(props) {
           step=".1"
           value={filter.con}
           onChange={(e) => {
-            handleFilterChange(e, "con", part);
+            handleFilterChange(e, 'con', part);
           }}
         />
       </label>
@@ -120,7 +127,7 @@ const ColorPicker = function ColorPicker(props) {
           step=".1"
           value={filter.op}
           onChange={(e) => {
-            handleFilterChange(e, "op", part);
+            handleFilterChange(e, 'op', part);
           }}
         />
       </label>

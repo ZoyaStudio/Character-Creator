@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 
 //   white: {brightness: 3.5, saturation: 1, hue: 0, opacity: 100, contrast: 144.5},
 // creates string for filter css style from inputs
 // inputs: numbers for value of hue/saturation/briteness/contrast/opacity
-const makeFilterStyle = ({ hue, sat, brit, con, op }) => {
+const makeFilterStyle = ({
+  hue, sat, brit, con, op,
+}) => {
   if (
-    hue === undefined ||
-    sat === undefined ||
-    brit === undefined ||
-    con === undefined ||
-    op === undefined
+    hue === undefined
+    || sat === undefined
+    || brit === undefined
+    || con === undefined
+    || op === undefined
   ) {
     // console.log('no color')
     return `brightness(${3.5}) hue-rotate(${0}deg) saturate(${1}%) contrast(${144.5}%) opacity(${100}%)`;
@@ -32,7 +34,9 @@ const makeFilterStyle = ({ hue, sat, brit, con, op }) => {
 //   filterC: {}
 // }
 
-const ItemSet = function itemSet({ images, filters, zCounter, displayClass }) {
+const ItemSet = function ItemSet({
+  images, filters, zCounter, displayClass,
+}) {
   return (
     <>
       {/* outline */}

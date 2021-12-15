@@ -1,5 +1,5 @@
-import React from "react";
-import data from "../../defaults-samples/sample-data";
+import React from 'react';
+import data from '../../defaults-samples/sample-data';
 
 const HairPart = function hairPart({
   part,
@@ -10,13 +10,15 @@ const HairPart = function hairPart({
   hairFilter,
 }) {
   const makeFilterStyle = (filterSet) => {
-    const { hue, sat, brit, con, op } = filterSet;
+    const {
+      hue, sat, brit, con, op,
+    } = filterSet;
     if (
-      hue === undefined ||
-      sat === undefined ||
-      brit === undefined ||
-      con === undefined ||
-      op === undefined
+      hue === undefined
+      || sat === undefined
+      || brit === undefined
+      || con === undefined
+      || op === undefined
     ) {
       return `brightness(${3.5}) hue-rotate(${0}deg) saturate(${1}%) contrast(${144.5}%) opacity(${100}%)`;
     }
