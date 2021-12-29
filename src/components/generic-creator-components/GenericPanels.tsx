@@ -42,7 +42,6 @@ const GenericPanels = function GenericPanels({ tabProfiles } : GenericPanelsProp
         />
       ),
       <div className="creation-panel minor-panel">
-
         {
           // @ts-expect-error:
         tabProfiles[currentTab].list.map((gallaryProfile: TabProfileListItem) => (
