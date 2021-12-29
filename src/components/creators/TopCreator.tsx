@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import GenericCreator from '../generic-creator-components/GenericCreator';
 import GarmentContext from '../../context';
-import data from '../../defaults-samples/sample-data';
+import { garmentProfiles } from '../../utility/sample-data';
 
 const TopCreator = function TopCreator() {
   const {
@@ -17,8 +17,8 @@ const TopCreator = function TopCreator() {
           itemSetter: setTop,
           savedItems: savedTops,
           setSavedItems: setSavedTops,
-          data: data.tops,
-          dataDefaultBase: data.tops.skinTight,
+          data: garmentProfiles.tops,
+          garmentData: garmentProfiles.tops.skinTight,
           required: true,
           previewClass: 'preview-top',
         },
@@ -28,8 +28,8 @@ const TopCreator = function TopCreator() {
           itemSetter: setCollar,
           savedItems: savedTops,
           setSavedItems: setSavedTops,
-          data: data.collars,
-          dataDefaultBase: data.collars.skinTight,
+          data: garmentProfiles.collars,
+          garmentData: garmentProfiles.collars.skinTight,
           required: false,
           previewClass: 'preview-top',
         },
@@ -39,8 +39,8 @@ const TopCreator = function TopCreator() {
           itemSetter: setSleeves,
           savedItems: savedTops,
           setSavedItems: setSavedTops,
-          data: data.sleeves,
-          dataDefaultBase: data.sleeves['Puff Sleeves'],
+          data: garmentProfiles.sleeves,
+          garmentData: garmentProfiles.sleeves['Puff Sleeves'],
           required: false,
           previewClass: 'preview-top',
         },

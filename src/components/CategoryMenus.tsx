@@ -2,7 +2,7 @@ import React from 'react';
 
 // menu selection - allows user to select what part of the character they want to modify
 
-const CategoryMenus = function CategoryMenus({ currentType, setCurrentType }) {
+const CategoryMenus = function CategoryMenus({ currentType, setCurrentType }: {currentType: string, setCurrentType: React.Dispatch<React.SetStateAction<string>>}) {
   return (
     <div className="category-menu">
       <div className="menu">

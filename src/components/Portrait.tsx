@@ -10,7 +10,7 @@ import EyePart from './body/EyePart';
 // context: garment object with key for 'top' object
 const Portrait = function Portrait() {
   const {
-    top, body, sleeves, hair, bottom, feet, collar, data,
+    top, body, sleeves, hair, bottom, feet, collar, garmentProfiles,
   } = useContext(GarmentContext);
   const { base, hairFilter } = hair;
 
@@ -18,7 +18,7 @@ const Portrait = function Portrait() {
   // console.log('nose', body.nose)
   const pieces = [
     // function HairPart ({part, displayClass, onClickHandler, zCounter, hairFilter}) {
-    (zIndex) => (
+    (zIndex: number) => (
       <HairPart
         key="hair base front"
         part={base}
@@ -28,34 +28,34 @@ const Portrait = function Portrait() {
         displayClass="portrait-img front-hair"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="ear"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.ear}
         zCounter={zIndex}
         displayClass="portrait-img ear"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="nose"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.nose}
         zCounter={zIndex}
         displayClass="portrait-img nose"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="eyebrows"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.eyebrows}
         zCounter={zIndex}
         displayClass="portrait-img eyebrows"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <EyePart
         key="eyes"
         part={body.eyes}
@@ -63,108 +63,108 @@ const Portrait = function Portrait() {
         zCounter={zIndex}
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="mouth"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.mouth}
         zCounter={zIndex}
         displayClass="portrait-img mouth"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="head"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.head}
         zCounter={zIndex}
         displayClass="portrait-img head"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <Item
         key="sleeves-front"
-        typeData={data.sleeves}
+        typeData={garmentProfiles.sleeves}
         itemProfile={sleeves}
         zCounter={zIndex}
         displayClass="portrait-img"
         sectionClass="left-section"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="front-arm"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.frontArm}
         zCounter={zIndex}
         displayClass="portrait-img front-arm"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <Item
         key="collar"
-        typeData={data.collars}
+        typeData={garmentProfiles.collars}
         itemProfile={collar}
         zCounter={zIndex}
         displayClass="portrait-img"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <Item
         key="top"
-        typeData={data.tops}
+        typeData={garmentProfiles.tops}
         itemProfile={top}
         zCounter={zIndex}
         displayClass="portrait-img"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <Item
         key="feet"
-        typeData={data.feets}
+        typeData={garmentProfiles.feets}
         itemProfile={feet}
         zCounter={zIndex}
         displayClass="portrait-img"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <Item
         key="bottom"
-        typeData={data.bottoms}
+        typeData={garmentProfiles.bottoms}
         itemProfile={bottom}
         zCounter={zIndex}
         displayClass="portrait-img"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="body-legs"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.torsoLegs}
         zCounter={zIndex}
         displayClass="portrait-img torso-legs"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <Item
         key="sleeves-back"
-        typeData={data.sleeves}
+        typeData={garmentProfiles.sleeves}
         itemProfile={sleeves}
         zCounter={zIndex}
         displayClass="portrait-img"
         sectionClass="right-section"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <BodyPart
         key="back-arm"
-        filterSet={body.filterSet}
+        bodyFilterSet={body.filterSet}
         part={body.backArm}
         zCounter={zIndex}
         displayClass="portrait-img back-arm"
       />
     ),
-    (zIndex) => (
+    (zIndex: number) => (
       <HairPart
         key="hair base back"
         part={base}

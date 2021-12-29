@@ -1,31 +1,24 @@
 import React from 'react';
-
-//   white: {brightness: 3.5, saturation: 1, hue: 0, opacity: 100, contrast: 144.5},
-// creates string for filter css style from inputs
-// inputs: numbers for value of hue/saturation/briteness/contrast/opacity
-const makeFilterStyle = ({
-  hue, sat, brit, con, op,
-}) => {
-  if (
-    hue === undefined
-    || sat === undefined
-    || brit === undefined
-    || con === undefined
-    || op === undefined
-  ) {
-    // console.log('no color')
-    return `brightness(${3.5}) hue-rotate(${0}deg) saturate(${1}%) contrast(${144.5}%) opacity(${100}%)`;
-  }
-  return `brightness(${brit}) hue-rotate(${hue}deg) saturate(${sat}%) contrast(${con}%) opacity(${op}%)`;
-};
-// Item: accepts data about garment/garment pieces and generates array of <img> elements
+import { makeFilterStyle } from '../utility/helper-functions';
+import { Garment, GarmentProfile } from '../utility/types';
+type AppProps = {
+  itemProfile : Garment,
+  zCounter: number,
+  displayClass: string,
+  sectionClass: string,
+  typeData: GarmentProfile,
+}
+const defaultProps = {
+  displayClass: '',
+  sectionClass: '',
+}
 const Item = function Item({
   itemProfile,
   zCounter,
   displayClass,
   sectionClass,
   typeData,
-}) {
+}: AppProps) {
   const {
     typeKey,
     upperBoundaryKey,
@@ -37,14 +30,16 @@ const Item = function Item({
     baseKey,
     baseFilter,
     seamKey,
-    decoration = {},
-    decorationFilter,
+    // decoration,
+    // decorationFilter,
   } = itemProfile;
   if (displayClass !== 'portrait-img') {
     // console.log('item', itemProfile);
   }
   const base = typeData[typeKey].bases[baseKey];
-  const neckline = necklineKey
+   // @ts-expect-error:
+  const neckline = necklineKey.length
+   // @ts-expect-error:
     ? typeData[typeKey].necklines[necklineKey][neckLineIndex]
     : null;
   // boundaries
@@ -57,35 +52,35 @@ const Item = function Item({
 
   // console.log('lowerBoundaryIndex', lowerBoundaryIndex);
   // //decorations
-  const decorationsArr = [
-    <img
-      alt="to be replaced"
-      src={decoration.outlineUrl}
-      className={displayClass}
-      style={{ zIndex: zCounter }}
-      key="decOut"
-    />,
-    <img
-      alt="to be replaced"
-      src={decoration.gradientUrl}
-      className={displayClass}
-      style={{
-        zIndex: zCounter - 1,
-        filter: makeFilterStyle(decorationFilter),
-      }}
-      key="decGrad"
-    />,
-    <img
-      alt="to be replaced"
-      src={decoration.shadingUrl}
-      className={displayClass}
-      style={{
-        zIndex: zCounter - 2,
-        filter: makeFilterStyle(decorationFilter),
-      }}
-      key="decShad"
-    />,
-  ];
+  // const decorationsArr = [
+  //   <img
+  //     alt="to be replaced"
+  //     src={decoration.outlineUrl}
+  //     className={displayClass}
+  //     style={{ zIndex: zCounter }}
+  //     key="decOut"
+  //   />,
+  //   <img
+  //     alt="to be replaced"
+  //     src={decoration.gradientUrl}
+  //     className={displayClass}
+  //     style={{
+  //       zIndex: zCounter - 1,
+  //       filter: makeFilterStyle(decorationFilter),
+  //     }}
+  //     key="decGrad"
+  //   />,
+  //   <img
+  //     alt="to be replaced"
+  //     src={decoration.shadingUrl}
+  //     className={displayClass}
+  //     style={{
+  //       zIndex: zCounter - 2,
+  //       filter: makeFilterStyle(decorationFilter),
+  //     }}
+  //     key="decShad"
+  //   />,
+  // ];
 
   // const lbClass = `${upperBoundary.class || "upperBoundaryClass"} portrait-img`;
 
@@ -127,13 +122,16 @@ const Item = function Item({
       {/* //   {!decoration.hasBoundaries && decorationsArr} */}
       <img
         alt="to be replaced"
-        src={upperBoundary.url}
+        src={
+           // @ts-expect-error:
+          upperBoundary.url}
         className={displayClass}
         style={{ zIndex: zCounter - 4 }}
         key="ub-img"
       />
       <div
         className={`${
+           // @ts-expect-error:
           upperBoundary.class || 'upperBoundaryClass'
         } ${displayClass}`}
         style={{ zIndex: zCounter - 5 }}
@@ -143,22 +141,27 @@ const Item = function Item({
           {/* lower boundary */}
           <img
             alt="to be replaced"
-            src={lowerBoundary.url}
+            src={
+               // @ts-expect-error:
+              lowerBoundary.url}
             className={displayClass}
             style={{ zIndex: zCounter - 3 }}
             key="lb-img"
           />
           <div
             className={`${
+               // @ts-expect-error:
               lowerBoundary.class || 'lowerBoundaryClass'
             } ${displayClass}`}
           >
             {/* decoration */}
-            {decoration.hasBoundaries && decorationsArr}
+            {/* {decoration.hasBoundaries && decorationsArr} */}
             {seamKey && (
               <img
-                alt="to be replaced"
-                src={typeData[typeKey].seams[seamKey.name][seamKey.type]}
+                alt="seam"
+                src={
+                   // @ts-expect-error:
+                  typeData[typeKey].seams[seamKey.name][seamKey.type]}
                 className={displayClass}
                 style={{ zIndex: zCounter - 4 }}
                 key="item seam"
@@ -172,4 +175,5 @@ const Item = function Item({
     </div>
   );
 };
+Item.defaultProps = defaultProps;
 export default Item;

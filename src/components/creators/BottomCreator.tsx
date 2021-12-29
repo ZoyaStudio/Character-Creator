@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import GenericCreator from '../generic-creator-components/GenericCreator';
 import GarmentContext from '../../context';
-import data from '../../defaults-samples/sample-data';
+import {garmentProfiles} from '../../utility/sample-data';
 
 const BottomCreator = function BottomCreator() {
   const {
@@ -17,8 +17,8 @@ const BottomCreator = function BottomCreator() {
           itemSetter: setBottom,
           savedItems: savedBottoms,
           setSavedItems: setSavedBottoms,
-          data: data.bottoms,
-          dataDefaultBase: data.bottoms.skinTight,
+          data: garmentProfiles.bottoms,
+          garmentData: garmentProfiles.bottoms.skinTight,
           required: true,
           previewClass: 'preview-bottom',
         },
@@ -28,8 +28,8 @@ const BottomCreator = function BottomCreator() {
           itemSetter: setFeet,
           savedItems: savedBottoms,
           setSavedItems: setSavedBottoms,
-          data: data.feets,
-          dataDefaultBase: data.feets.skinTight,
+          data: garmentProfiles.feets,
+          garmentData: garmentProfiles.feets.skinTight,
           required: false, // true,
           previewClass: 'preview-feet',
         },

@@ -1,16 +1,23 @@
 import React from 'react';
 import ColorPicker from './ColorPicker';
-
+import {makeCopy} from '../../utility/helper-functions';
+import { Garment, GarmentProfile, Boundry, Color} from '../../utility/types';
 // Details Bar:
 // Allows user to set boundries, neckline and filters for item base and detail
 // Allows user to save items
+type AppProps = {
+  item: Garment,
+  setItem: React.Dispatch<React.SetStateAction<Garment>>,
+  label: string,
+  data: GarmentProfile
+}
 const DetailsBar = function DetailsBar({
   // setSavedItems,
   item,
   setItem,
   label,
   data,
-}) {
+}: AppProps) {
   const {
     lowerBoundaryKey,
     upperBoundaryKey,
@@ -18,10 +25,10 @@ const DetailsBar = function DetailsBar({
     upperBoundaryIndex,
     typeKey,
   } = item;
-  const upperBoundaries = data[typeKey].upperBoundaries || {};
-  const lowerBoundaries = data[typeKey].lowerBoundaries || {};
+  const upperBoundaries = data[typeKey].upperBoundaries;
+  const lowerBoundaries = data[typeKey].lowerBoundaries;
 
-  const makeCopy = (obj) => JSON.parse(JSON.stringify(obj));
+
 
   // adds current item to savedItems array
   // const saveCurrentItem = () => {
@@ -34,13 +41,13 @@ const DetailsBar = function DetailsBar({
   // e: event from onChange
   // type: 'hue', 'con', 'sat', 'op', 'sat'
   // part: any key of the 'item' object that has the listed properties above
-  const handleFilterChange = (e, type, part) => {
+  const handleFilterChange = (e : React.ChangeEvent<HTMLInputElement>, filterType: 'hue'| 'sat' | 'op' | 'con' | 'brit', part: 'baseFilter') => {
     const copy = JSON.parse(JSON.stringify(item)); // Object.assign({}, item);
-    copy[part][type] = e.target.value;
+    copy[part][filterType] = e.target.value;
     setItem(copy);
   };
-  const handleFilterPresetClick = (preset, part) => {
-    const copy = JSON.parse(JSON.stringify(item));
+  const handleFilterPresetClick = (preset: Color, part: 'baseFilter') => {
+    const copy = makeCopy(item);
     copy[part] = preset;
     setItem(copy);
   };
@@ -48,7 +55,7 @@ const DetailsBar = function DetailsBar({
   // inputs:
   // e: event from onChange
   // type: string, name of type of boundary
-  const handleBoundaryChange = (e, type) => {
+  const handleBoundaryChange = (e:React.ChangeEvent<HTMLInputElement>, type: 'upperBoundaryIndex'| 'lowerBoundaryIndex') => {
     const index = Number(e.target.value);
 
     const itemCopy = makeCopy(item);
@@ -58,8 +65,13 @@ const DetailsBar = function DetailsBar({
     // console.log('upper boundry url', data[typeKey].upperBoundaries[upperBoundaryKey]);
     setItem(itemCopy);
   };
-
-  const radioList = (keys, radioLabel, itemKey, itemIndexProperty) => keys.map((name) => (
+  // upperBoundaryKey: string | null,
+  // upperBoundaryIndex: number,
+  // lowerBoundaryKey: string | null,
+  // lowerBoundaryIndex: number,
+  // necklineKey: string | null,
+  // neckLineIndex: number,
+  const radioList = (keys: string [], radioLabel: string, itemKey: 'upperBoundaryKey' | 'lowerBoundaryKey' | 'necklineKey', itemIndexProperty: 'upperBoundaryIndex' | 'lowerBoundaryIndex' | 'neckLineIndex') => keys.map((name) => (
     <div key={label + name}>
       <label className="" htmlFor={label + name}>
         {name}
@@ -78,18 +90,18 @@ const DetailsBar = function DetailsBar({
     </div>
   ));
   const boundarySlider = (
-    currentIndex,
-    boundryKey,
-    boundryList,
-    boundryIndexType,
-    sliderLabel,
+    currentIndex: number,
+    boundryKey: string | null,
+    boundryList: Boundry [],
+    boundryIndexType: 'lowerBoundaryIndex' |'upperBoundaryIndex',
+    sliderLabel: string,
   ) => (
     <>
       <label className="range-label" htmlFor={`${label}-range`}>
         {sliderLabel}
       </label>
       <input
-        disabled={boundryKey ? '' : 'disabled'}
+        disabled={boundryKey !== undefined}
         className="range-input"
         type="range"
         name={`${label}-range`}
@@ -110,9 +122,9 @@ const DetailsBar = function DetailsBar({
         Object.keys(upperBoundaries),
         'Upper boundry',
         'upperBoundaryKey',
-        'upperBoundryIndex',
+        'upperBoundaryIndex',
       )}
-      {boundarySlider(
+      {upperBoundaryKey && boundarySlider(
         upperBoundaryIndex,
         upperBoundaryKey,
         upperBoundaries[upperBoundaryKey],
@@ -123,9 +135,9 @@ const DetailsBar = function DetailsBar({
         Object.keys(lowerBoundaries),
         'Lower Boundry',
         'lowerBoundaryKey',
-        'lowerBoundryIndex',
+        'lowerBoundaryIndex',
       )}
-      {boundarySlider(
+      { lowerBoundaryKey && boundarySlider(
         lowerBoundaryIndex,
         lowerBoundaryKey,
         lowerBoundaries[lowerBoundaryKey],

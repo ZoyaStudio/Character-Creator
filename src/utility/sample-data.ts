@@ -1,6 +1,7 @@
 // placeholder data for garment pieces
 // TO DO: move data to database, fetch with API call
-const gentleCurveUpperBoundries = [
+import { Boundry, Bases, GarmentProfile, HairProfiles, BodyProfiles } from './types';
+const gentleCurveUpperBoundries : Boundry[] = [
   { url: './gentleCurve/gentleCurve0.svg', class: 'ub-gentle-curve-0' },
   { url: './gentleCurve/gentleCurve1.svg', class: 'ub-gentle-curve-1' },
   { url: './gentleCurve/gentleCurve2.svg', class: 'ub-gentle-curve-2' },
@@ -19,7 +20,7 @@ const gentleCurveUpperBoundries = [
   { url: './gentleCurve/gentleCurve18.svg', class: 'ub-gentle-curve-18' },
   { url: './gentleCurve/gentleCurve19.svg', class: 'ub-gentle-curve-19' },
 ];
-const gentleCurveLowerBoundries = [
+const gentleCurveLowerBoundries: Boundry [] = [
   { url: './gentleCurve/gentleCurve1.svg', class: 'lb-gentle-curve-1' },
   { url: './gentleCurve/gentleCurve2.svg', class: 'lb-gentle-curve-2' },
   { url: './gentleCurve/gentleCurve6.svg', class: 'lb-gentle-curve-6' },
@@ -40,7 +41,7 @@ const gentleCurveLowerBoundries = [
   { url: './gentleCurve/gentleCurve21.svg', class: 'lb-gentle-curve-21' },
   { url: '', class: '' },
 ];
-const upChevronLowerBoundries = [
+const upChevronLowerBoundries: Boundry[] = [
   { url: './upChevron/upChevron1.svg', class: 'lb-chevron-1' },
   { url: './upChevron/upChevron2.svg', class: 'lb-chevron-2' },
   { url: './upChevron/upChevron3.svg', class: 'lb-chevron-3' },
@@ -48,7 +49,8 @@ const upChevronLowerBoundries = [
   // class: "lb-chevron-4"
   // }
 ];
-const skinTightBases = {
+
+const skinTightBases: Bases = {
   Plain: {
     outlineUrl: '/SkinTightBodySuit/TightBodySuitOutline.svg',
     gradientUrl: '/SkinTightBodySuit/TightBodySuitGradient.svg',
@@ -60,14 +62,15 @@ const skinTightBases = {
     shadingUrl: '/SkinTightBodySuit/lace-shading.png',
   },
 };
-const bodySuitBases = {
+const bodySuitBases : Bases = {
   Plain: {
     outlineUrl: '/BodySuit/BodySuitOutline.svg',
     gradientUrl: '/BodySuit/BodySuitGradient.svg',
     shadingUrl: '/BodySuit/BodySuitShading.svg',
   },
 };
-const data = {
+
+export const garmentProfiles : {[key: string] : GarmentProfile} = {
   tops: {
     'Skin Tight': {
       previewSettings: {
@@ -96,8 +99,8 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
     'Body Suit': {
       previewSettings: {
@@ -126,8 +129,8 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
   },
   collars: {
@@ -158,12 +161,16 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
   },
   onePiece: {
     'Skin Tight': {
+      previewSettings: {
+        defaultUBIndex: 0,
+        defaultLBIndex: 5,
+      },
       bases: skinTightBases,
       upperBoundaries: {
         'Gentle Curve': gentleCurveUpperBoundries,
@@ -186,10 +193,14 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
     'Body Suit': {
+      previewSettings: {
+        defaultUBIndex: 0,
+        defaultLBIndex: 5,
+      },
       bases: bodySuitBases,
       upperBoundaries: {
         'Gentle Curve': gentleCurveUpperBoundries,
@@ -212,8 +223,8 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
   },
   bottoms: {
@@ -244,8 +255,8 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
     'Body Suit': {
       previewSettings: {
@@ -274,8 +285,8 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
   },
   feets: {
@@ -306,8 +317,8 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
     'Body Suit': {
       previewSettings: {
@@ -336,13 +347,16 @@ const data = {
           line: './SeamLines/QuarterSeamCurveAtMidShoulder.svg',
         },
       },
-      necklines: [],
-      decorations: [],
+      necklines: {},
+      decorations: {},
     },
   },
   sleeves: {
     'Puff Sleeves': {
-      previewSettings: {},
+      previewSettings: {
+        defaultUBIndex: 0,
+        defaultLBIndex: 5,
+      },
       bases: {
         Plain: {
           outlineUrl: './PuffSleeves/PuffSleeves-Outline.svg',
@@ -350,115 +364,122 @@ const data = {
           gradientUrl: './PuffSleeves/PuffSleeves-Gradient.png',
         },
       },
-      upperBoundaries: null,
-      lowerBoundaries: null,
-      necklines: [],
+      upperBoundaries: {},
+      lowerBoundaries: {},
+      necklines: {},
       seams: {},
-      decorations: [],
+      decorations: {},
     },
   },
-  hair: {
-    bases: {
-      'Short Hair': {
-        outlineUrl: './ShortHair/ShortHairOutline.svg',
-        gradientUrl: './ShortHair/ShortHairGradient.png',
-        shadingUrl: './ShortHair/ShortHairShading.png',
-      },
-    },
-  },
-  bodies: {
-    heads: {
-      'Average Girl': {
-        outline: './Body-Layers/OutlineB.svg',
-        gradient: './Body-Layers/GradientB.svg',
-        blush: './Body-Layers/Blush.svg',
-        darkShade: './Body-Layers/ShadingBDark.svg',
-        lightShade: './Body-Layers/ShadingBLight.svg',
-      },
-    },
-    ears: {
-      'Normal Ear': {
-        toneType: 'matchSkin',
-        outline: './Body-Layers/OutlineA.svg',
-        gradient: './Body-Layers/GradientA.svg',
-        blush: './Body-Layers/Blush.svg',
-        darkShade: './Body-Layers/ShadingADark.svg',
-        lightShade: './Body-Layers/ShadingALight.svg',
-      },
-    },
-    eyebrows: {
-      'Curled EyeBrows': {
-        outline: './EyeBrows/CurledEyebrows.png',
-      },
-    },
-    eyes: {
-      'Round Eyes': {
-        outlines: {
-          noLash: '',
-          midLash: '',
-          longLashed: './RoundEyes/RoundEyesLongLashed-Outline.png',
-        },
-        pupils: {
-          normal: './RoundEyes/RoundEyePupil.png',
-          cat: '',
-        },
-        irisStyle: {
-          normal: {
-            outlineUrl: './RoundEyes/RoundEyeNormalIris-Outline.png',
-            shadingUrl: './RoundEyes/RoundEyeNormalIris-Shading.png',
-          },
-          glazed: {
-            outlineUrl: '',
-            shadingUrl: '',
-          },
-          intense: {
-            outlineUrl: '',
-            shadingUrl: '',
-          },
-        },
-        eyewhite: '',
-      },
-    },
-    noses: {
-      'Classic Anime Nose': {
-        outline: './ClassicAnimeNose/ClassicAnimeNose-Outline.png', // .svg',
-        faceShade: './ClassicAnimeNose/ClassicAnimeNose-Shading.png',
-      },
-    },
-    mouths: {
-      'Bright Smile': {
-        outline: './BrightSmile/BrightSmile-Outline.png',
-        faceShade: './BrightSmile/BrightSmile-Shading.png',
-      },
-    },
-    faceDetails: {},
-    torsoLegs: {
-      'Busty Not Muscular': {
-        outline: './Body-Layers/OutlineA.svg',
-        gradient: './Body-Layers/GradientA.svg',
-        blush: './Body-Layers/Blush.svg',
-        darkShade: './Body-Layers/ShadingADark.svg',
-        lightShade: './Body-Layers/ShadingALight.svg',
-      },
-    },
-    backArms: {
-      Skinny: {
-        outline: './Body-Layers/OutlineB.svg',
-        gradient: './Body-Layers/GradientB.svg',
-        blush: './Body-Layers/Blush.svg',
-        darkShade: './Body-Layers/ShadingBDark.svg',
-        lightShade: './Body-Layers/ShadingBLight.svg',
-      },
-    },
-    frontArms: {
-      Skinny: {
-        outline: './Body-Layers/OutlineB.svg',
-        gradient: './Body-Layers/GradientB.svg',
-        blush: './Body-Layers/Blush.svg',
-        darkShade: './Body-Layers/ShadingBDark.svg',
-        lightShade: './Body-Layers/ShadingBLight.svg',
-      },
-    },
-  },
+
+
 };
-export default data;
+
+export const hairProfiles:HairProfiles = {
+  bases: {
+    'Short Hair': {
+      outlineUrl: './ShortHair/ShortHairOutline.svg',
+      gradientUrl: './ShortHair/ShortHairGradient.png',
+      shadingUrl: './ShortHair/ShortHairShading.png',
+    },
+  },
+}
+
+export const bodyProfiles : BodyProfiles = {
+  heads: {
+    'Average Girl': {
+      outline: './Body-Layers/OutlineB.svg',
+      gradient: './Body-Layers/GradientB.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingBDark.svg',
+      lightShade: './Body-Layers/ShadingBLight.svg',
+      faceShade: null
+    },
+  },
+  ears: {
+    'Normal Ear': {
+      outline: './Body-Layers/OutlineA.svg',
+      gradient: './Body-Layers/GradientA.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingADark.svg',
+      lightShade: './Body-Layers/ShadingALight.svg',
+      faceShade: null
+    },
+  },
+  eyebrows: {
+    'Curled EyeBrows': {
+      outline: './EyeBrows/CurledEyebrows.png',
+    },
+  },
+  eyes: {
+    'Round Eyes': {
+      outlines: {
+        noLash: '',
+        midLash: '',
+        longLashed: './RoundEyes/RoundEyesLongLashed-Outline.png',
+      },
+      pupils: {
+        normal: './RoundEyes/RoundEyePupil.png',
+        cat: '',
+      },
+      irisStyle: {
+        normal: {
+          outlineUrl: './RoundEyes/RoundEyeNormalIris-Outline.png',
+          shadingUrl: './RoundEyes/RoundEyeNormalIris-Shading.png',
+        },
+        glazed: {
+          outlineUrl: '',
+          shadingUrl: '',
+        },
+        intense: {
+          outlineUrl: '',
+          shadingUrl: '',
+        },
+      },
+      eyewhite: '',
+    },
+  },
+  noses: {
+    'Classic Anime Nose': {
+      outline: './ClassicAnimeNose/ClassicAnimeNose-Outline.png', // .svg',
+      faceShade: './ClassicAnimeNose/ClassicAnimeNose-Shading.png',
+    },
+  },
+  mouths: {
+    'Bright Smile': {
+      outline: './BrightSmile/BrightSmile-Outline.png',
+      faceShade: './BrightSmile/BrightSmile-Shading.png',
+    },
+  },
+  faceDetails: {},
+  torsoLegs: {
+    'Busty Not Muscular': {
+      outline: './Body-Layers/OutlineA.svg',
+      gradient: './Body-Layers/GradientA.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingADark.svg',
+      lightShade: './Body-Layers/ShadingALight.svg',
+      faceShade: null
+    },
+  },
+  backArms: {
+    Skinny: {
+      outline: './Body-Layers/OutlineB.svg',
+      gradient: './Body-Layers/GradientB.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingBDark.svg',
+      lightShade: './Body-Layers/ShadingBLight.svg',
+      faceShade: null
+    },
+  },
+  frontArms: {
+    Skinny: {
+      outline: './Body-Layers/OutlineB.svg',
+      gradient: './Body-Layers/GradientB.svg',
+      blush: './Body-Layers/Blush.svg',
+      darkShade: './Body-Layers/ShadingBDark.svg',
+      lightShade: './Body-Layers/ShadingBLight.svg',
+      faceShade: null
+    },
+  },
+}

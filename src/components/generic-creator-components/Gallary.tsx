@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Gallery = function Gallary({ items, label }) {
+type GallaryProps = {
+  items: JSX.Element [],
+  label: string
+}
+const Gallery = function Gallary({ items, label }: GallaryProps) {
   return (
     <div className="gallary">
       <div className="banner">

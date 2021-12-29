@@ -1,35 +1,25 @@
 import React from 'react';
-import data from '../../defaults-samples/sample-data';
-
+import  {bodyProfiles} from '../../utility/sample-data';
+import {makeFilterStyle} from '../../utility/helper-functions';
+import {Eye} from '../../utility/types';
+type AppProps = {
+  part: Eye,
+  displayClass: string,
+  zCounter: number,
+}
 const EyePart = function eyepart({
   part,
   displayClass,
-  // onClickHandler,
   zCounter,
-}) {
+}: AppProps) {
   const {
     eyeColor, typeKey, irisStyle, pupilStyle, lashLength,
   } = part;
 
-  const makeFilterStyle = (filterSet) => {
-    const {
-      hue, sat, brit, con, op,
-    } = filterSet;
-    if (
-      hue === undefined
-      || sat === undefined
-      || brit === undefined
-      || con === undefined
-      || op === undefined
-    ) {
-      return `brightness(${3.5}) hue-rotate(${0}deg) saturate(${1}%) contrast(${144.5}%) opacity(${100}%)`;
-    }
-    return `brightness(${brit}) hue-rotate(${hue}deg) saturate(${sat}%) contrast(${con}%) opacity(${op}%)`;
-  };
-  const outline = data.bodies.eyes[typeKey].outlines[lashLength];
-  const pupil = data.bodies.eyes[typeKey].pupils[pupilStyle];
-  const irisOutline = data.bodies.eyes[typeKey].irisStyle[irisStyle].outlineUrl;
-  const irisShading = data.bodies.eyes[typeKey].irisStyle[irisStyle].shadingUrl;
+  const outline : string = bodyProfiles.eyes[typeKey].outlines[lashLength];
+  const pupil: string = bodyProfiles.eyes[typeKey].pupils[pupilStyle];
+  const irisOutline : string = bodyProfiles.eyes[typeKey].irisStyle[irisStyle].outlineUrl;
+  const irisShading :string= bodyProfiles.eyes[typeKey].irisStyle[irisStyle].shadingUrl;
 
   return (
     <div

@@ -1,14 +1,20 @@
 import React from 'react';
+import { Garment, GarmentProfile, Substitues} from '../../utility/types';
+import { firstKeyOf} from '../../utility/helper-functions';
 import Item from '../Item';
-
-const ItemPreview = function ItemPreview({
+type AppProps = {
+  handleOnClickEvent: (itemInUse: Garment) => void,
+  previewCorrection: string,
+  data: GarmentProfile,
+  substitutes: Substitues,
+}
+const ItemPreview = function ({
   handleOnClickEvent,
   previewCorrection,
   data,
-  substitutes = {},
-}) {
+  substitutes,
+}: AppProps) {
   // console.log('subs', substitutes);
-  const firstKeyOf = (obj) => Object.keys(obj)[0];
   const firstKeyOfData = firstKeyOf(data);
 
   const itemProfile = {
@@ -45,7 +51,7 @@ const ItemPreview = function ItemPreview({
   return (
     <button
       className="preview-container"
-      key={substitutes}
+      key={JSON.stringify(substitutes) }
       type="button"
       onClick={() => {
         handleOnClickEvent(itemProfile);

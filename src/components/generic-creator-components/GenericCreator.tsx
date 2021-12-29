@@ -1,17 +1,22 @@
 import React from 'react';
 import GenericPanels from './GenericPanels';
-import DetailsBar from './DetailsBar';
-import ItemPreview from './ItemPreview';
 
-const makeCopy = (obj) => JSON.parse(JSON.stringify(obj));
+import ItemPreview from './ItemPreview';
+import { TabItem, Garment, GenericPanelsProps} from '../../utility/types';
+import { makeCopy} from '../../utility/helper-functions';
+
 // {typeKey: typeKey, baseKey: null, seamKeyName: null, decoration: null}
-const GenericCreator = function GenericCreator({ tabItems }) {
+type GenericCreatorProps = {
+  tabItems: TabItem []
+}
+const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps) {
   let nop =10;
   console.log('thing here', nop)
   // const [currentTypeKey, setCurrentTypeKey] = useState(
   //   tabItems[0].item.typeKey
   // );
-  const tabProfilesSelection = {};
+
+  const tabProfilesSelection : GenericPanelsProps ={};
   // const tabProfilesSavedItems = {};
 
   // eslint-disable-next-line no-restricted-syntax
@@ -20,8 +25,8 @@ const GenericCreator = function GenericCreator({ tabItems }) {
       label,
       item,
       itemSetter,
-      savedItems,
-      setSavedItems,
+      // savedItems,
+      // setSavedItems,
       data,
       // required,
       previewClass,
@@ -31,7 +36,7 @@ const GenericCreator = function GenericCreator({ tabItems }) {
     //   const copy = JSON.parse(JSON.stringify(info));
     //   setSavedItems(copy);
     // };
-    const handleOnClickFunctionCreator = (type) => (info) => {
+    const handleOnClickFunctionCreator = (type : 'all' | 'baseKey' | 'seamKey') => (info:Garment): void=> {
       console.log('got click', info);
       const infoCopy = makeCopy(info);
       const itemCopy = makeCopy(item);
@@ -50,6 +55,7 @@ const GenericCreator = function GenericCreator({ tabItems }) {
       //   itemSetter(itemCopy);
       // }
       else {
+        // @ts-expect-error
         itemCopy[type] = info[type];
         itemSetter(itemCopy);
       }
@@ -110,22 +116,13 @@ const GenericCreator = function GenericCreator({ tabItems }) {
         // previewFunction: decorationPreview,
         // },
       ],
-      detailBar: (
-        <DetailsBar
-          savedItems={savedItems}
-          setSavedItems={setSavedItems}
-          item={item}
-          setItem={itemSetter}
-          specificItemData={data[item.typeKey]}
-          label={label}
-          data={data}
-        />
-      ),
+      detailBarInfo: {item, setItem: itemSetter, label, data}
     };
     // tabProfilesSavedItems['Saved ' + label] = {
 
     // }
   }
+  // @ts-expect-error
   return <GenericPanels tabProfiles={tabProfilesSelection} />;
 };
 export default GenericCreator;

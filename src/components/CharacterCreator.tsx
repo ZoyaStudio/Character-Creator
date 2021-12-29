@@ -5,21 +5,22 @@ import BottomCreator from './creators/BottomCreator';
 import TopCreator from './creators/TopCreator';
 import CategoryMenus from './CategoryMenus';
 import GarmentContext from '../context';
-import defaults from '../defaults-samples/defaults';
-import data from '../defaults-samples/sample-data';
+import { defaultGarments, defaultBody, defaultHair} from '../utility/defaults';
+import {Garment, Body, Hair} from '../utility/types'
+import {garmentProfiles, bodyProfiles, hairProfiles} from '../utility/sample-data';
 
 // CharacterCreator Component: top level component that contains Portrait,
 // CategoryMenues and Garment Creator
 // provides context to child components
-const convert = (target) => target; // JSON.parse(JSON.stringify(target));
+const convert = (target: Garment | Body | Hair) : (Garment | Body | Hair) => JSON.parse(JSON.stringify(target));
 const CharacterCreator = function CharacterCreator() {
-  const [top, setTop] = useState(convert(defaults.defaultTop));
-  const [collar, setCollar] = useState(convert(defaults.defaultCollar));
-  const [body, setBody] = useState(convert(defaults.defaultBody));
-  const [bottom, setBottom] = useState(convert(defaults.defaultBottom));
-  const [feet, setFeet] = useState(convert(defaults.defaultFeet));
-  const [hair, setHair] = useState(convert(defaults.defaultHair));
-  const [sleeves, setSleeves] = useState(convert(defaults.defaultSleeves));
+  const [top, setTop] = useState(convert(defaultGarments.defaultTop));
+  const [collar, setCollar] = useState(convert(defaultGarments.defaultCollar));
+  const [body, setBody] = useState(convert(defaultBody));
+  const [bottom, setBottom] = useState(convert(defaultGarments.defaultBottom));
+  const [feet, setFeet] = useState(convert(defaultGarments.defaultFeet));
+  const [hair, setHair] = useState(convert(defaultHair));
+  const [sleeves, setSleeves] = useState(convert(defaultGarments.defaultSleeves));
   const [currentType, setCurrentType] = useState('top');
   // console.log('testing connection', bottom);
   return (
@@ -48,7 +49,9 @@ const CharacterCreator = function CharacterCreator() {
             setFeet,
             collar,
             setCollar,
-            data,
+            garmentProfiles,
+            bodyProfiles,
+            hairProfiles
           }
           //   ),
           //   []

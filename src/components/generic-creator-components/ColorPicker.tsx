@@ -1,24 +1,17 @@
 import React from 'react';
-import colors from '../../defaults-samples/colors';
-
-const makeFilterStyle = ({
-  hue, sat, brit, con, op,
-}) => {
-  if (
-    hue === undefined
-    || sat === undefined
-    || brit === undefined
-    || con === undefined
-    || op === undefined
-  ) {
-    return 'brightness(3.5) hue-rotate(0 deg) saturate(1%) contrast(144.5%) opacity(100%)';
-  }
-  return `brightness(${brit}) hue-rotate(${hue}deg) saturate(${sat}%) contrast(${con}%) opacity(${op}%)`;
+import {colors} from '../../utility/colors';
+import {makeFilterStyle} from '../../utility/helper-functions';
+import {Color,} from '../../utility/types';
+type AppProps = {
+  filter: Color,
+  label: string,
+  handleFilterChange: (e : React.ChangeEvent<HTMLInputElement>, filterType: 'hue'| 'sat' | 'op' | 'con' | 'brit', part: 'baseFilter') => void,
+  part : 'baseFilter',
+  handleFilterPresetClick:   (color: Color, part: 'baseFilter', newColor : string) => void,
 };
-const ColorPicker = function ColorPicker(props) {
-  const {
-    filter, label, handleFilterChange, part, handleFilterPresetClick,
-  } = props;
+const ColorPicker = function ColorPicker({
+  filter, label, handleFilterChange, part, handleFilterPresetClick,
+}: AppProps) {
 
   return (
     <div className="color-picker">
