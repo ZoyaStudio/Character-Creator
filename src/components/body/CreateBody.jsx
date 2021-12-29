@@ -1,10 +1,10 @@
 // import React, { useState, useContext } from "react";
 // import GenericPanels from "../GenericPanels.jsx";
-// import previewFunctions from "../../defaults-samples/preview-functions.jsx";
+// import previewFunctions from "../../utility/preview-functions.jsx";
 // import BodySideBar from "./BodySideBar.jsx";
 // import SavedBodiesSideBar from "./SavedBodiesSideBar.jsx";
-// import defaults from "../../defaults-samples/defaults.js";
-// import data from "../../defaults-samples/sample-data.js";
+// import defaults from "../../utility/defaults.js";
+// import data from "../../utility/sample-data.js";
 
 // const { bodies } = data;
 // const { facePreviewAtType } = previewFunctions.bodyPreviews;
