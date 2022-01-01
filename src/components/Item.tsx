@@ -37,9 +37,8 @@ const Item = function Item({
     // console.log('item', itemProfile);
   }
   const base = typeData[typeKey].bases[baseKey];
-   // @ts-expect-error:
-  const neckline = necklineKey.length
-   // @ts-expect-error:
+
+  const neckline = necklineKey
     ? typeData[typeKey].necklines[necklineKey][neckLineIndex]
     : null;
   // boundaries

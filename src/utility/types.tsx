@@ -191,7 +191,7 @@ export type Body = {
   setSavedItems: React.Dispatch<React.SetStateAction<never[]>>,
   //React.Dispatch<React.SetStateAction<Garment>>,
   data: GarmentProfile,
-  garmentData: GarmentProfileAtType,
+  // garmentData: GarmentProfileAtType,
   required: boolean,
   previewClass: string,
 }
@@ -235,9 +235,10 @@ export type TabProfileListItem = {
 // };
 export type GenericPanelsProps = Record<string,{
     list: TabProfileListItem [],
-    detailBarInfo: {
-      item: Garment,
-      setItem: React.Dispatch<React.SetStateAction<Garment>>,
-      label: string,
-      data: GarmentProfile}
+    detailBar:  JSX.Element
+    // {
+    //   item: Garment,
+    //   setItem: React.Dispatch<React.SetStateAction<Garment>>,
+    //   label: string,
+    //   data: GarmentProfile}
     }>;

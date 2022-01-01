@@ -15,7 +15,6 @@ const Portrait = function Portrait() {
   const { base, hairFilter } = hair;
 
   let zCounterMax = 500;
-  // console.log('nose', body.nose)
   const pieces = [
     // function HairPart ({part, displayClass, onClickHandler, zCounter, hairFilter}) {
     (zIndex: number) => (

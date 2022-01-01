@@ -1,6 +1,6 @@
 import React from 'react';
 import GenericPanels from './GenericPanels';
-
+import DetailsBar from './DetailsBar';
 import ItemPreview from './ItemPreview';
 import { TabItem, Garment, GenericPanelsProps} from '../../utility/types';
 import { makeCopy} from '../../utility/helper-functions';
@@ -10,8 +10,6 @@ type GenericCreatorProps = {
   tabItems: TabItem []
 }
 const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps) {
-  let nop =10;
-  console.log('thing here', nop)
   // const [currentTypeKey, setCurrentTypeKey] = useState(
   //   tabItems[0].item.typeKey
   // );
@@ -37,7 +35,6 @@ const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps
     //   setSavedItems(copy);
     // };
     const handleOnClickFunctionCreator = (type : 'all' | 'baseKey' | 'seamKey') => (info:Garment): void=> {
-      console.log('got click', info);
       const infoCopy = makeCopy(info);
       const itemCopy = makeCopy(item);
       if (type === 'all') {
@@ -71,7 +68,7 @@ const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps
       list: [
         {
           label: 'Type',
-          items: Object.keys(data).map((typeKey) => (
+          items: Object.keys(data).map((typeKey) =>  (
             <ItemPreview
               handleOnClickEvent={handleOnClickFunctionCreator('all')}
               previewCorrection={previewClass}
@@ -82,14 +79,15 @@ const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps
                 seamKeyName: null,
                 decoration: null,
               }}
-              key={typeKey}
-            />
-          )),
+              key={typeKey + 'type'}
+            />)
+
+          ),
         },
         {
           label: 'Base',
-          items: Object.keys(data[item.typeKey].bases).map((baseKey) => (
-            <ItemPreview
+          items: Object.keys(data[item.typeKey].bases).map((baseKey) => {
+            return (  <ItemPreview
               handleOnClickEvent={handleOnClickFunctionCreator('baseKey')}
               previewCorrection={previewClass}
               data={data}
@@ -99,9 +97,11 @@ const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps
                 seamKeyName: null,
                 decoration: null,
               }}
-              key={baseKey}
-            />
-          )),
+              key={baseKey + 'base'}
+            />)
+          }
+
+          ),
         },
         // {
         //   label: 'Seams',
@@ -116,7 +116,14 @@ const GenericCreator = function GenericCreator({ tabItems }: GenericCreatorProps
         // previewFunction: decorationPreview,
         // },
       ],
-      detailBarInfo: {item, setItem: itemSetter, label, data}
+      // detailBarInfo: {item, setItem: itemSetter, label, data}
+      detailBar: <DetailsBar
+      // setSavedItems={setSavedItems}
+      item={item}
+      setItem={itemSetter}
+      label={label}
+      data={data}
+    />
     };
     // tabProfilesSavedItems['Saved ' + label] = {
 

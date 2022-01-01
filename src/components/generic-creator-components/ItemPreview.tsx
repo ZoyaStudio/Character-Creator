@@ -14,9 +14,7 @@ const ItemPreview = function ({
   data,
   substitutes,
 }: AppProps) {
-  // console.log('subs', substitutes);
   const firstKeyOfData = firstKeyOf(data);
-
   const itemProfile = {
     typeKey: substitutes.typeKey || firstKeyOfData,
     upperBoundaryKey: data[firstKeyOfData].upperBoundaries
@@ -47,7 +45,6 @@ const ItemPreview = function ({
       hue: 180, sat: 100, brit: 1.2, con: 100, op: 100,
     },
   };
-  // console.log('Test', itemProfile);
   return (
     <button
       className="preview-container"

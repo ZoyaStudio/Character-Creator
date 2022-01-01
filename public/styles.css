@@ -999,7 +999,7 @@ hr {
   height: 200px;
   background-color: rgb(52, 41, 148);
   background: none;
-  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+  clip-path: polygon(0 0, 115% 0, 115% 115%, 0% 115%);
   box-shadow: 10px 5px 7px rgb(0 0 0 / 39%);
   /* border: solid .2px rgb(179, 179, 179); */
 }

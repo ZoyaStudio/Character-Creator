@@ -21,7 +21,7 @@ const CharacterCreator = function CharacterCreator() {
   const [feet, setFeet] = useState(convert(defaultGarments.defaultFeet));
   const [hair, setHair] = useState(convert(defaultHair));
   const [sleeves, setSleeves] = useState(convert(defaultGarments.defaultSleeves));
-  const [currentType, setCurrentType] = useState('top');
+  const [currentType, setCurrentType] = useState('bottom');
   // console.log('testing connection', bottom);
   return (
     <div className="character-creator">
