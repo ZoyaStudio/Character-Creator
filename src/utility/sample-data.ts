@@ -51,19 +51,29 @@ const upChevronLowerBoundries: Boundry[] = [
 ];
 
 const skinTightBases: Bases = {
-  Plain: {
+  'Plain': {
     outlineUrl: '/SkinTightBodySuit/TightBodySuitOutline.svg',
     gradientUrl: '/SkinTightBodySuit/TightBodySuitGradient.svg',
     shadingUrl: '/SkinTightBodySuit/TightBodySuitShading.svg',
   },
-  Lace: {
+  'Lace': {
     outlineUrl: '/SkinTightBodySuit/TightBodySuitOutline.svg',
     gradientUrl: '',
     shadingUrl: '/SkinTightBodySuit/lace-shading.png',
   },
+  'Tight Knit': {
+    outlineUrl: '/SkinTightBodySuit/TightBodySuitOutline.svg',
+    gradientUrl: '/SkinTightBodySuit/TightBodySuitGradient.svg',
+    shadingUrl: '/SkinTightBodySuit/smallCordedBase2.png',
+  },
+  'Wide Knit': {
+    outlineUrl: '/SkinTightBodySuit/TightBodySuitOutline.svg',
+    gradientUrl: '/SkinTightBodySuit/TightBodySuitGradient.svg',
+    shadingUrl: '/SkinTightBodySuit/wideCordedBase2.png',
+  },
 };
 const bodySuitBases : Bases = {
-  Plain: {
+  'Plain': {
     outlineUrl: '/BodySuit/BodySuitOutline.svg',
     gradientUrl: '/BodySuit/BodySuitGradient.svg',
     shadingUrl: '/BodySuit/BodySuitShading.svg',

@@ -101,7 +101,7 @@ const DetailsBar = function DetailsBar({
         {sliderLabel}
       </label>
       <input
-        disabled={boundryKey !== undefined}
+        disabled={boundryKey === undefined}
         className="range-input"
         type="range"
         name={`${label}-range`}

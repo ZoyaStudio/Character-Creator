@@ -41,7 +41,7 @@ export const defaultGarments : GarmentCollection = {
     upperBoundaryKey: 'Gentle Curve',
     upperBoundaryIndex: 1,
     lowerBoundaryKey: 'Gentle Curve',
-    lowerBoundaryIndex: 1,
+    lowerBoundaryIndex: 2,
     necklineKey: '',
     neckLineIndex: 0,
     baseKey: 'Plain',

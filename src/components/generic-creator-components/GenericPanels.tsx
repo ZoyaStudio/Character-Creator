@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Gallary from './Gallary';
-import DetailsBar from './DetailsBar';
 import {GenericPanelsProps, TabProfileListItem } from '../../utility/types';
 
 const GenericPanels = function GenericPanels({ tabProfiles } : GenericPanelsProps) {
@@ -20,27 +19,13 @@ const GenericPanels = function GenericPanels({ tabProfiles } : GenericPanelsProp
       {tabName}
     </button>
   ));
+
   return (
     <div className="major-panel garment-creator">
       <div className="section-menu menu">{buttons}</div>
-
       {
          // @ts-expect-error:
-      tabProfiles[currentTab].detailBarInfo}
-      (
-        <DetailsBar
-          // setSavedItems={setSavedItems}
-          item={
-             // @ts-expect-error:
-            tabProfiles[currentTab].detailBarInfo.item}
-          setItem={ // @ts-expect-error:
-            tabProfiles[currentTab].detailBarInfo.itemSetter}
-          label={ // @ts-expect-error:
-            tabProfiles[currentTab].detailBarInfo.label}
-          data={ // @ts-expect-error:
-            tabProfiles[currentTab].detailBarInfo.data}
-        />
-      ),
+      tabProfiles[currentTab].detailBar}
       <div className="creation-panel minor-panel">
         {
           // @ts-expect-error:
