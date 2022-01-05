@@ -15,13 +15,14 @@ const ColorPicker = function ColorPicker({
 }: AppProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className={`color-picker ${isExpanded? 'color-picker-expanded': ''}`} onClick={() => setIsExpanded(!isExpanded)}>
-      <h4 className="color-picker-label">
+    <div className={`color-picker ${isExpanded? 'color-picker-expanded': ''}`} >
+      <h4 className="color-picker-label" onClick={() => setIsExpanded(!isExpanded)}>
         Colors -
         {' '}
         {label}
       </h4>
       <img
+      onClick={() => setIsExpanded(!isExpanded)}
         alt="current color"
         src="./color-sample.svg"
         className="color-preview"
