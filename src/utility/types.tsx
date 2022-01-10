@@ -57,15 +57,15 @@ export type GarmentProfileAtType = {
 export type GarmentProfile = {
   [key: string] : GarmentProfileAtType
 }
-
+export type HairProfile =  {
+  [key: string] : {
+    outlineUrl: string,
+    gradientUrl: string,
+    shadingUrl: string,
+  } []
+}
 export type HairProfiles = {
-  bases: {
-    [key: string] : {
-      outlineUrl: string,
-      gradientUrl: string,
-      shadingUrl: string,
-    }
-  }
+  bases: HairProfile
   }
 export type BodyProfiles = {
    heads: {[key: string]: BodyPngs},
@@ -116,14 +116,22 @@ export type BodyProfiles = {
    backArms: {[key: string]: BodyPngs},
    frontArms: {[key: string]: BodyPngs},
    }
+
 //character
 export type HairTypes = 'bases';
 export type Hair = {
-hairFilter: Color,
-base: HairObj,
+baseFilter: Color,
+tintFilter: Color,
+bases: HairObj,
   }
 export type HairObj =  {
   typeKey: string,
+  index: number
+}
+export type HairSubstitues = {
+  base: HairObj,
+  side: HairObj,
+  back: HairObj,
 }
 export type Garment = {
   typeKey: string,
@@ -135,6 +143,10 @@ export type Garment = {
   neckLineIndex: number,
   baseKey: string,
   baseFilter: Color,
+  // baseFilterA: Color,
+  // baseFilterB: Color,
+  // baseFilterC: Color,
+  // tintFilter: Color,
   seamKey: { name: string, type: string} | null,
   decoration: { hasBoundaries: boolean },
   decorationFilter: Color,
@@ -151,13 +163,19 @@ export type BodyPngs = {
   faceShade: string | null
 }
 export type Eye = {
-    eyeColor: Color,
+    baseFilter: Color,
     typeKey: string,
     irisStyle: 'normal' | 'glazed' | 'intense',
     pupilStyle: 'normal' | 'cat',
     lashLength: 'noLash' | 'longLashed' | 'midLash',
 }
 export type Body = {
+  bodySettings: {
+    hasEarOverHair: boolean,
+    mouthHeight: number,
+    noseHeight: number,
+    eyeBrowHeight: number
+  },
    filterSet: {
      blush: Color,
      lightShade: Color,
@@ -195,6 +213,7 @@ export type Body = {
   required: boolean,
   previewClass: string,
 }
+
 export type Substitues =  {
   typeKey:string | null,
   baseKey: string | null,
@@ -242,3 +261,5 @@ export type GenericPanelsProps = Record<string,{
     //   label: string,
     //   data: GarmentProfile}
     }>;
+
+    export type FilterPart = 'baseFilter' | 'baseFilterA' | 'baseFilterB' | 'baseFilterC' | 'tintFilter';

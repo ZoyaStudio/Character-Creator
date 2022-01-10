@@ -1,7 +1,7 @@
 import React from 'react';
 import ColorPicker from './ColorPicker';
 import {makeCopy} from '../../utility/helper-functions';
-import { Garment, GarmentProfile, Boundry, Color} from '../../utility/types';
+import { Garment, GarmentProfile, Boundry, Color, FilterPart} from '../../utility/types';
 // Details Bar:
 // Allows user to set boundries, neckline and filters for item base and detail
 // Allows user to save items
@@ -41,14 +41,16 @@ const DetailsBar = function DetailsBar({
   // e: event from onChange
   // type: 'hue', 'con', 'sat', 'op', 'sat'
   // part: any key of the 'item' object that has the listed properties above
-  const handleFilterChange = (e : React.ChangeEvent<HTMLInputElement>, filterType: 'hue'| 'sat' | 'op' | 'con' | 'brit', part: 'baseFilter') => {
+  const handleFilterChange = (e : React.ChangeEvent<HTMLInputElement>, filterType: 'hue'| 'sat' | 'op' | 'con' | 'brit', part: FilterPart) => {
     const copy = JSON.parse(JSON.stringify(item)); // Object.assign({}, item);
-    copy[part][filterType] = e.target.value;
+    // copy[part][filterType] = e.target.value;
+    copy.baseFilter[filterType] = e.target.value;
     setItem(copy);
   };
-  const handleFilterPresetClick = (preset: Color, part: 'baseFilter') => {
+  const handleFilterPresetClick = (preset: Color, part: FilterPart) => {
     const copy = makeCopy(item);
-    copy[part] = preset;
+    // copy[part] = preset;
+    copy.baseFilter = preset;
     setItem(copy);
   };
   // updates item's boundaries

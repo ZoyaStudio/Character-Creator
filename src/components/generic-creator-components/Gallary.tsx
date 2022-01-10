@@ -4,7 +4,7 @@ type GallaryProps = {
   items: JSX.Element [],
   label: string
 }
-const Gallery = function Gallary({ items, label }: GallaryProps) {
+const Gallary = function Gallary({ items, label }: GallaryProps) {
   return (
     <div className="gallary">
       <div className="banner">
@@ -14,4 +14,4 @@ const Gallery = function Gallary({ items, label }: GallaryProps) {
     </div>
   );
 };
-export default Gallery;
+export default Gallary;

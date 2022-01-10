@@ -13,7 +13,7 @@ const EyePart = function eyepart({
   zCounter,
 }: AppProps) {
   const {
-    eyeColor, typeKey, irisStyle, pupilStyle, lashLength,
+    baseFilter, typeKey, irisStyle, pupilStyle, lashLength,
   } = part;
 
   const outline : string = bodyProfiles.eyes[typeKey].outlines[lashLength];
@@ -48,7 +48,7 @@ const EyePart = function eyepart({
       <img
         alt="iris shading"
         src={irisShading}
-        style={{ zIndex: zCounter - 5, filter: makeFilterStyle(eyeColor) }}
+        style={{ zIndex: zCounter - 5, filter: makeFilterStyle(baseFilter) }}
         className={displayClass}
       />
     </div>
