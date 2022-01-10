@@ -103,6 +103,12 @@ export const defaultGarments : GarmentCollection = {
 };
 
 export const defaultBody : Body = {
+  bodySettings: {
+    hasEarOverHair: false,
+    mouthHeight: 0,
+    noseHeight: 0,
+    eyeBrowHeight: 0
+  },
   filterSet: {
     blush: {
       hue: 0, sat: 100, brit: 1, con: 100, op: 100,
@@ -119,7 +125,7 @@ export const defaultBody : Body = {
   },
   head: bodyProfiles.heads['Average Girl'],
   eyes: {
-    eyeColor: getRandomColor(),
+    baseFilter: getRandomColor(),
     typeKey: 'Round Eyes',
     irisStyle: 'normal',
     pupilStyle: 'normal',
@@ -135,8 +141,10 @@ export const defaultBody : Body = {
 }
 
 export const defaultHair : Hair = {
-  hairFilter: getRandomColor(),
-  base: {
-    typeKey: 'Short Hair',
+  baseFilter: getRandomColor(),
+  tintFilter: getRandomColor(),
+  bases: {
+    typeKey: 'Witchy Hair',
+    index: 0
   }
 }

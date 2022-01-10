@@ -3,6 +3,7 @@ import React, { useState /* useMemo */ } from 'react';
 import Portrait from './Portrait';
 import BottomCreator from './creators/BottomCreator';
 import TopCreator from './creators/TopCreator';
+import BodyCreator from './body/BodyCreator';
 import CategoryMenus from './CategoryMenus';
 import GarmentContext from '../context';
 import { defaultGarments, defaultBody, defaultHair} from '../utility/defaults';
@@ -21,7 +22,7 @@ const CharacterCreator = function CharacterCreator() {
   const [feet, setFeet] = useState(convert(defaultGarments.defaultFeet));
   const [hair, setHair] = useState(convert(defaultHair));
   const [sleeves, setSleeves] = useState(convert(defaultGarments.defaultSleeves));
-  const [currentType, setCurrentType] = useState('bottom');
+  const [currentType, setCurrentType] = useState('top');
   // console.log('testing connection', bottom);
   return (
     <div className="character-creator">
@@ -65,6 +66,7 @@ const CharacterCreator = function CharacterCreator() {
         />
         {currentType === 'top' && <TopCreator />}
         {currentType === 'bottom' && <BottomCreator />}
+        {currentType === 'body' && <BodyCreator />}
         {/* {currentType === 'body' && <CreateBody body={body} setBody={setBody} />} */}
       </GarmentContext.Provider>
     </div>

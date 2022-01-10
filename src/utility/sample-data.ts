@@ -387,13 +387,51 @@ export const garmentProfiles : {[key: string] : GarmentProfile} = {
 
 export const hairProfiles:HairProfiles = {
   bases: {
-    'Short Hair': {
-      outlineUrl: './ShortHair/ShortHairOutline.svg',
-      gradientUrl: './ShortHair/ShortHairGradient.png',
-      shadingUrl: './ShortHair/ShortHairShading.png',
-    },
+    'Short Hair': [
+    {
+      outlineUrl: './hair-assets/ShortHair/ShortHairOutline.svg',
+      gradientUrl: './hair-assets/ShortHair/ShortHairGradient.png',
+      shadingUrl: './hair-assets/ShortHair/ShortHairShading.png',
+    }],
+    "Witchy Hair": [
+      {
+        outlineUrl: './hair-assets/MildWavyHair/MildWavyHairOutline.png',
+        gradientUrl: './hair-assets/MildWavyHair/MildWavyHairGradient.png',
+        shadingUrl: './hair-assets/MildWavyHair/MildWavyHairShading.png',
+      },
+      {
+        outlineUrl: './hair-assets/MildWavyHairShoulderLength/MildWavyHairShoulderLengthOutline.png',
+        gradientUrl: './hair-assets/MildWavyHairShoulderLength/MildWavyHairShoulderLengthGradient.png',
+        shadingUrl: './hair-assets/MildWavyHairShoulderLength/MildWavyHairShoulderLengthShading.png',
+      },
+      {
+        outlineUrl: './hair-assets/WitchyHairTorsoLength/WitchyHairTorsoLengthOutline.png',
+        gradientUrl: './hair-assets/WitchyHairTorsoLength/WitchyHairTorsoLengthGradient.png',
+        shadingUrl: './hair-assets/WitchyHairTorsoLength/WitchyHairTorsoLengthShading.png',
+      },
+      {
+        outlineUrl: './hair-assets/WitchyHairKneeLength/WitchyHairKneeLengthOutline.png',
+        gradientUrl: './hair-assets/WitchyHairKneeLength/WitchyHairKneeLengthGradient.png',
+        shadingUrl: './hair-assets/WitchyHairKneeLength/WitchyHairKneeLengthShading.png',
+      },
+      {
+        outlineUrl: './hair-assets/WitchyHairFloorLength/WitchyHairFloorLengthOutline.png',
+        gradientUrl: './hair-assets/WitchyHairFloorLength/WitchyHairFloorLengthGradient.png',
+        shadingUrl: './hair-assets/WitchyHairFloorLength/WitchyHairFloorLengthShading.png',
+      },
+    ],
+    'Wolfy Boy Cut': [
+      {
+        outlineUrl: './hair-assets/WolfyBoyCut/WolfyBoyCutOutline.svg',
+        gradientUrl: './hair-assets/WolfyBoyCut/WolfyBoyCutGradient.svg',
+        shadingUrl: './hair-assets/WolfyBoyCut/WolfyBoyCutShading.svg',
+      }
+    ],
+    // 'Mild Wavy': [
+
+    // ]
   },
-}
+}//public/hair-assets/MildWavyHair/MildWavyHairOutline.png
 
 export const bodyProfiles : BodyProfiles = {
   heads: {

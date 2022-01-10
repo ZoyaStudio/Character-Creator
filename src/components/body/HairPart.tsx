@@ -7,7 +7,8 @@ type AppProps = {
   type: HairTypes,
   displayClass: string,
   zCounter: number,
-  hairFilter: Color,
+  baseFilter: Color,
+  tintFilter: Color
 }
 const HairPart = function hairPart({
   part,
@@ -15,14 +16,13 @@ const HairPart = function hairPart({
   displayClass,
   // onClickHandler,
   zCounter,
-  hairFilter,
+  baseFilter,
+  tintFilter
 } : AppProps) {
-
-  const { outlineUrl, gradientUrl, shadingUrl } = hairProfiles[type][part.typeKey];
+  const { outlineUrl, gradientUrl, shadingUrl } = hairProfiles[type][part.typeKey][part.index];
   return (
     <div
       className={displayClass}
-      // onClick={onClickHandler}
       style={{ zIndex: zCounter - 1 }}
     >
       <img
@@ -34,13 +34,13 @@ const HairPart = function hairPart({
       <img
         alt="gradient"
         src={gradientUrl}
-        style={{ zIndex: zCounter - 2, filter: makeFilterStyle(hairFilter) }}
+        style={{ zIndex: zCounter - 2, filter: makeFilterStyle(tintFilter) }}
         className={displayClass}
       />
       <img
         alt="shading"
         src={shadingUrl}
-        style={{ zIndex: zCounter - 4, filter: makeFilterStyle(hairFilter) }}
+        style={{ zIndex: zCounter - 4, filter: makeFilterStyle(baseFilter) }}
         className={displayClass}
       />
     </div>

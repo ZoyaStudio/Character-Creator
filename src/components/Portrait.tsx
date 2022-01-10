@@ -12,17 +12,27 @@ const Portrait = function Portrait() {
   const {
     top, body, sleeves, hair, bottom, feet, collar, garmentProfiles,
   } = useContext(GarmentContext);
-  const { base, hairFilter } = hair;
+  const { bases, baseFilter, tintFilter} = hair;
 
   let zCounterMax = 500;
   const pieces = [
-    // function HairPart ({part, displayClass, onClickHandler, zCounter, hairFilter}) {
+    // function HairPart ({part, displayClass, onClickHandler, zCounter, baseFilter}) {
+      (zIndex: number) => (
+        <BodyPart
+          key="ear top"
+          bodyFilterSet={body.filterSet}
+          part={body.ear}
+          zCounter={zIndex}
+          displayClass="portrait-img ear"
+        />
+      ),
     (zIndex: number) => (
       <HairPart
         key="hair base front"
-        part={base}
+        part={bases}
         type="bases"
-        hairFilter={hairFilter}
+        baseFilter={baseFilter}
+        tintFilter={tintFilter}
         zCounter={zIndex}
         displayClass="portrait-img front-hair"
       />
@@ -166,11 +176,12 @@ const Portrait = function Portrait() {
     (zIndex: number) => (
       <HairPart
         key="hair base back"
-        part={base}
+        part={bases}
         type="bases"
-        hairFilter={hairFilter}
+        baseFilter={baseFilter}
+        tintFilter={tintFilter}
         zCounter={zIndex}
-        displayClass="portrait-img back-hair"
+        displayClass="portrait-img"
       />
     ),
   ];

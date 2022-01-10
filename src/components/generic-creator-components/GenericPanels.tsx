@@ -31,7 +31,7 @@ const GenericPanels = function GenericPanels({ tabProfiles } : GenericPanelsProp
           // @ts-expect-error:
         tabProfiles[currentTab].list.map((gallaryProfile: TabProfileListItem) => (
           <Gallary
-            key={`${gallaryProfile.label}gallary`}
+            key={`${gallaryProfile.label} gallary`}
             label={gallaryProfile.label}
             items={gallaryProfile.items}
           />

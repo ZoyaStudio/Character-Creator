@@ -6,7 +6,7 @@ const CategoryMenus = function CategoryMenus({ currentType, setCurrentType }: {c
   return (
     <div className="category-menu">
       <div className="menu">
-        {['top', 'bottom'].map(
+        {['top', 'bottom', 'body'].map(
           (type) => (
             <button
               type="button"

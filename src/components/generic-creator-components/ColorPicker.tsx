@@ -1,26 +1,28 @@
-import React from 'react';
+import {useState }from 'react';
 import {colors} from '../../utility/colors';
 import {makeFilterStyle} from '../../utility/helper-functions';
-import {Color,} from '../../utility/types';
+import {Color, FilterPart} from '../../utility/types';
+
 type AppProps = {
   filter: Color,
   label: string,
-  handleFilterChange: (e : React.ChangeEvent<HTMLInputElement>, filterType: 'hue'| 'sat' | 'op' | 'con' | 'brit', part: 'baseFilter') => void,
-  part : 'baseFilter',
-  handleFilterPresetClick:   (color: Color, part: 'baseFilter', newColor : string) => void,
+  handleFilterChange: (e : React.ChangeEvent<HTMLInputElement>, filterType: 'hue'| 'sat' | 'op' | 'con' | 'brit', part: FilterPart) => void,
+  part : FilterPart,
+  handleFilterPresetClick:   (color: Color, part: FilterPart) => void,
 };
 const ColorPicker = function ColorPicker({
   filter, label, handleFilterChange, part, handleFilterPresetClick,
 }: AppProps) {
-
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className="color-picker">
-      <h4 className="color-picker-label">
+    <div className={`color-picker ${isExpanded? 'color-picker-expanded': ''}`} >
+      <h4 className="color-picker-label" onClick={() => setIsExpanded(!isExpanded)}>
         Colors -
         {' '}
         {label}
       </h4>
       <img
+      onClick={() => setIsExpanded(!isExpanded)}
         alt="current color"
         src="./color-sample.svg"
         className="color-preview"
@@ -32,7 +34,7 @@ const ColorPicker = function ColorPicker({
             key={color}
             type="button"
             onClick={() => {
-              handleFilterPresetClick(colors[color], part, color);
+              handleFilterPresetClick(colors[color], part);
             }}
           >
             <img
