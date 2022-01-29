@@ -80,21 +80,11 @@ Future Features
 
 ## How can I start this app
 
-Clone this repo, navigate to the backend folder, install the dependencies and start the server
+Clone this repo, navigate to the root directory, install the dependencies and start the development server
 
 ```console
-cd backend
 npm install
-cd server
-node index.js
+npm start
 ```
 
-In a new terminal, navigate to the client folder, install the packages for the frontend and run webpack
 
-```console
-cd client
-npm install
-npm run-script watch
-```
-
-Then just open your browser at http://localhost:3002/
