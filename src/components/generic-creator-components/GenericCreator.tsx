@@ -28,7 +28,7 @@ const GenericCreator = function GenericCreator({
             // savedItems,
             // setSavedItems,
             data,
-            // required,
+            required,
             previewClass,
         } = itemSet
 
@@ -70,6 +70,13 @@ const GenericCreator = function GenericCreator({
                 //   itemSetter(currentItemNameCopy);
             }
         tabProfilesSelection[label] = {
+            isVisible: item.isVisible,
+            setIsVisible: () => {
+                const itemCopy = makeCopy(item)
+                itemCopy.isVisible = true
+                itemSetter(itemCopy)
+                console.log('should be visivble')
+            },
             list: [
                 {
                     label: 'Type',
@@ -134,6 +141,7 @@ const GenericCreator = function GenericCreator({
                     setItem={itemSetter}
                     label={label}
                     data={data}
+                    required={required}
                 />
             ),
         }

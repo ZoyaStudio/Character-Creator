@@ -17,6 +17,7 @@ type AppProps = {
     setItem: React.Dispatch<React.SetStateAction<Garment>>
     label: string
     data: GarmentProfile
+    required: boolean
 }
 const DetailsBar = function DetailsBar({
     // setSavedItems,
@@ -24,6 +25,7 @@ const DetailsBar = function DetailsBar({
     setItem,
     label,
     data,
+    required,
 }: AppProps): JSX.Element {
     const {
         lowerBoundaryKey,
@@ -138,8 +140,21 @@ const DetailsBar = function DetailsBar({
             />
         </>
     )
+    const handleRemoveButton = (): void => {
+        const itemCopy = makeCopy(item)
+        itemCopy.isVisible = false
+        setItem(itemCopy)
+    }
     return (
         <div className="details-bar">
+            <button
+                disabled={!item.isVisible || required}
+                className="menu-button remove-garment-btn"
+                type="button"
+                onClick={handleRemoveButton}
+            >
+                Remove
+            </button>
             <h4>Details</h4>
             {radioList(
                 Object.keys(upperBoundaries),

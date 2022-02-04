@@ -4,6 +4,7 @@ import { getRandomColor } from './helper-functions'
 
 export const defaultGarments: GarmentCollection = {
     defaultTop: {
+        isVisible: true,
         typeKey: 'Skin Tight',
         upperBoundaryKey: 'Gentle Curve',
         upperBoundaryIndex: 0,
@@ -24,6 +25,7 @@ export const defaultGarments: GarmentCollection = {
         },
     },
     defaultCollar: {
+        isVisible: true,
         typeKey: 'Skin Tight',
         upperBoundaryKey: 'Gentle Curve',
         upperBoundaryIndex: 0,
@@ -44,6 +46,7 @@ export const defaultGarments: GarmentCollection = {
         },
     },
     defaultBottom: {
+        isVisible: true,
         typeKey: 'Skin Tight',
         upperBoundaryKey: 'Gentle Curve',
         upperBoundaryIndex: 1,
@@ -64,6 +67,7 @@ export const defaultGarments: GarmentCollection = {
         },
     },
     defaultFeet: {
+        isVisible: true,
         typeKey: 'Body Suit',
         upperBoundaryKey: 'Gentle Curve',
         upperBoundaryIndex: 3,
@@ -84,6 +88,7 @@ export const defaultGarments: GarmentCollection = {
         },
     },
     defaultOnePiece: {
+        isVisible: true,
         typeKey: 'Skin Tight',
         upperBoundaryKey: 'Gentle Curve',
         upperBoundaryIndex: 0,
@@ -104,6 +109,7 @@ export const defaultGarments: GarmentCollection = {
         },
     },
     defaultSleeves: {
+        isVisible: true,
         typeKey: 'Puff Sleeves',
         upperBoundaryKey: null,
         upperBoundaryIndex: 0,

@@ -6,6 +6,25 @@ import {
     BodyProfiles,
 } from './types'
 
+const blankUrl = './blank.svg'
+const blank = {
+    previewSettings: {
+        defaultUBIndex: 0,
+        defaultLBIndex: 0,
+    },
+    bases: {
+        None: {
+            outlineUrl: './blank.svg',
+            gradientUrl: './blank.svg',
+            shadingUrl: './blank.svg',
+        },
+    },
+    upperBoundaries: {},
+    lowerBoundaries: {},
+    seams: {},
+    necklines: {},
+    decorations: {},
+}
 const gentleCurveUpperBoundries: Boundry[] = [
     {
         url: './gentleCurve/gentleCurve0.svg',
@@ -215,7 +234,7 @@ const skinTightBases: Bases = {
     },
     Lace: {
         outlineUrl: '/SkinTightBodySuit/TightBodySuitOutline.svg',
-        gradientUrl: '',
+        gradientUrl: blankUrl,
         shadingUrl: '/SkinTightBodySuit/lace-shading.png',
     },
     'Tight Knit': {
@@ -690,7 +709,7 @@ export const bodyProfiles: BodyProfiles = {
                     shadingUrl: '',
                 },
             },
-            eyewhite: '',
+            eyewhite: './RoundEyes/RoundEyesEyeWhite.svg',
         },
     },
     noses: {

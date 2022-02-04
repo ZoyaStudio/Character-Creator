@@ -146,6 +146,7 @@ export type HairSubstitues = {
     back: HairObj
 }
 export type Garment = {
+    isVisible: boolean
     typeKey: string
     upperBoundaryKey: string | null
     upperBoundaryIndex: number
@@ -244,6 +245,8 @@ export type TabProfileListItem = {
 export type GenericPanelsProps = Record<
     string,
     {
+        isVisible: boolean
+        setIsVisible: () => void
         list: TabProfileListItem[]
         detailBar: JSX.Element
         // {

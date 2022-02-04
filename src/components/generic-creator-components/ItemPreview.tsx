@@ -12,25 +12,27 @@ type AppProps = {
 const ItemPreview = function ({
     handleOnClickEvent,
     previewCorrection,
-    data,
+    data, // change to be type specific
     substitutes,
 }: AppProps): JSX.Element {
-    const firstKeyOfData = firstKeyOf(data)
+    const firstTypeKey = firstKeyOf(data)
+    const garmentProfileAtType = data[substitutes.typeKey || firstTypeKey]
     const itemProfile = {
-        typeKey: substitutes.typeKey || firstKeyOfData,
-        upperBoundaryKey: data[firstKeyOfData].upperBoundaries
-            ? firstKeyOf(data[firstKeyOfData].upperBoundaries)
+        isVisible: true,
+        typeKey: substitutes.typeKey || firstTypeKey,
+        upperBoundaryKey: data[firstTypeKey].upperBoundaries
+            ? firstKeyOf(data[firstTypeKey].upperBoundaries)
             : '',
         upperBoundaryIndex:
-            data[firstKeyOfData].previewSettings.defaultUBIndex || 0,
-        lowerBoundaryKey: data[firstKeyOfData].lowerBoundaries
-            ? firstKeyOf(data[firstKeyOfData].lowerBoundaries)
+            data[firstTypeKey].previewSettings.defaultUBIndex || 0,
+        lowerBoundaryKey: data[firstTypeKey].lowerBoundaries
+            ? firstKeyOf(data[firstTypeKey].lowerBoundaries)
             : '',
         lowerBoundaryIndex:
-            data[firstKeyOfData].previewSettings.defaultLBIndex || 0,
+            data[firstTypeKey].previewSettings.defaultLBIndex || 0,
         necklineKey: null,
         neckLineIndex: 0,
-        baseKey: substitutes.baseKey || firstKeyOf(data[firstKeyOfData].bases),
+        baseKey: substitutes.baseKey || firstKeyOf(garmentProfileAtType.bases),
         baseFilter: {
             hue: 0,
             sat: 100,
@@ -38,11 +40,11 @@ const ItemPreview = function ({
             con: 100,
             op: 100,
         },
-        seamKey: data[firstKeyOfData].seams.length
+        seamKey: data[firstTypeKey].seams.length
             ? {
                   name:
                       substitutes.seamKeyName ||
-                      firstKeyOf(data[firstKeyOfData].seams),
+                      firstKeyOf(data[firstTypeKey].seams),
                   type: 'line',
               }
             : null,
