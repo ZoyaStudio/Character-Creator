@@ -2,6 +2,7 @@ import React from 'react'
 import { bodyProfiles } from '../../utility/sample-data'
 import { makeFilterStyle } from '../../utility/helper-functions'
 import { Eye } from '../../utility/types'
+import { colors } from '../../utility/colors'
 
 type AppProps = {
     part: Eye
@@ -21,7 +22,7 @@ const EyePart = function eyepart({
         bodyProfiles.eyes[typeKey].irisStyle[irisStyle].outlineUrl
     const irisShading: string =
         bodyProfiles.eyes[typeKey].irisStyle[irisStyle].shadingUrl
-
+    const eyeWhite = bodyProfiles.eyes[typeKey].eyewhite
     return (
         <div
             className={displayClass}
@@ -52,6 +53,15 @@ const EyePart = function eyepart({
                 style={{
                     zIndex: zCounter - 5,
                     filter: makeFilterStyle(baseFilterA),
+                }}
+                className={displayClass}
+            />
+            <img
+                alt="eye white"
+                src={eyeWhite}
+                style={{
+                    zIndex: zCounter - 6,
+                    filter: makeFilterStyle(colors.White),
                 }}
                 className={displayClass}
             />

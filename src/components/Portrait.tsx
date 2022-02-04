@@ -89,16 +89,17 @@ const Portrait = function Portrait(): JSX.Element {
                 displayClass="portrait-img head"
             />
         ),
-        (zIndex: number) => (
-            <Item
-                key="sleeves-front"
-                typeData={garmentProfiles.sleeves}
-                itemProfile={sleeves}
-                zCounter={zIndex}
-                displayClass="portrait-img"
-                sectionClass="left-section"
-            />
-        ),
+        (zIndex: number) =>
+            sleeves.isVisible && (
+                <Item
+                    key="sleeves-front"
+                    typeData={garmentProfiles.sleeves}
+                    itemProfile={sleeves}
+                    zCounter={zIndex}
+                    displayClass="portrait-img"
+                    sectionClass="left-section"
+                />
+            ),
         (zIndex: number) => (
             <BodyPart
                 key="front-arm"
@@ -108,42 +109,46 @@ const Portrait = function Portrait(): JSX.Element {
                 displayClass="portrait-img front-arm"
             />
         ),
-        (zIndex: number) => (
-            <Item
-                key="collar"
-                typeData={garmentProfiles.collars}
-                itemProfile={collar}
-                zCounter={zIndex}
-                displayClass="portrait-img"
-            />
-        ),
-        (zIndex: number) => (
-            <Item
-                key="top"
-                typeData={garmentProfiles.tops}
-                itemProfile={top}
-                zCounter={zIndex}
-                displayClass="portrait-img"
-            />
-        ),
-        (zIndex: number) => (
-            <Item
-                key="feet"
-                typeData={garmentProfiles.feets}
-                itemProfile={feet}
-                zCounter={zIndex}
-                displayClass="portrait-img"
-            />
-        ),
-        (zIndex: number) => (
-            <Item
-                key="bottom"
-                typeData={garmentProfiles.bottoms}
-                itemProfile={bottom}
-                zCounter={zIndex}
-                displayClass="portrait-img"
-            />
-        ),
+        (zIndex: number) =>
+            collar.isVisible && (
+                <Item
+                    key="collar"
+                    typeData={garmentProfiles.collars}
+                    itemProfile={collar}
+                    zCounter={zIndex}
+                    displayClass="portrait-img"
+                />
+            ),
+        (zIndex: number) =>
+            top.isVisible && (
+                <Item
+                    key="top"
+                    typeData={garmentProfiles.tops}
+                    itemProfile={top}
+                    zCounter={zIndex}
+                    displayClass="portrait-img"
+                />
+            ),
+        (zIndex: number) =>
+            feet.isVisible && (
+                <Item
+                    key="feet"
+                    typeData={garmentProfiles.feets}
+                    itemProfile={feet}
+                    zCounter={zIndex}
+                    displayClass="portrait-img"
+                />
+            ),
+        (zIndex: number) =>
+            bottom.isVisible && (
+                <Item
+                    key="bottom"
+                    typeData={garmentProfiles.bottoms}
+                    itemProfile={bottom}
+                    zCounter={zIndex}
+                    displayClass="portrait-img"
+                />
+            ),
         (zIndex: number) => (
             <BodyPart
                 key="body-legs"
@@ -153,16 +158,17 @@ const Portrait = function Portrait(): JSX.Element {
                 displayClass="portrait-img torso-legs"
             />
         ),
-        (zIndex: number) => (
-            <Item
-                key="sleeves-back"
-                typeData={garmentProfiles.sleeves}
-                itemProfile={sleeves}
-                zCounter={zIndex}
-                displayClass="portrait-img"
-                sectionClass="right-section"
-            />
-        ),
+        (zIndex: number) =>
+            sleeves.isVisible && (
+                <Item
+                    key="sleeves-back"
+                    typeData={garmentProfiles.sleeves}
+                    itemProfile={sleeves}
+                    zCounter={zIndex}
+                    displayClass="portrait-img"
+                    sectionClass="right-section"
+                />
+            ),
         (zIndex: number) => (
             <BodyPart
                 key="back-arm"
@@ -170,6 +176,15 @@ const Portrait = function Portrait(): JSX.Element {
                 part={body.backArm}
                 zCounter={zIndex}
                 displayClass="portrait-img back-arm"
+            />
+        ),
+        (zIndex: number) => (
+            <BodyPart
+                key="body-legs"
+                bodyFilterSet={body.filterSet}
+                part={body.torsoLegs}
+                zCounter={zIndex}
+                displayClass="portrait-img"
             />
         ),
         (zIndex: number) => (

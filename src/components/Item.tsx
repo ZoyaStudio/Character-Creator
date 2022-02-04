@@ -36,9 +36,6 @@ const Item = function Item({
         // decoration,
         // decorationFilter,
     } = itemProfile
-    if (displayClass !== 'portrait-img') {
-        // console.log('item', itemProfile);
-    }
     const base = typeData[typeKey].bases[baseKey]
 
     const neckline = necklineKey

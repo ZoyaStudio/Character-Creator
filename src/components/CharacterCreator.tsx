@@ -61,9 +61,6 @@ const CharacterCreator = function CharacterCreator(): JSX.Element {
                         bodyProfiles,
                         hairProfiles,
                     }
-                    //   ),
-                    //   []
-                    // )
                 }
             >
                 <Portrait />

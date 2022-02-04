@@ -981,6 +981,21 @@ hr {
   grid-template-rows: 10% 90%;
   overflow: scroll;
 }
+.add-garment-btn {
+  background-color: #3eff9d;
+  padding: 1em;
+  height: 5em;
+  font-size: 4em;
+  margin: 1em;
+  color: white;
+  font-style: italic;
+  position: relative;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.remove-garment-btn {
+  width: 100%;
+}
 /* Gallary */
 .gallary {
   margin: 1em;
