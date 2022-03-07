@@ -219,6 +219,7 @@ export type Body = {
 
 export type TabItem = {
     label: string
+    cssClasses: string
     item: Garment
     itemSetter: React.Dispatch<React.SetStateAction<Garment>>
     savedItems: Garment[]
@@ -246,6 +247,7 @@ export type GenericPanelsProps = Record<
     string,
     {
         isVisible: boolean
+        cssClasses: string
         setIsVisible: () => void
         list: TabProfileListItem[]
         detailBar: JSX.Element
