@@ -24,6 +24,7 @@ const GenericCreator = function GenericCreator({
         const {
             label,
             item,
+            cssClasses,
             itemSetter,
             // savedItems,
             // setSavedItems,
@@ -32,10 +33,6 @@ const GenericCreator = function GenericCreator({
             previewClass,
         } = itemSet
 
-        // const handleOnClickSavedItem = (info) => {
-        //   const copy = JSON.parse(JSON.stringify(info));
-        //   setSavedItems(copy);
-        // };
         const handleOnClickFunctionCreator =
             (type: 'all' | 'baseKey' | 'seamKey') =>
             (info: Garment): void => {
@@ -44,33 +41,16 @@ const GenericCreator = function GenericCreator({
                 if (type === 'all') {
                     itemSetter(infoCopy)
                     // eslint-disable-next-line brace-style
-                }
-                // else if ((!required || type !== 'baseKey') && JSON.stringify(item[type])
-                // === JSON.stringify(info[type])){
-                //   itemCopy[type] = null;
-                //   if (type === 'baseKey') {
-                //     itemCopy.seamKey = null;
-                //     itemCopy.lowerBoundaryKey = null;
-                //     itemCopy.upperBoundaryKey = null;
-                //   }
-                //   itemSetter(itemCopy);
-                // }
-                else {
+                } else {
                     // @ts-expect-error not sure why typescript is still
                     // complaining
                     itemCopy[type] = info[type]
                     itemSetter(itemCopy)
                 }
-                // var currentItemNameCopy = JSON.parse(JSON.stringify(item));
-                //   if (true/*JSON.stringify(currentTopCopy[type]) === JSON.stringify(info) && !required*/) {
-                //     currentItemNameCopy[type] = null;
-                //   } else {
-                //     currentItemNameCopy[type] = JSON.parse(JSON.stringify(info));
-                //   }
-                //   itemSetter(currentItemNameCopy);
             }
         tabProfilesSelection[label] = {
             isVisible: item.isVisible,
+            cssClasses,
             setIsVisible: () => {
                 const itemCopy = makeCopy(item)
                 itemCopy.isVisible = true

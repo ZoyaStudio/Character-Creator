@@ -42,12 +42,12 @@ button {
 }
 .menu {
   display: flex;
-  height: 3em;
+  flex-wrap: wrap;
+  height: 10em;
   position: relative;
+  gap: 0px 0px;
 }
-.selected {
-  background-color: thistle;
-}
+
 .category-menu {
   position: relative;
   top: 4em;
@@ -70,7 +70,8 @@ button {
   border-style: outset;
   border-color: rgb(181, 170, 199);
   border-radius: 2px;
-  margin: 0 0.5% 0 0.5%;
+  /* color: white; */
+  font-family: cursive;
 }
 body {
   /* background-color: rgb(241, 231, 218); */
@@ -978,7 +979,7 @@ hr {
   grid-row-end: 3;
   display: grid;
   grid-template-columns: 25% 75%;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 20% 80%;
   overflow: scroll;
 }
 .add-garment-btn {
@@ -1078,10 +1079,65 @@ hr {
   position: relative;
   grid-column-start: 1;
   grid-column-end: 2;
+  margin-top: 2em;
 }
 .save-button {
   margin-top: 1em;
   display: block;
   height: 5em;
   width: 100%;
+}
+.set1 {
+  /* background: linear-gradient( rgb(92, 49, 0), rgb(255, 136, 0)); */
+  background-color: rgb(255, 136, 0);
+}
+.set2 {
+
+  /* background: linear-gradient(0.25turn, rgb(42, 78, 0), rgb(136, 255, 0)); */
+  background-color: rgb(136, 255, 0);
+}
+.set3 {
+  background-color: rgb(255, 0, 149);
+  /* background: linear-gradient(0.25turn, rgb(58, 0, 34), rgb(255, 0, 149)); */
+}
+.set-start {
+  /* border-top-right-radius: 25px; */
+  border-bottom-left-radius: 25px;
+  z-index: 500;
+  width: 33%;
+  /* box-shadow: 5px 0px 5px rgb(2, 2, 2); */
+}
+.set-middle {
+  /* border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px; */
+  z-index: 400;
+  /* right: 4em; */
+  position: relative;
+  width: 33%;
+}
+.set-end {
+  border-bottom-right-radius: 25px;
+  position: relative;
+  /* right: 8em; */
+  z-index: 300;
+  width: 33%;
+}
+.selected {
+  background-color: thistle;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+.selected-alt {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  /* filter: saturate(1.2);
+  filter: brightness(1.2); */
+  /* border-color: #ffffff;
+  border-style: solid; */
+  /* border-width: .3em; */
+  box-shadow: inset 0 0 5px .2em #ffffff;
+}
+.greyed-out {
+  filter: saturate(0.5);
+  color: rgb(172, 172, 172);
 }

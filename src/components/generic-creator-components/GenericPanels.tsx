@@ -7,21 +7,29 @@ const GenericPanels = function GenericPanels({
 }: GenericPanelsProps): JSX.Element {
     const defaultTab: keyof GenericPanelsProps = Object.keys(tabProfiles)[0]
     const [currentTab, setCurrentTab] = useState(defaultTab)
-    const buttons = Object.keys(tabProfiles).map((tabName) => (
-        <button
-            type="button"
-            key={tabName}
-            className={
-                currentTab === tabName ? 'selected menu-button' : 'menu-button'
-            }
-            onClick={() => {
-                setCurrentTab(tabName)
-            }}
-        >
-            {tabName}
-        </button>
-    ))
-
+    const buttons = Object.keys(tabProfiles).map((tabName) => {
+        // @ts-expect-error not sure why typescript is still
+        const { cssClasses, isVisible } = tabProfiles[tabName]
+        // const buttonLabel = isVisible ? tabName : `Add ${tabName} +`
+        return (
+            <button
+                type="button"
+                key={tabName}
+                className={
+                    currentTab === tabName
+                        ? `selected-alt menu-button ${cssClasses}`
+                        : `menu-button ${cssClasses} ${
+                              !isVisible ? 'greyed-out' : ''
+                          }`
+                }
+                onClick={() => {
+                    setCurrentTab(tabName)
+                }}
+            >
+                {tabName}
+            </button>
+        )
+    })
     return (
         <div className="major-panel garment-creator">
             <div className="section-menu menu">{buttons}</div>
